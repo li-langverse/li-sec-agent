@@ -89,6 +89,19 @@ See latest run in `eval/results/summary-*.json`. Re-run after model pulls to ref
 | `qwen3.5:27b` | skipped | — | — | — | — | — | — | OOM (~17 GB weights > 12 GB VRAM) |
 
 Run: 2026-06-03, API `http://192.168.10.33:31434/v1`, Ollama **0.24.0**, engine RTX 3060 12 GB.
+
+### Local RTX 3090 (24 GB) � `qwen3.5:27b` smoke
+
+Workstation: **NVIDIA RTX 3090**, Ollama `http://127.0.0.1:11434/v1`, `OLLAMA_NUM_CTX=8192`, `CASE_LIMIT=10`, `BENCHMARK_PATH=eval/benchmark-multilang.json` (first 10 C buffer-overflow cases). Run: **2026-06-03**.
+
+| Model | Status | F1 | Prec | Recall | FP rate | Neg pass | p50 ms | VRAM MiB |
+|-------|--------|-----|------|--------|---------|----------|--------|----------|
+| `qwen3.5:27b` | ok | 0.10 | 0.10 | 0.10 | 0.00 | 1.00 | 463749 | 21102 |
+
+**Pass:** smoke completed (10/10 cases). **Does not beat** engine `qwen3.5:9b` on the legacy 18-case benchmark (F1 **0.69**, p50 ~8.9 s, ~8.4 GB VRAM). 27b on this multilang C subset is much slower (~7.7 min p50 per case) and lower F1�likely category mismatch (`other` vs `injection` on buffer overflows) rather than GPU limits.
+
+Harness: `REQUEST_TIMEOUT_MS` defaults to **600000** (10 min); retries via `EVAL_MAX_ATTEMPTS` (default **8**) with 5s�attempt backoff for transient `fetch failed` against Ollama on Windows.
+
 <!-- EVAL_RESULTS_END -->
 
 ## Recommendation

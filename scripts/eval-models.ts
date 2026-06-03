@@ -149,7 +149,7 @@ async function chatCompletion(
   apiKey: string,
   body: Record<string, unknown>,
   requestTimeoutMs: number,
-  maxAttempts = 4
+  maxAttempts = Number(process.env.EVAL_MAX_ATTEMPTS ?? "8")
 ): Promise<Response> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
@@ -173,7 +173,7 @@ async function chatCompletion(
         message.includes("ETIMEDOUT") ||
         message.includes("socket");
       if (!retryable || attempt === maxAttempts) throw error;
-      await new Promise((r) => setTimeout(r, 2000 * attempt));
+      await new Promise((r) => setTimeout(r, 5000 * attempt));
     }
   }
   throw lastError;
@@ -191,6 +191,7 @@ async function runModel(
   const caseResults: CaseResult[] = [];
 
   for (const testCase of cases) {
+    console.log(`  case ${testCase.id}...`);
     const started = Date.now();
     try {
       const response = await chatCompletion(baseUrl, apiKey, {
