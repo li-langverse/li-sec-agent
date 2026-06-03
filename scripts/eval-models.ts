@@ -211,6 +211,9 @@ async function runModel(
           ],
           temperature: 0.1,
           stream: false,
+          ...(process.env.OLLAMA_NUM_CTX
+            ? { options: { num_ctx: Number(process.env.OLLAMA_NUM_CTX) } }
+            : {}),
         }, requestTimeoutMs);
 
       const latencyMs = Date.now() - started;
@@ -375,6 +378,15 @@ async function main(): Promise<void> {
     console.log(`CASE_LIMIT=${caseLimit} (subset for smoke)`);
   }
 
+
+  const caseIds = (process.env.CASE_IDS ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (caseIds.length > 0) {
+    cases = cases.filter((c) => caseIds.includes(c.id));
+    console.log(`CASE_IDS filter: ${cases.length} cases`);
+  }
   const resultsDir = join(REPO_ROOT, "eval", "results");
   mkdirSync(resultsDir, { recursive: true });
 
