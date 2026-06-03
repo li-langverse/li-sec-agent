@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+data/*.db
+data/*.sqlite
+infra/k8s/**/secret.yaml
+!infra/k8s/**/secret.example.yaml

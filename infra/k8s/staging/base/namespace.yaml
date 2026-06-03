@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: secagent-staging
+  labels:
+    app.kubernetes.io/part-of: li-sec-agent
+    environment: staging

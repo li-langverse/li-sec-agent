@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: secagent-staging-env
+  namespace: secagent-staging
+data:
+  PORT: "8787"
+  HOST: "0.0.0.0"
+  QWEN_BASE_URL: "http://qwen-ollama:11434/v1"
+  QWEN_MODEL: "qwen2.5-coder:3b"
+  QWEN_API_KEY: "ollama"
+  DATABASE_URL: "sqlite:/data/secagent.db"
+  SEMGREP_ENABLED: "false"
+  SECAGENT_ORG_ID: "homelab"
+  SECAGENT_TIER: "free"
+  OTEL_SERVICE_NAME: "li-sec-agent"
+  OTEL_EXPORTER_OTLP_ENDPOINT: ""
+  # Example when SigNoz/OTel collector is reachable:
+  # OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector.signoz.svc.cluster.local:4318"

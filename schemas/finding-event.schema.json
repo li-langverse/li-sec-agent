@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://li-langverse.dev/schemas/secagent/finding-event.json",
+  "title": "SecAgentFindingEvent",
+  "type": "object",
+  "required": [
+    "id",
+    "delivery_id",
+    "repo_full_name",
+    "pr_number",
+    "commit_sha",
+    "diff_hash",
+    "severity",
+    "category",
+    "title",
+    "created_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "delivery_id": { "type": "string", "description": "GitHub webhook X-GitHub-Delivery" },
+    "repo_full_name": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+    "pr_number": { "type": "integer", "minimum": 1 },
+    "commit_sha": { "type": "string", "minLength": 40, "maxLength": 40 },
+    "diff_hash": { "type": "string", "description": "SHA-256 of normalized PR patch" },
+    "file_path": { "type": "string" },
+    "line_start": { "type": "integer", "minimum": 1 },
+    "line_end": { "type": "integer", "minimum": 1 },
+    "severity": {
+      "type": "string",
+      "enum": ["info", "low", "medium", "high", "critical"]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "injection",
+        "authz",
+        "secrets",
+        "crypto",
+        "dependency",
+        "config",
+        "other"
+      ]
+    },
+    "title": { "type": "string" },
+    "detail": { "type": "string" },
+    "cwe": { "type": "string" },
+    "source": {
+      "type": "string",
+      "enum": ["static", "qwen", "human", "rulepack"]
+    },
+    "model_id": { "type": "string" },
+    "prompt_tokens": { "type": "integer", "minimum": 0 },
+    "completion_tokens": { "type": "integer", "minimum": 0 },
+    "latency_ms": { "type": "integer", "minimum": 0 },
+    "feedback_label": {
+      "type": "string",
+      "enum": ["true_positive", "false_positive", "wont_fix", "duplicate"]
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

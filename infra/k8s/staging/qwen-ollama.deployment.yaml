@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qwen-ollama
+  namespace: secagent-staging
+  labels:
+    app.kubernetes.io/name: li-sec-agent
+    app.kubernetes.io/component: qwen
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: li-sec-agent
+      app.kubernetes.io/component: qwen
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: li-sec-agent
+        app.kubernetes.io/component: qwen
+    spec:
+      runtimeClassName: nvidia
+      nodeSelector:
+        kubernetes.io/hostname: engine
+        gpu: nvidia
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: ollama
+          image: ollama/ollama:0.6.5
+          ports:
+            - name: http
+              containerPort: 11434
+          env:
+            - name: OLLAMA_HOST
+              value: "0.0.0.0:11434"
+            - name: QWEN_MODEL
+              valueFrom:
+                configMapKeyRef:
+                  name: secagent-staging-env
+                  key: QWEN_MODEL
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              ollama serve &
+              pid=$!
+              echo "Waiting for Ollama..."
+              until wget -qO- http://127.0.0.1:11434/ >/dev/null 2>&1; do sleep 2; done
+              echo "Pulling ${QWEN_MODEL}..."
+              ollama pull "${QWEN_MODEL}" || echo "pull failed — check logs; API may still start"
+              wait $pid
+          resources:
+            requests:
+              cpu: "500m"
+              memory: 4Gi
+            limits:
+              cpu: "4"
+              memory: 8Gi
+              nvidia.com/gpu: "1"
+          volumeMounts:
+            - name: ollama-data
+              mountPath: /root/.ollama
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 30
+      volumes:
+        - name: ollama-data
+          emptyDir: {}

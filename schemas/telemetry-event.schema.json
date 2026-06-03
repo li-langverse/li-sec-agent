@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://li-langverse.dev/schemas/secagent/telemetry-event.json",
+  "title": "SecAgentTelemetryEvent",
+  "type": "object",
+  "required": ["id", "event_type", "occurred_at", "org_id", "review_id"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "pr_webhook_received",
+        "diff_fetched",
+        "static_scan_started",
+        "static_scan_completed",
+        "qwen_inference_started",
+        "qwen_inference_completed",
+        "qwen_inference_failed",
+        "finding_created",
+        "pr_comment_posted",
+        "user_feedback",
+        "false_positive_labeled",
+        "review_completed",
+        "review_failed"
+      ]
+    },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "org_id": { "type": "string" },
+    "installation_id": { "type": "string" },
+    "repo_full_name": { "type": "string" },
+    "pr_number": { "type": "integer", "minimum": 1 },
+    "review_id": { "type": "string", "format": "uuid" },
+    "delivery_id": { "type": "string" },
+    "commit_sha": { "type": "string" },
+    "diff_hash": { "type": "string" },
+    "lines_scanned": { "type": "integer", "minimum": 0 },
+    "tokens_in": { "type": "integer", "minimum": 0 },
+    "tokens_out": { "type": "integer", "minimum": 0 },
+    "findings_count": { "type": "integer", "minimum": 0 },
+    "tier": {
+      "type": "string",
+      "enum": ["free", "team", "business", "enterprise", "on_prem"]
+    },
+    "model_id": { "type": "string" },
+    "prompt_hash": { "type": "string" },
+    "response_hash": { "type": "string" },
+    "latency_ms": { "type": "integer", "minimum": 0 },
+    "finding_id": { "type": "string", "format": "uuid" },
+    "feedback": {
+      "type": "string",
+      "enum": ["thumbs_up", "thumbs_down", "true_positive", "false_positive", "wont_fix", "duplicate"]
+    },
+    "severity": { "type": "string" },
+    "category": { "type": "string" },
+    "source": { "type": "string" },
+    "error_code": { "type": "string" },
+    "error_message_redacted": { "type": "string" },
+    "trace_id": { "type": "string" },
+    "span_id": { "type": "string" },
+    "payload_json": {
+      "type": "string",
+      "description": "Redacted JSON blob for extensibility"
+    }
+  },
+  "additionalProperties": false
+}

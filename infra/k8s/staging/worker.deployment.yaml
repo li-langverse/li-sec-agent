@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secagent-worker
+  namespace: secagent-staging
+  labels:
+    app.kubernetes.io/name: li-sec-agent
+    app.kubernetes.io/component: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: li-sec-agent
+      app.kubernetes.io/component: worker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: li-sec-agent
+        app.kubernetes.io/component: worker
+    spec:
+      containers:
+        - name: worker
+          image: node:22-bookworm-slim
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              echo "MVP worker placeholder — build ghcr.io/li-langverse/li-sec-agent image and update this deployment."
+              while true; do
+                wget -qO- http://qwen-ollama:11434/ >/dev/null 2>&1 && echo "qwen reachable" || echo "qwen not ready"
+                sleep 60
+              done
+          envFrom:
+            - configMapRef:
+                name: secagent-staging-env
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: secagent-worker
+  namespace: secagent-staging
+  labels:
+    app.kubernetes.io/name: li-sec-agent
+    app.kubernetes.io/component: worker
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: li-sec-agent
+    app.kubernetes.io/component: worker
+  ports:
+    - name: http
+      port: 8787
+      targetPort: 8787
+      nodePort: 30787

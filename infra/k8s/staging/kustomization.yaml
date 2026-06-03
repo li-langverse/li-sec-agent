@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: secagent-staging
+resources:
+  - base/namespace.yaml
+  - configmap.yaml
+  - qwen-ollama.deployment.yaml
+  - qwen-ollama.service.yaml
+  - worker.deployment.yaml
+  - servicemonitor.yaml
+# Optional: uncomment after creating secret out-of-band
+#  - secret.yaml
