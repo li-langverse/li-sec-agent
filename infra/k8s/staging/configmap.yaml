@@ -7,7 +7,7 @@ data:
   PORT: "8787"
   HOST: "0.0.0.0"
   QWEN_BASE_URL: "http://qwen-ollama:11434/v1"
-  QWEN_MODEL: "qwen2.5-coder:3b"
+  QWEN_MODEL: "qwen3.5:9b"
   QWEN_API_KEY: "ollama"
   DATABASE_URL: "sqlite:/data/secagent.db"
   SEMGREP_ENABLED: "false"

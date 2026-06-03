@@ -1,0 +1,128 @@
+[
+  {
+    "id": "sqli-concat",
+    "file_path": "src/db/users.ts",
+    "diff": "@@ -10,7 +10,7 @@ export async function findUser(name: string) {\n-  return db.query('SELECT * FROM users WHERE name = ?', [name]);\n+  return db.query(`SELECT * FROM users WHERE name = '${name}'`);\n }",
+    "expected": [{ "category": "injection" }],
+    "negative": false
+  },
+  {
+    "id": "sqli-safe-param",
+    "file_path": "src/db/users.ts",
+    "diff": "@@ -10,7 +10,7 @@ export async function findUser(name: string) {\n-  return db.query('SELECT * FROM users WHERE name = ?', [name]);\n+  return db.query('SELECT * FROM users WHERE name = $1', [name]);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "hardcoded-api-key",
+    "file_path": "src/config.ts",
+    "diff": "@@ -1,3 +1,4 @@\n export const config = {\n+  stripeSecret: 'HARDCODED_STRIPE_LIKE_SECRET_IN_DIFF_DO_NOT_USE',\n   port: 3000,\n };",
+    "expected": [{ "category": "secrets" }],
+    "negative": false
+  },
+  {
+    "id": "env-var-secret",
+    "file_path": "src/config.ts",
+    "diff": "@@ -1,3 +1,4 @@\n export const config = {\n+  stripeSecret: process.env.STRIPE_SECRET_KEY,\n   port: 3000,\n };",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "xss-innerhtml",
+    "file_path": "src/ui/profile.tsx",
+    "diff": "@@ -20,7 +20,7 @@ export function Profile({ bio }: { bio: string }) {\n-  return <p>{bio}</p>;\n+  return <div dangerouslySetInnerHTML={{ __html: bio }} />;\n }",
+    "expected": [{ "category": "injection" }],
+    "negative": false
+  },
+  {
+    "id": "xss-safe-escape",
+    "file_path": "src/ui/profile.tsx",
+    "diff": "@@ -20,7 +20,7 @@ export function Profile({ bio }: { bio: string }) {\n-  return <p>{bio}</p>;\n+  return <p>{escapeHtml(bio)}</p>;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "authz-missing-check",
+    "file_path": "src/api/admin.ts",
+    "diff": "@@ -5,6 +5,9 @@ router.get('/admin/users', async (req, res) => {\n+router.delete('/admin/users/:id', async (req, res) => {\n+  await db.deleteUser(req.params.id);\n+  res.json({ ok: true });\n+});\n router.get('/admin/users', async (req, res) => {",
+    "expected": [{ "category": "authz" }],
+    "negative": false
+  },
+  {
+    "id": "authz-with-middleware",
+    "file_path": "src/api/admin.ts",
+    "diff": "@@ -5,6 +5,9 @@ router.get('/admin/users', requireAdmin, async (req, res) => {\n+router.delete('/admin/users/:id', requireAdmin, async (req, res) => {\n+  await db.deleteUser(req.params.id);\n+  res.json({ ok: true });\n+});\n router.get('/admin/users', requireAdmin, async (req, res) => {",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "path-traversal",
+    "file_path": "src/files/download.ts",
+    "diff": "@@ -8,7 +8,7 @@ export function download(req: Request, res: Response) {\n-  const safe = path.basename(req.query.file as string);\n+  const target = `/data/uploads/${req.query.file}`;\n   res.sendFile(target);\n }",
+    "expected": [{ "category": "injection" }],
+    "negative": false
+  },
+  {
+    "id": "weak-crypto-md5",
+    "file_path": "src/auth/password.ts",
+    "diff": "@@ -3,7 +3,7 @@ import crypto from 'crypto';\n export function hashPassword(pw: string) {\n-  return bcrypt.hash(pw, 12);\n+  return crypto.createHash('md5').update(pw).digest('hex');\n }",
+    "expected": [{ "category": "crypto" }],
+    "negative": false
+  },
+  {
+    "id": "jwt-none-alg",
+    "file_path": "src/auth/jwt.ts",
+    "diff": "@@ -12,7 +12,7 @@ export function verify(token: string) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.decode(token);\n }",
+    "expected": [{ "category": "authz" }],
+    "negative": false
+  },
+  {
+    "id": "ssrf-fetch-url",
+    "file_path": "src/preview.ts",
+    "diff": "@@ -4,7 +4,7 @@ export async function preview(url: string) {\n-  if (!isAllowedHost(url)) throw new Error('blocked');\n+  const html = await fetch(url).then(r => r.text());\n   return html;\n }",
+    "expected": [{ "category": "injection" }],
+    "negative": false
+  },
+  {
+    "id": "open-cors",
+    "file_path": "src/server.ts",
+    "diff": "@@ -10,6 +10,7 @@ const app = express();\n+app.use(cors({ origin: '*', credentials: true }));\n app.use(express.json());",
+    "expected": [{ "category": "config" }],
+    "negative": false
+  },
+  {
+    "id": "safe-logging-no-pii",
+    "file_path": "src/auth/login.ts",
+    "diff": "@@ -15,7 +15,7 @@ export async function login(email: string, password: string) {\n-  logger.info('login attempt', { email });\n+  logger.info('login attempt', { userId: user.id });\n   return createSession(user);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "command-injection",
+    "file_path": "src/tools/convert.ts",
+    "diff": "@@ -6,7 +6,7 @@ export function convert(filename: string) {\n-  execFile('convert', [filename, 'out.png']);\n+  exec(`convert ${filename} out.png`);\n }",
+    "expected": [{ "category": "injection" }],
+    "negative": false
+  },
+  {
+    "id": "idor-direct-id",
+    "file_path": "src/api/orders.ts",
+    "diff": "@@ -20,7 +20,7 @@ router.get('/orders/:id', async (req, res) => {\n-  const order = await db.getOrderForUser(req.params.id, req.user.id);\n+  const order = await db.getOrder(req.params.id);\n   res.json(order);\n });",
+    "expected": [{ "category": "authz" }],
+    "negative": false
+  },
+  {
+    "id": "deserialization-pickle",
+    "file_path": "src/cache.py",
+    "diff": "@@ -8,7 +8,7 @@ def load_state(blob: bytes):\n-    return json.loads(blob)\n+    return pickle.loads(blob)\n ",
+    "expected": [{ "category": "injection" }],
+    "negative": false
+  },
+  {
+    "id": "rate-limit-present",
+    "file_path": "src/api/login.ts",
+    "diff": "@@ -5,6 +5,7 @@ const limiter = rateLimit({ windowMs: 60_000, max: 5 });\n router.post('/login', limiter, async (req, res) => {\n   const user = await authenticate(req.body.email, req.body.password);\n   res.json({ token: sign(user) });\n });",
+    "expected": [],
+    "negative": true
+  }
+]

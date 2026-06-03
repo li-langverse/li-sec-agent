@@ -11,6 +11,10 @@ Namespace: `secagent-staging`
 
 OpenAI-compatible API: `http://qwen-ollama:11434/v1/chat/completions`
 
+**Ollama image:** `ollama/ollama:0.24.0` (required for `qwen3.5:*`; older 0.6.x returns HTTP 412 on pull).
+
+**GPU:** NVIDIA RTX 3060 12 GB on `engine`. Models above ~9 GB Q4 are tight; `qwen3.5:27b` (~17 GB) OOMs. See [docs/MODEL_EVAL.md](../../../docs/MODEL_EVAL.md).
+
 ## Qwen scheduling (GPU)
 
 Pinned to node **`engine`** (`kubernetes.io/hostname: engine`, `gpu=nvidia`, `runtimeClassName: nvidia`, `nvidia.com/gpu: 1`).

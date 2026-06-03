@@ -8,3 +8,4 @@ data/*.db
 data/*.sqlite
 infra/k8s/**/secret.yaml
 !infra/k8s/**/secret.example.yaml
+eval/results/

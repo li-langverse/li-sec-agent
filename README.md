@@ -83,7 +83,20 @@ Health: `GET /healthz` · Webhook stub: `POST /webhooks/github`
 | OpenAI-compatible | `http://qwen-ollama.secagent-staging.svc.cluster.local:11434/v1` |
 | Qwen (LAN NodePort) | `http://192.168.10.33:31434` |
 
+**Default model (RTX 3060 12 GB):** `qwen3.5:9b` — best benchmark F1/recall; ~8.4 GB VRAM. Alternative: `qwen2.5-coder:14b` (faster, code-tuned, ~11 GB VRAM). Avoid `qwen2.5-coder:3b` for security reviews (near-zero recall). See [docs/MODEL_EVAL.md](docs/MODEL_EVAL.md).
+
 **Qwen pod node:** `engine` (192.168.10.32) — single `nvidia.com/gpu: 1`. blackpearl has no GPU. To move Qwen, edit `nodeSelector.kubernetes.io/hostname` in `infra/k8s/staging/qwen-ollama.deployment.yaml` (`engine` | `desktop`).
+
+### Model comparison (staging benchmark)
+
+| Model | F1 | Recall | FP rate | p50 latency | VRAM |
+|-------|-----|--------|---------|-------------|------|
+| `qwen2.5-coder:3b` | 0.00 | 0.00 | 0.00 | ~64 ms | ~3 GB |
+| `qwen2.5-coder:14b` | 0.62 | 0.67 | 0.33 | ~3 s | ~11 GB |
+| `qwen3.5:9b` | 0.69 | 0.83 | 0.50 | ~8.9 s | ~8.4 GB |
+| `qwen3.5:27b` | N/A | — | — | — | OOM on 12 GB |
+
+Run benchmark: `npm run eval:models` (outputs to `eval/results/`).
 
 See [infra/k8s/staging/README.md](infra/k8s/staging/README.md).
 
@@ -98,9 +111,9 @@ src/           webhook handler, scanner orchestrator, Qwen client, data store
 src/telemetry/ pipeline, privacy redaction, OTLP stub
 schemas/       finding + telemetry JSON Schema
 migrations/    SQL schema (findings + telemetry_events)
-docs/          DATA_CAPTURE.md, VISION.md, PR_INTEGRATION.md
-infra/k8s/     staging manifests (Ollama + worker)
-scripts/       deploy-staging.ps1 / .sh
+docs/          DATA_CAPTURE.md, VISION.md, PR_INTEGRATION.md, MODEL_EVAL.md
+eval/          benchmark-cases.json, results/ (gitignored)
+scripts/       deploy-staging.ps1 / .sh, eval-models.ts, pull-eval-models.sh
 ```
 
 ## License
