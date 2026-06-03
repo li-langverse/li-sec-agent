@@ -25,6 +25,9 @@ type BenchmarkCase = {
   diff: string;
   expected: Array<{ category: string }>;
   negative: boolean;
+  language?: string;
+  category?: string;
+  cwe?: string;
 };
 
 type RawFinding = {
@@ -140,12 +143,48 @@ async function fetchVram(baseUrl: string): Promise<{ used?: number; total?: numb
   }
 }
 
+
+async function chatCompletion(
+  baseUrl: string,
+  apiKey: string,
+  body: Record<string, unknown>,
+  requestTimeoutMs: number,
+  maxAttempts = 4
+): Promise<Response> {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const response = await fetch(`${baseUrl}/chat/completions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        signal: AbortSignal.timeout(requestTimeoutMs),
+        body: JSON.stringify(body),
+      });
+      return response;
+    } catch (error) {
+      lastError = error;
+      const message = error instanceof Error ? error.message : String(error);
+      const retryable =
+        message.includes("fetch failed") ||
+        message.includes("ECONNRESET") ||
+        message.includes("ETIMEDOUT") ||
+        message.includes("socket");
+      if (!retryable || attempt === maxAttempts) throw error;
+      await new Promise((r) => setTimeout(r, 2000 * attempt));
+    }
+  }
+  throw lastError;
+}
 async function runModel(
   baseUrl: string,
   apiKey: string,
   model: string,
   cases: BenchmarkCase[]
 ): Promise<ModelResult> {
+  const requestTimeoutMs = Number(process.env.REQUEST_TIMEOUT_MS ?? "600000");
   const latencies: number[] = [];
   let promptTokens = 0;
   let completionTokens = 0;
@@ -154,13 +193,7 @@ async function runModel(
   for (const testCase of cases) {
     const started = Date.now();
     try {
-      const response = await fetch(`${baseUrl}/chat/completions`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
+      const response = await chatCompletion(baseUrl, apiKey, {
           model,
           messages: [
             { role: "system", content: SECURITY_SYSTEM_PROMPT },
@@ -178,8 +211,7 @@ async function runModel(
           ],
           temperature: 0.1,
           stream: false,
-        }),
-      });
+        }, requestTimeoutMs);
 
       const latencyMs = Date.now() - started;
       latencies.push(latencyMs);
@@ -311,8 +343,37 @@ async function main(): Promise<void> {
     .map((m) => m.trim())
     .filter(Boolean);
 
-  const casesPath = join(REPO_ROOT, "eval", "benchmark-cases.json");
-  const cases = JSON.parse(readFileSync(casesPath, "utf8")) as BenchmarkCase[];
+  const legacyPath = join(REPO_ROOT, "eval", "benchmark-cases.json");
+  const defaultMultilang = join(REPO_ROOT, "eval", "benchmark-multilang.json");
+  const multilangPath = process.env.BENCHMARK_PATH
+    ? join(REPO_ROOT, process.env.BENCHMARK_PATH)
+    : defaultMultilang;
+  const mode = (process.env.BENCHMARK_MODE ?? "single").toLowerCase();
+
+  let cases: BenchmarkCase[] = [];
+  if (mode === "combined") {
+    const legacy = JSON.parse(readFileSync(legacyPath, "utf8")) as BenchmarkCase[];
+    const multi = JSON.parse(readFileSync(multilangPath, "utf8")) as BenchmarkCase[];
+    const seen = new Set<string>();
+    cases = [...legacy, ...multi].filter((c) => {
+      if (seen.has(c.id)) return false;
+      seen.add(c.id);
+      return true;
+    });
+    console.log(`Benchmark mode: combined (${legacy.length} legacy + ${multi.length} multilang -> ${cases.length})`);
+  } else if (process.env.BENCHMARK_PATH) {
+    cases = JSON.parse(readFileSync(multilangPath, "utf8")) as BenchmarkCase[];
+    console.log(`Benchmark file: ${multilangPath}`);
+  } else {
+    cases = JSON.parse(readFileSync(legacyPath, "utf8")) as BenchmarkCase[];
+    console.log(`Benchmark file: ${legacyPath}`);
+  }
+
+  const caseLimit = Number(process.env.CASE_LIMIT ?? "0");
+  if (caseLimit > 0) {
+    cases = cases.slice(0, caseLimit);
+    console.log(`CASE_LIMIT=${caseLimit} (subset for smoke)`);
+  }
 
   const resultsDir = join(REPO_ROOT, "eval", "results");
   mkdirSync(resultsDir, { recursive: true });

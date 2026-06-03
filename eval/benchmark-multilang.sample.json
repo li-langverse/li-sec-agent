@@ -1,0 +1,1290 @@
+[
+  {
+    "id": "c-buffer-overflow-vuln-000",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_path.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_path(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-001",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_config.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_config(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-002",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_order.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_order(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-003",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_record.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_record(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-004",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_input.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_input(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-005",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_resource.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_resource(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-006",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_payload.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_payload(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-007",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_account.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_account(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-008",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_data.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_data(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-009",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_host.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_host(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-010",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_path.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_path(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-011",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_config.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_config(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-safe-012",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_order.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_order(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-buffer-overflow-safe-013",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_record.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_record(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-buffer-overflow-safe-014",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_input.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_input(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-buffer-overflow-safe-015",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_resource.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_resource(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-buffer-overflow-safe-016",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_payload.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_payload(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-format-string-vuln-017",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_data.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_data(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-018",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_host.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_host(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-019",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_path.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_path(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-020",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_config.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_config(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-021",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_order.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_order(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-022",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_record.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_record(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-023",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_input.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_input(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-024",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_resource.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_resource(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-025",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_payload.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_payload(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-026",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_account.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_account(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-027",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_data.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_data(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-vuln-028",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_host.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_host(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-format-string-safe-029",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_path.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_path(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  vfprintf(stderr, \"%s\", fmt);\n   va_end(ap);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-format-string-safe-030",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_config.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_config(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  vfprintf(stderr, \"%s\", fmt);\n   va_end(ap);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-format-string-safe-031",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_order.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_order(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  vfprintf(stderr, \"%s\", fmt);\n   va_end(ap);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-format-string-safe-032",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_record.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_record(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  vfprintf(stderr, \"%s\", fmt);\n   va_end(ap);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-format-string-safe-033",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_input.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_input(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  vfprintf(stderr, \"%s\", fmt);\n   va_end(ap);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-integer-overflow-vuln-034",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_token.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_token(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-035",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_target.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_target(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-036",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_request.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_request(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-037",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_session.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_session(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-038",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_user.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_user(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-039",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_url.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_url(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-040",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_query.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_query(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-041",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_buffer.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_buffer(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-042",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_profile.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_profile(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-043",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_client.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_client(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-044",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_token.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_token(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-vuln-045",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_target.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_target(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-integer-overflow-safe-046",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_request.c",
+    "diff": "@@ -12,8 +12,9 @@ void *alloc_request(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  if (count == 0 || size == 0) return NULL;\n+  if (count > SIZE_MAX / size) return NULL;\n+  return calloc(count, size);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-integer-overflow-safe-047",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_session.c",
+    "diff": "@@ -12,8 +12,9 @@ void *alloc_session(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  if (count == 0 || size == 0) return NULL;\n+  if (count > SIZE_MAX / size) return NULL;\n+  return calloc(count, size);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-integer-overflow-safe-048",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_user.c",
+    "diff": "@@ -12,8 +12,9 @@ void *alloc_user(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  if (count == 0 || size == 0) return NULL;\n+  if (count > SIZE_MAX / size) return NULL;\n+  return calloc(count, size);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-integer-overflow-safe-049",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_url.c",
+    "diff": "@@ -12,8 +12,9 @@ void *alloc_url(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  if (count == 0 || size == 0) return NULL;\n+  if (count > SIZE_MAX / size) return NULL;\n+  return calloc(count, size);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-integer-overflow-safe-050",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_query.c",
+    "diff": "@@ -12,8 +12,9 @@ void *alloc_query(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  if (count == 0 || size == 0) return NULL;\n+  if (count > SIZE_MAX / size) return NULL;\n+  return calloc(count, size);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-null-deref-vuln-051",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_token.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_token(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-052",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_target.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_target(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-053",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_request.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_request(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-054",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_session.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_session(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-055",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_user.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_user(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-056",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_url.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_url(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-057",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_query.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_query(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-058",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_buffer.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_buffer(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-059",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_profile.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_profile(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-060",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_client.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_client(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-061",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_token.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_token(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-vuln-062",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_target.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_target(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-null-deref-safe-063",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_request.c",
+    "diff": "@@ -21,7 +21,8 @@ int check_request(struct session *s) {\n-  if (!s || !s->user) return -1;\n+  if (!s || !s->user || !s->user->role) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-null-deref-safe-064",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_session.c",
+    "diff": "@@ -21,7 +21,8 @@ int check_session(struct session *s) {\n-  if (!s || !s->user) return -1;\n+  if (!s || !s->user || !s->user->role) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-null-deref-safe-065",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_user.c",
+    "diff": "@@ -21,7 +21,8 @@ int check_user(struct session *s) {\n-  if (!s || !s->user) return -1;\n+  if (!s || !s->user || !s->user->role) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-null-deref-safe-066",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_url.c",
+    "diff": "@@ -21,7 +21,8 @@ int check_url(struct session *s) {\n-  if (!s || !s->user) return -1;\n+  if (!s || !s->user || !s->user->role) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-null-deref-safe-067",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_query.c",
+    "diff": "@@ -21,7 +21,8 @@ int check_query(struct session *s) {\n-  if (!s || !s->user) return -1;\n+  if (!s || !s->user || !s->user->role) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-command-injection-vuln-068",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_account.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_account(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-069",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_data.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_data(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-070",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_host.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_host(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-071",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_path.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_path(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-072",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_config.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_config(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-073",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_order.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_order(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-074",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_record.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_record(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-075",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_input.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_input(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-076",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_resource.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_resource(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-077",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_payload.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_payload(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-078",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_account.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_account(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-vuln-079",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_data.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_data(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-command-injection-safe-080",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_host.c",
+    "diff": "@@ -14,7 +14,9 @@ int run_host(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  const char *args[] = { \"convert\", filename, \"out.png\", NULL };\n+  return execv(\"/usr/bin/convert\", (char *const *)args);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-command-injection-safe-081",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_path.c",
+    "diff": "@@ -14,7 +14,9 @@ int run_path(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  const char *args[] = { \"convert\", filename, \"out.png\", NULL };\n+  return execv(\"/usr/bin/convert\", (char *const *)args);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-command-injection-safe-082",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_config.c",
+    "diff": "@@ -14,7 +14,9 @@ int run_config(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  const char *args[] = { \"convert\", filename, \"out.png\", NULL };\n+  return execv(\"/usr/bin/convert\", (char *const *)args);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-command-injection-safe-083",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_order.c",
+    "diff": "@@ -14,7 +14,9 @@ int run_order(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  const char *args[] = { \"convert\", filename, \"out.png\", NULL };\n+  return execv(\"/usr/bin/convert\", (char *const *)args);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-command-injection-safe-084",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_record.c",
+    "diff": "@@ -14,7 +14,9 @@ int run_record(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  const char *args[] = { \"convert\", filename, \"out.png\", NULL };\n+  return execv(\"/usr/bin/convert\", (char *const *)args);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-path-traversal-vuln-085",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_request.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_request(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-086",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_session.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_session(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-087",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_user.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_user(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-088",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_url.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_url(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-089",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_query.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_query(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-090",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_buffer.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_buffer(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-091",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_profile.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_profile(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-092",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_client.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_client(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-093",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_token.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_token(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-094",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_target.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_target(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-095",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_request.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_request(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-vuln-096",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_session.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_session(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-path-traversal-safe-097",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_user.c",
+    "diff": "@@ -30,7 +30,9 @@ FILE *open_user(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  const char *base = basename(name);\n+  if (strstr(base, \"..\") != NULL) return NULL;\n+  snprintf(path, sizeof(path), \"/data/%s\", base);\n   return fopen(path, \"rb\");\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-path-traversal-safe-098",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_url.c",
+    "diff": "@@ -30,7 +30,9 @@ FILE *open_url(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  const char *base = basename(name);\n+  if (strstr(base, \"..\") != NULL) return NULL;\n+  snprintf(path, sizeof(path), \"/data/%s\", base);\n   return fopen(path, \"rb\");\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-path-traversal-safe-099",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_query.c",
+    "diff": "@@ -30,7 +30,9 @@ FILE *open_query(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  const char *base = basename(name);\n+  if (strstr(base, \"..\") != NULL) return NULL;\n+  snprintf(path, sizeof(path), \"/data/%s\", base);\n   return fopen(path, \"rb\");\n }",
+    "expected": [],
+    "negative": true
+  }
+]

@@ -57,7 +57,10 @@ MODELS=qwen2.5-coder:3b,qwen3.5:9b,qwen3:14b \
 npm run eval:models
 ```
 
-- **Cases:** `eval/benchmark-cases.json` — 18 synthetic diffs (SQLi, secrets, XSS, authz, crypto, SSRF, safe-code negatives). For real CVE-backed expansion see [OFFICIAL_EVAL_BENCHMARKS.md](./OFFICIAL_EVAL_BENCHMARKS.md).
+- **Cases (default):** `eval/benchmark-cases.json` — 18 synthetic diffs (SQLi, secrets, XSS, authz, crypto, SSRF, safe-code negatives).
+- **Multilang corpus:** `eval/benchmark-multilang.json` — **840** cases across C, C++, Rust, Python, JavaScript, TypeScript (~70% positive / ~30% negative). See [MULTILANG_BENCHMARK.md](./MULTILANG_BENCHMARK.md). Regenerate: `npm run benchmark:generate`.
+- **Env:** `BENCHMARK_PATH=eval/benchmark-multilang.json` — multilang only; `BENCHMARK_MODE=combined` — legacy + multilang; `CASE_LIMIT=10` — smoke subset.
+- For real CVE-backed expansion see [OFFICIAL_EVAL_BENCHMARKS.md](./OFFICIAL_EVAL_BENCHMARKS.md).
 - **Metrics:** precision, recall, F1 (category match), false-positive rate on negative cases, p50/p95 latency, token counts.
 - **Output:** `eval/results/*.json` (gitignored) + console summary table.
 

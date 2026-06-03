@@ -1,0 +1,404 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-03T06:12:40.556Z",
+  "casesPerLang": 140,
+  "totalCases": 840,
+  "positiveCases": 588,
+  "negativeCases": 252,
+  "languages": [
+    "c",
+    "cpp",
+    "rust",
+    "python",
+    "javascript",
+    "typescript"
+  ],
+  "outputFile": "eval/benchmark-multilang.json",
+  "sampleFile": "eval/benchmark-multilang.sample.json",
+  "taxonomy": [
+    {
+      "language": "c",
+      "category": "buffer-overflow",
+      "cwe": "CWE-787",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "c",
+      "category": "command-injection",
+      "cwe": "CWE-78",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "c",
+      "category": "format-string",
+      "cwe": "CWE-134",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "c",
+      "category": "hardcoded-secrets",
+      "cwe": "CWE-798",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "c",
+      "category": "integer-overflow",
+      "cwe": "CWE-190",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "c",
+      "category": "null-deref",
+      "cwe": "CWE-476",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "c",
+      "category": "path-traversal",
+      "cwe": "CWE-22",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "c",
+      "category": "use-after-free",
+      "cwe": "CWE-416",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "cpp",
+      "category": "buffer-overflow",
+      "cwe": "CWE-787",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "cpp",
+      "category": "command-injection",
+      "cwe": "CWE-78",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "cpp",
+      "category": "double-free",
+      "cwe": "CWE-415",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "cpp",
+      "category": "format-string",
+      "cwe": "CWE-134",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "cpp",
+      "category": "integer-overflow",
+      "cwe": "CWE-190",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "cpp",
+      "category": "iterator-invalidation",
+      "cwe": "CWE-416",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "cpp",
+      "category": "missing-authz",
+      "cwe": "CWE-862",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "cpp",
+      "category": "path-traversal",
+      "cwe": "CWE-22",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "javascript",
+      "category": "command-injection",
+      "cwe": "CWE-78",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "javascript",
+      "category": "eval-injection",
+      "cwe": "CWE-95",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "javascript",
+      "category": "idor",
+      "cwe": "CWE-639",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "javascript",
+      "category": "jwt-misuse",
+      "cwe": "CWE-347",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "javascript",
+      "category": "nosql-injection",
+      "cwe": "CWE-943",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "javascript",
+      "category": "prototype-pollution",
+      "cwe": "CWE-1321",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "javascript",
+      "category": "ssrf",
+      "cwe": "CWE-918",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "javascript",
+      "category": "xss",
+      "cwe": "CWE-79",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "python",
+      "category": "command-injection",
+      "cwe": "CWE-78",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "python",
+      "category": "hardcoded-secrets",
+      "cwe": "CWE-798",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "python",
+      "category": "path-traversal",
+      "cwe": "CWE-22",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "python",
+      "category": "pickle-deserialization",
+      "cwe": "CWE-502",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "python",
+      "category": "sql-injection",
+      "cwe": "CWE-89",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "python",
+      "category": "ssrf",
+      "cwe": "CWE-918",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "python",
+      "category": "ssti",
+      "cwe": "CWE-94",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "python",
+      "category": "yaml-unsafe-load",
+      "cwe": "CWE-502",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "rust",
+      "category": "command-injection",
+      "cwe": "CWE-78",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "rust",
+      "category": "hardcoded-secrets",
+      "cwe": "CWE-798",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "rust",
+      "category": "integer-overflow-unsafe",
+      "cwe": "CWE-190",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "rust",
+      "category": "path-traversal",
+      "cwe": "CWE-22",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "rust",
+      "category": "sql-injection",
+      "cwe": "CWE-89",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "rust",
+      "category": "ssrf",
+      "cwe": "CWE-918",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "rust",
+      "category": "unsafe-misuse",
+      "cwe": "CWE-787",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "rust",
+      "category": "unwrap-panic",
+      "cwe": "CWE-754",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "typescript",
+      "category": "hardcoded-secrets",
+      "cwe": "CWE-798",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "typescript",
+      "category": "jwt-misuse",
+      "cwe": "CWE-347",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "typescript",
+      "category": "path-traversal",
+      "cwe": "CWE-22",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "typescript",
+      "category": "prototype-pollution",
+      "cwe": "CWE-1321",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    },
+    {
+      "language": "typescript",
+      "category": "sql-injection",
+      "cwe": "CWE-89",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "typescript",
+      "category": "ssrf",
+      "cwe": "CWE-918",
+      "positive": 12,
+      "negative": 6,
+      "total": 18
+    },
+    {
+      "language": "typescript",
+      "category": "type-assertion-bypass",
+      "cwe": "CWE-20",
+      "positive": 12,
+      "negative": 5,
+      "total": 17
+    },
+    {
+      "language": "typescript",
+      "category": "xss",
+      "cwe": "CWE-79",
+      "positive": 13,
+      "negative": 5,
+      "total": 18
+    }
+  ]
+}
