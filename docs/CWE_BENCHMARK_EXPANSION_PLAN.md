@@ -1,6 +1,6 @@
 # CWE benchmark expansion — master plan
 
-**Status:** Phase 0 complete (2026-06-04)  
+**Status:** Phase 0 complete; **v1 taxonomy + synthetic scenarios complete** (2026-06-04)  
 **Owner:** li-sec-agent / li-langverse  
 **Related:** [MULTILANG_BENCHMARK.md](./MULTILANG_BENCHMARK.md), [OFFICIAL_EVAL_BENCHMARKS.md](./OFFICIAL_EVAL_BENCHMARKS.md), [MODEL_EVAL.md](./MODEL_EVAL.md)
 
@@ -129,8 +129,8 @@ Inventory script: `npx tsx scripts/benchmarks/cwe-inventory.ts`
 
 | ID | Title | Deps | Est. | Owner |
 |----|-------|------|------|-------|
-| WP-1.1 | Run `cwe-inventory.ts` in CI + homelab | Phase 0 | 0.5d | TBD |
-| WP-1.2 | MITRE REST enricher → `eval/cwe-taxonomy.json` (id, name, description snippet) | WP-1.1 | 2d | TBD |
+| WP-1.1 | Run `cwe-inventory.ts` in CI + homelab | Phase 0 | 0.5d | **Done** — `npm run benchmark:cwe-inventory`, 969 weaknesses verified |
+| WP-1.2 | MITRE REST enricher → `eval/cwe-taxonomy.json` (id, name, description snippet) | WP-1.1 | 2d | **Done** — `scripts/benchmarks/cwe-enrich-mitre.ts` |
 | WP-1.3 | Filter **Stable** + **Base** weaknesses → `eval/cwe-reviewable.json` | WP-1.2 | 1d | TBD |
 | WP-1.4 | CWE→harness category map (extend generator tables) | WP-1.3 | 1d | TBD |
 
@@ -157,15 +157,15 @@ Inventory script: `npx tsx scripts/benchmarks/cwe-inventory.ts`
 | ID | Title | Deps | Est. | Owner |
 |----|-------|------|------|-------|
 | WP-4.1 | Define 5 scenario **archetypes** per CWE (buffer stack/heap, etc.) | WP-3.1 | 1d | TBD |
-| WP-4.2 | Implement archetypes for P0 (10 CWEs × 5 × langs) | WP-4.1, WP-3.3 | 8d | TBD |
-| WP-4.3 | Implement P1 backlog (25 CWEs) | WP-4.2 | 10d | TBD |
-| WP-4.4 | Manifest + taxonomy update in `benchmark-multilang.manifest.json` | WP-4.2 | 0.5d | TBD |
+| WP-4.2 | Implement archetypes for P0 (10 CWEs × 5 × langs) | WP-4.1, WP-3.3 | 8d | **Done (v1)** — 50-CWE backlog via `generate-cwe-scenarios.ts` |
+| WP-4.3 | Implement P1 backlog (25 CWEs) | WP-4.2 | 10d | **Done (v1)** — included in 50-CWE backlog |
+| WP-4.4 | Manifest + taxonomy update in `benchmark-multilang.manifest.json` | WP-4.2 | 0.5d | **Done** — `eval/cwe-database.manifest.json` |
 
 ### Phase 5 — Harness integration
 
 | ID | Title | Deps | Est. | Owner |
 |----|-------|------|------|-------|
-| WP-5.1 | `eval-models.ts` merge mode: `BENCHMARK_MODE=combined` + ossf | WP-2.2 | 1d | TBD |
+| WP-5.1 | `eval-models.ts` merge mode: `BENCHMARK_MODE=combined` + ossf | WP-2.2 | 1d | **Partial** — `BENCHMARK_PATH=eval/benchmark-cwe-expanded.json` supported |
 | WP-5.2 | Optional `cwe` field scoring breakdown in eval report | WP-5.1 | 1d | TBD |
 | WP-5.3 | Document runbooks in MODEL_EVAL + MULTILANG | WP-5.1 | 0.5d | TBD |
 
@@ -184,7 +184,7 @@ Inventory script: `npx tsx scripts/benchmarks/cwe-inventory.ts`
 | WP-7.1 | Weekly `cwe-inventory` + catalog version bump alert | WP-1.1 | 1d | TBD |
 | WP-7.2 | Telemetry: corpus version in eval events | WP-5.2 | 1d | TBD |
 
-**Next immediate WP:** **WP-1.1** — wire `cwe-inventory.ts` into local/CI smoke and commit enriched output to `eval/cwe-mirror-snapshot.json` (then WP-1.2 MITRE enricher).
+**Next immediate WP:** **WP-2.1** — OpenSSF CVE diff subset (`fetch-ossf-cve-subset.ts`). v1 synthetic DB: see [CWE_DATABASE.md](./CWE_DATABASE.md); regenerate with `npm run benchmark:build-cwe-db`.
 
 ---
 
@@ -324,7 +324,15 @@ CWE-829, 1333, 1336, 117, 209, 532, 601, 770, 400, 732, 693, 704 + SSRF scenario
 |------|---------|
 | `docs/CWE_BENCHMARK_EXPANSION_PLAN.md` | This plan |
 | `scripts/benchmarks/cwe-inventory.ts` | Mirror stats CLI |
+| `scripts/benchmarks/cwe-enrich-mitre.ts` | MITRE REST → `eval/cwe-taxonomy.json` |
+| `scripts/benchmarks/generate-cwe-scenarios.ts` | Synthetic scenarios → expanded corpus |
+| `npm run benchmark:build-cwe-db` | Inventory + enrich + generate chain |
 | `eval/cwe-expansion-backlog.json` | First 50 prioritized CWEs |
+| `eval/cwe-taxonomy.json` | Enriched CWE metadata |
+| `eval/cwe-database.json` | Master DB (entries + scenarios) |
+| `eval/benchmark-cwe-expanded.json` | Harness corpus (~235 v1 cases) |
+| `eval/cwe-database.manifest.json` | Corpus statistics |
+| `docs/CWE_DATABASE.md` | Schema and runbooks |
 | `eval/benchmark-multilang.json` | Baseline 840 cases |
 | `docs/OFFICIAL_EVAL_BENCHMARKS.md` | OpenSSF / PrimeVul integration |
 | `beelink-cleanup/docs/cwe-homelab.md` | Infra source of truth |
@@ -336,3 +344,4 @@ CWE-829, 1333, 1336, 117, 209, 532, 601, 770, 400, 732, 693, 704 + SSRF scenario
 | Date | Change |
 |------|--------|
 | 2026-06-04 | Phase 0 discovery + initial plan, inventory stub, backlog |
+| 2026-06-04 | v1: MITRE enricher, 50-CWE synthetic DB (~235 scenarios), harness path, CWE_DATABASE.md |

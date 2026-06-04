@@ -1,0 +1,3092 @@
+[
+  {
+    "id": "c-cwe-787-buffer-overflow-vuln-000",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_path.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_path(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-787-buffer-overflow-vuln-000",
+    "language": "cpp",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/parser/parse_path.cpp",
+    "diff": "@@ -22,7 +22,7 @@ void parse_path(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-787-unsafe-misuse-vuln-000",
+    "language": "rust",
+    "category": "unsafe-misuse",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_config.rs",
+    "diff": "@@ -18,8 +18,7 @@ pub fn copy_config(src: &[u8], dst: &mut [u8]) {\n     unsafe {\n-        let n = src.len().min(dst.len());\n-        std::ptr::copy_nonoverlapping(src.as_ptr(), dst.as_mut_ptr(), n);\n+        std::ptr::copy(src.as_ptr(), dst.as_mut_ptr(), src.len());\n     }\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-787-buffer-overflow-vuln-001",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_config.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_config(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-787-buffer-overflow-vuln-001",
+    "language": "cpp",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/parser/parse_config.cpp",
+    "diff": "@@ -22,7 +22,7 @@ void parse_config(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-787-buffer-overflow-safe-100",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_path.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_path(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-79-xss-vuln-000",
+    "language": "javascript",
+    "category": "xss",
+    "cwe": "CWE-79",
+    "file_path": "src/ui/show_payload.js",
+    "diff": "@@ -18,7 +18,7 @@ export function show_payload(el, value) {\n-  el.textContent = value;\n+  el.innerHTML = value;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-79-xss-vuln-000",
+    "language": "typescript",
+    "category": "xss",
+    "cwe": "CWE-79",
+    "file_path": "src/components/Bio_payload.ts",
+    "diff": "@@ -12,7 +12,7 @@ export function Bio_payload({ html }: { html: string }) {\n-  return <p>{html}</p>;\n+  return <div dangerouslySetInnerHTML={{ __html: html }} />;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-79-xss-vuln-001",
+    "language": "javascript",
+    "category": "xss",
+    "cwe": "CWE-79",
+    "file_path": "src/ui/show_account.js",
+    "diff": "@@ -18,7 +18,7 @@ export function show_account(el, value) {\n-  el.textContent = value;\n+  el.innerHTML = value;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-79-xss-vuln-001",
+    "language": "typescript",
+    "category": "xss",
+    "cwe": "CWE-79",
+    "file_path": "src/components/Bio_account.ts",
+    "diff": "@@ -12,7 +12,7 @@ export function Bio_account({ html }: { html: string }) {\n-  return <p>{html}</p>;\n+  return <div dangerouslySetInnerHTML={{ __html: html }} />;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-79-xss-vuln-002",
+    "language": "javascript",
+    "category": "xss",
+    "cwe": "CWE-79",
+    "file_path": "src/ui/show_data.js",
+    "diff": "@@ -18,7 +18,7 @@ export function show_data(el, value) {\n-  el.textContent = value;\n+  el.innerHTML = value;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-79-xss-safe-100",
+    "language": "javascript",
+    "category": "xss",
+    "cwe": "CWE-79",
+    "file_path": "src/ui/show_payload.js",
+    "diff": "@@ -18,7 +18,7 @@ export function show_payload(el, value) {\n-  el.textContent = value;\n+  el.textContent = escapeHtml(value);\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-89-sql-injection-vuln-000",
+    "language": "python",
+    "category": "sql-injection",
+    "cwe": "CWE-89",
+    "file_path": "app/db/get_config.py",
+    "diff": "@@ -14,7 +14,7 @@ def get_config(conn, user_id: str):\n     cur = conn.cursor()\n-    cur.execute(\"SELECT * FROM accounts WHERE id = %s\", (user_id,))\n+    cur.execute(f\"SELECT * FROM accounts WHERE id = '{user_id}'\")\n     return cur.fetchone()\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-89-sql-injection-vuln-000",
+    "language": "rust",
+    "category": "sql-injection",
+    "cwe": "CWE-89",
+    "file_path": "src/db/find_config.rs",
+    "diff": "@@ -21,7 +21,7 @@ pub async fn find_config(pool: &PgPool, id: &str) -> Result<User> {\n-    sqlx::query_as!(User, \"SELECT * FROM users WHERE id = $1\", id)\n+    sqlx::query_as!(User, &format!(\"SELECT * FROM users WHERE id = '{}'\", id))\n         .fetch_one(pool)\n         .await\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-89-sql-injection-vuln-000",
+    "language": "typescript",
+    "category": "sql-injection",
+    "cwe": "CWE-89",
+    "file_path": "src/db/find_config.ts",
+    "diff": "@@ -16,7 +16,7 @@ export async function find_config(name: string) {\n-  return db.query<User>('SELECT * FROM users WHERE name = $1', [name]);\n+  return db.query<User>(`SELECT * FROM users WHERE name = '${name}'`);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-89-sql-injection-vuln-001",
+    "language": "python",
+    "category": "sql-injection",
+    "cwe": "CWE-89",
+    "file_path": "app/db/get_order.py",
+    "diff": "@@ -14,7 +14,7 @@ def get_order(conn, user_id: str):\n     cur = conn.cursor()\n-    cur.execute(\"SELECT * FROM accounts WHERE id = %s\", (user_id,))\n+    cur.execute(f\"SELECT * FROM accounts WHERE id = '{user_id}'\")\n     return cur.fetchone()\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-89-sql-injection-vuln-001",
+    "language": "rust",
+    "category": "sql-injection",
+    "cwe": "CWE-89",
+    "file_path": "src/db/find_order.rs",
+    "diff": "@@ -21,7 +21,7 @@ pub async fn find_order(pool: &PgPool, id: &str) -> Result<User> {\n-    sqlx::query_as!(User, \"SELECT * FROM users WHERE id = $1\", id)\n+    sqlx::query_as!(User, &format!(\"SELECT * FROM users WHERE id = '{}'\", id))\n         .fetch_one(pool)\n         .await\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-89-sql-injection-safe-100",
+    "language": "python",
+    "category": "sql-injection",
+    "cwe": "CWE-89",
+    "file_path": "app/db/get_config.py",
+    "diff": "@@ -14,7 +14,7 @@ def get_config(conn, user_id: str):\n     cur = conn.cursor()\n-    cur.execute(\"SELECT * FROM accounts WHERE id = %s\", (user_id,))\n+    cur.execute(\"SELECT * FROM accounts WHERE id = %s\", (user_id,))\n     return cur.fetchone()\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-416-use-after-free-vuln-000",
+    "language": "c",
+    "category": "use-after-free",
+    "cwe": "CWE-416",
+    "file_path": "src/cache/cache_buffer.c",
+    "diff": "@@ -44,9 +44,8 @@ const char *cache_buffer(struct entry *e) {\n   free(e->payload);\n-  e->payload = strdup(\"ok\");\n-  return e->payload;\n+  return e->payload;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-416-iterator-invalidation-vuln-000",
+    "language": "cpp",
+    "category": "iterator-invalidation",
+    "cwe": "CWE-416",
+    "file_path": "src/store/erase_account.cpp",
+    "diff": "@@ -31,8 +31,7 @@ void erase_account(std::vector<Item> &items, size_t idx) {\n   auto it = items.begin() + idx;\n   items.erase(it);\n-  process(*it);\n+  process(items[idx]);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-416-use-after-free-vuln-001",
+    "language": "c",
+    "category": "use-after-free",
+    "cwe": "CWE-416",
+    "file_path": "src/cache/cache_profile.c",
+    "diff": "@@ -44,9 +44,8 @@ const char *cache_profile(struct entry *e) {\n   free(e->payload);\n-  e->payload = strdup(\"ok\");\n-  return e->payload;\n+  return e->payload;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-416-iterator-invalidation-vuln-001",
+    "language": "cpp",
+    "category": "iterator-invalidation",
+    "cwe": "CWE-416",
+    "file_path": "src/store/erase_data.cpp",
+    "diff": "@@ -31,8 +31,7 @@ void erase_data(std::vector<Item> &items, size_t idx) {\n   auto it = items.begin() + idx;\n   items.erase(it);\n-  process(*it);\n+  process(items[idx]);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-416-use-after-free-vuln-002",
+    "language": "c",
+    "category": "use-after-free",
+    "cwe": "CWE-416",
+    "file_path": "src/cache/cache_client.c",
+    "diff": "@@ -44,9 +44,8 @@ const char *cache_client(struct entry *e) {\n   free(e->payload);\n-  e->payload = strdup(\"ok\");\n-  return e->payload;\n+  return e->payload;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-416-use-after-free-safe-100",
+    "language": "c",
+    "category": "use-after-free",
+    "cwe": "CWE-416",
+    "file_path": "src/cache/cache_buffer.c",
+    "diff": "@@ -44,9 +44,9 @@ const char *cache_buffer(struct entry *e) {\n   free(e->payload);\n-  e->payload = strdup(\"ok\");\n-  return e->payload;\n+  e->payload = strdup(\"ok\");\n+  if (!e->payload) return NULL;\n+  return e->payload;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-78-command-injection-vuln-000",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_host.c",
+    "diff": "@@ -14,7 +14,7 @@ int run_host(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-78-command-injection-vuln-000",
+    "language": "cpp",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/shell/compress_host.cpp",
+    "diff": "@@ -19,7 +19,7 @@ int compress_host(const std::string &file) {\n-  return std::system((\"gzip \" + shell_escape(file)).c_str());\n+  return std::system((\"gzip \" + file).c_str());\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-78-command-injection-vuln-000",
+    "language": "rust",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/render_host.rs",
+    "diff": "@@ -9,7 +9,7 @@ pub fn render_host(path: &str) -> std::io::Result<()> {\n-    Command::new(\"convert\").arg(path).arg(\"out.png\").status()?;\n+    Command::new(\"sh\").arg(\"-c\").arg(format!(\"convert {} out.png\", path)).status()?;\n     Ok(())\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-78-command-injection-vuln-000",
+    "language": "python",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "app/tools/ping_host.py",
+    "diff": "@@ -8,7 +8,7 @@ def ping_host(host: str) -> str:\n-    return subprocess.check_output([\"ping\", \"-c\", \"1\", host], text=True)\n+    return subprocess.check_output(f\"ping -c 1 {host}\", shell=True, text=True)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-78-command-injection-vuln-000",
+    "language": "javascript",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/convert_host.js",
+    "diff": "@@ -9,7 +9,7 @@ export function convert_host(file) {\n-  execFile('convert', [file, 'out.png']);\n+  exec(`convert ${file} out.png`);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-78-command-injection-safe-100",
+    "language": "c",
+    "category": "command-injection",
+    "cwe": "CWE-78",
+    "file_path": "src/tools/run_host.c",
+    "diff": "@@ -14,7 +14,9 @@ int run_host(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  const char *args[] = { \"convert\", filename, \"out.png\", NULL };\n+  return execv(\"/usr/bin/convert\", (char *const *)args);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-20-type-assertion-bypass-vuln-000",
+    "language": "typescript",
+    "category": "type-assertion-bypass",
+    "cwe": "CWE-20",
+    "file_path": "src/middleware/admin_account.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_account(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-20-type-assertion-bypass-vuln-001",
+    "language": "typescript",
+    "category": "type-assertion-bypass",
+    "cwe": "CWE-20",
+    "file_path": "src/middleware/admin_data.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_data(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-20-type-assertion-bypass-vuln-002",
+    "language": "typescript",
+    "category": "type-assertion-bypass",
+    "cwe": "CWE-20",
+    "file_path": "src/middleware/admin_host.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_host(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-20-type-assertion-bypass-vuln-003",
+    "language": "typescript",
+    "category": "type-assertion-bypass",
+    "cwe": "CWE-20",
+    "file_path": "src/middleware/admin_path.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_path(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-20-type-assertion-bypass-vuln-004",
+    "language": "typescript",
+    "category": "type-assertion-bypass",
+    "cwe": "CWE-20",
+    "file_path": "src/middleware/admin_config.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_config(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-20-type-assertion-bypass-safe-100",
+    "language": "typescript",
+    "category": "type-assertion-bypass",
+    "cwe": "CWE-20",
+    "file_path": "src/middleware/admin_account.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_account(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n   return next();\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-125-oob-read-vuln-000",
+    "language": "c",
+    "category": "oob-read",
+    "cwe": "CWE-125",
+    "file_path": "src/parse/read_token.c",
+    "diff": "@@ -14,8 +14,7 @@ int read_token(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-125-oob-read-vuln-001",
+    "language": "c",
+    "category": "oob-read",
+    "cwe": "CWE-125",
+    "file_path": "src/parse/read_target.c",
+    "diff": "@@ -14,8 +14,7 @@ int read_target(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-125-oob-read-vuln-002",
+    "language": "c",
+    "category": "oob-read",
+    "cwe": "CWE-125",
+    "file_path": "src/parse/read_request.c",
+    "diff": "@@ -14,8 +14,7 @@ int read_request(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-125-oob-read-vuln-003",
+    "language": "c",
+    "category": "oob-read",
+    "cwe": "CWE-125",
+    "file_path": "src/parse/read_session.c",
+    "diff": "@@ -14,8 +14,7 @@ int read_session(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-125-oob-read-vuln-004",
+    "language": "c",
+    "category": "oob-read",
+    "cwe": "CWE-125",
+    "file_path": "src/parse/read_user.c",
+    "diff": "@@ -14,8 +14,7 @@ int read_user(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-125-oob-read-safe-100",
+    "language": "c",
+    "category": "oob-read",
+    "cwe": "CWE-125",
+    "file_path": "src/parse/read_token.c",
+    "diff": "@@ -14,8 +14,9 @@ int read_token(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  if (idx >= len) return -1;\n+  return (int)buf[idx];\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-22-path-traversal-vuln-000",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_buffer.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_buffer(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-22-path-traversal-vuln-000",
+    "language": "cpp",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/files/read_buffer.cpp",
+    "diff": "@@ -26,7 +26,7 @@ std::string read_buffer(const std::string &userPath) {\n-  auto safe = fs::path(\"/vault\").append(fs::path(userPath).filename());\n+  auto safe = fs::path(\"/vault\") / userPath;\n   return read_all(safe);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-22-path-traversal-vuln-000",
+    "language": "rust",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/load_buffer.rs",
+    "diff": "@@ -14,7 +14,7 @@ pub fn load_buffer(name: &str) -> std::io::Result<Vec<u8>> {\n-    let path = Path::new(\"/data\").join(Path::new(name).file_name().unwrap());\n+    let path = Path::new(\"/data\").join(name);\n     std::fs::read(path)\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-22-path-traversal-vuln-000",
+    "language": "python",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "app/files/open_buffer.py",
+    "diff": "@@ -23,7 +23,7 @@ def open_buffer(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-22-path-traversal-vuln-000",
+    "language": "typescript",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/files/read_buffer.ts",
+    "diff": "@@ -25,7 +25,7 @@ export async function read_buffer(file: string): Promise<Buffer> {\n-  const safe = path.join('/data', path.basename(file));\n+  const safe = path.join('/data', file);\n   return fs.readFile(safe);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-22-path-traversal-safe-100",
+    "language": "c",
+    "category": "path-traversal",
+    "cwe": "CWE-22",
+    "file_path": "src/fs/open_buffer.c",
+    "diff": "@@ -30,7 +30,9 @@ FILE *open_buffer(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  const char *base = basename(name);\n+  if (strstr(base, \"..\") != NULL) return NULL;\n+  snprintf(path, sizeof(path), \"/data/%s\", base);\n   return fopen(path, \"rb\");\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-352-csrf-vuln-000",
+    "language": "typescript",
+    "category": "csrf",
+    "cwe": "CWE-352",
+    "file_path": "src/api/transfer_request.ts",
+    "diff": "@@ -41,6 +41,7 @@ export async function transfer_request(req: Request) {\n+export async function postTransfer_request(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_request(req: Request) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-352-csrf-vuln-001",
+    "language": "typescript",
+    "category": "csrf",
+    "cwe": "CWE-352",
+    "file_path": "src/api/transfer_session.ts",
+    "diff": "@@ -41,6 +41,7 @@ export async function transfer_session(req: Request) {\n+export async function postTransfer_session(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_session(req: Request) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-352-csrf-vuln-002",
+    "language": "typescript",
+    "category": "csrf",
+    "cwe": "CWE-352",
+    "file_path": "src/api/transfer_user.ts",
+    "diff": "@@ -41,6 +41,7 @@ export async function transfer_user(req: Request) {\n+export async function postTransfer_user(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_user(req: Request) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-352-csrf-vuln-003",
+    "language": "typescript",
+    "category": "csrf",
+    "cwe": "CWE-352",
+    "file_path": "src/api/transfer_url.ts",
+    "diff": "@@ -41,6 +41,7 @@ export async function transfer_url(req: Request) {\n+export async function postTransfer_url(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_url(req: Request) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-352-csrf-vuln-004",
+    "language": "typescript",
+    "category": "csrf",
+    "cwe": "CWE-352",
+    "file_path": "src/api/transfer_query.ts",
+    "diff": "@@ -41,6 +41,7 @@ export async function transfer_query(req: Request) {\n+export async function postTransfer_query(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_query(req: Request) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-352-csrf-safe-100",
+    "language": "typescript",
+    "category": "csrf",
+    "cwe": "CWE-352",
+    "file_path": "src/api/transfer_request.ts",
+    "diff": "@@ -41,6 +41,8 @@ export async function transfer_request(req: Request) {\n+export async function postTransfer_request(req: Request) {\n+  assertSameOrigin(req);\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_request(req: Request) {",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-502-pickle-deserialization-vuln-000",
+    "language": "python",
+    "category": "pickle-deserialization",
+    "cwe": "CWE-502",
+    "file_path": "app/cache/load_session.py",
+    "diff": "@@ -11,7 +11,7 @@ def load_session(blob: bytes):\n-    return json.loads(blob)\n+    return pickle.loads(blob)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-502-yaml-unsafe-load-vuln-001",
+    "language": "python",
+    "category": "yaml-unsafe-load",
+    "cwe": "CWE-502",
+    "file_path": "app/import/parse_buffer.py",
+    "diff": "@@ -6,7 +6,7 @@ def parse_buffer(raw: str) -> dict:\n-    return yaml.safe_load(raw)\n+    return yaml.load(raw, Loader=yaml.Loader)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-502-pickle-deserialization-vuln-001",
+    "language": "python",
+    "category": "pickle-deserialization",
+    "cwe": "CWE-502",
+    "file_path": "app/cache/load_user.py",
+    "diff": "@@ -11,7 +11,7 @@ def load_user(blob: bytes):\n-    return json.loads(blob)\n+    return pickle.loads(blob)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-502-yaml-unsafe-load-vuln-002",
+    "language": "python",
+    "category": "yaml-unsafe-load",
+    "cwe": "CWE-502",
+    "file_path": "app/import/parse_profile.py",
+    "diff": "@@ -6,7 +6,7 @@ def parse_profile(raw: str) -> dict:\n-    return yaml.safe_load(raw)\n+    return yaml.load(raw, Loader=yaml.Loader)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-502-pickle-deserialization-vuln-002",
+    "language": "python",
+    "category": "pickle-deserialization",
+    "cwe": "CWE-502",
+    "file_path": "app/cache/load_url.py",
+    "diff": "@@ -11,7 +11,7 @@ def load_url(blob: bytes):\n-    return json.loads(blob)\n+    return pickle.loads(blob)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-502-pickle-deserialization-safe-100",
+    "language": "python",
+    "category": "pickle-deserialization",
+    "cwe": "CWE-502",
+    "file_path": "app/cache/load_session.py",
+    "diff": "@@ -11,7 +11,7 @@ def load_session(blob: bytes):\n-    return json.loads(blob)\n+    return json.loads(blob)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-476-null-deref-vuln-000",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_client.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_client(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-476-null-deref-vuln-001",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_token.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_token(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-476-null-deref-vuln-002",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_target.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_target(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-476-null-deref-vuln-003",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_request.c",
+    "diff": "@@ -21,7 +21,6 @@ int check_request(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-476-null-deref-safe-100",
+    "language": "c",
+    "category": "null-deref",
+    "cwe": "CWE-476",
+    "file_path": "src/auth/check_client.c",
+    "diff": "@@ -21,7 +21,8 @@ int check_client(struct session *s) {\n-  if (!s || !s->user) return -1;\n+  if (!s || !s->user || !s->user->role) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-190-integer-overflow-vuln-000",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_query.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_query(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-190-integer-overflow-vuln-000",
+    "language": "cpp",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/reserve_query.cpp",
+    "diff": "@@ -8,7 +8,6 @@ std::vector<uint8_t> reserve_query(size_t n, size_t sz) {\n-  if (n > 0 && sz > std::vector<uint8_t>::max_size() / n)\n-    throw std::length_error(\"overflow\");\n   return std::vector<uint8_t>(n * sz);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-190-integer-overflow-unsafe-vuln-000",
+    "language": "rust",
+    "category": "integer-overflow-unsafe",
+    "cwe": "CWE-190",
+    "file_path": "src/binary/read_payload.rs",
+    "diff": "@@ -33,8 +33,7 @@ pub fn read_payload(data: &[u8]) -> usize {\n     let len = u32::from_le_bytes(data[0..4].try_into().unwrap()) as usize;\n-    let cap = data.len().saturating_sub(4);\n-    len.min(cap)\n+    len\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-190-integer-overflow-vuln-001",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_buffer.c",
+    "diff": "@@ -12,8 +12,7 @@ void *alloc_buffer(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-190-integer-overflow-safe-100",
+    "language": "c",
+    "category": "integer-overflow",
+    "cwe": "CWE-190",
+    "file_path": "src/alloc/alloc_query.c",
+    "diff": "@@ -12,8 +12,9 @@ void *alloc_query(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  if (count == 0 || size == 0) return NULL;\n+  if (count > SIZE_MAX / size) return NULL;\n+  return calloc(count, size);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-798-hardcoded-secrets-vuln-000",
+    "language": "c",
+    "category": "hardcoded-secrets",
+    "cwe": "CWE-798",
+    "file_path": "src/config/load_host.c",
+    "diff": "@@ -4,6 +4,7 @@ struct config load_host(void) {\n   struct config c = {0};\n+  strcpy(c.api_key, \"sk_live_REPLACE_ME_IN_DIFF_7f3a\");\n   c.port = 8080;\n   return c;\n }",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-798-hardcoded-secrets-vuln-000",
+    "language": "python",
+    "category": "hardcoded-secrets",
+    "cwe": "CWE-798",
+    "file_path": "app/config/settings_host.py",
+    "diff": "@@ -4,6 +4,7 @@ class Settings:\n     debug: bool = False\n+    stripe_key: str = \"sk_live_HARDCODED_IN_DIFF_ABC123\"\n \n     @classmethod",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-798-hardcoded-secrets-vuln-000",
+    "language": "rust",
+    "category": "hardcoded-secrets",
+    "cwe": "CWE-798",
+    "file_path": "src/config/jwt_host.rs",
+    "diff": "@@ -3,7 +3,7 @@ use once_cell::sync::Lazy;\n \n-static JWT_SECRET: Lazy<String> = Lazy::new(|| std::env::var(\"JWT_SECRET\").expect(\"JWT_SECRET\"));\n+static JWT_SECRET: Lazy<String> = Lazy::new(|| \"hardcoded-jwt-secret-do-not-ship\".into());\n \n pub fn sign_host(claims: Claims) -> String {",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-798-hardcoded-secrets-vuln-000",
+    "language": "typescript",
+    "category": "hardcoded-secrets",
+    "cwe": "CWE-798",
+    "file_path": "src/config/config_host.ts",
+    "diff": "@@ -3,7 +3,7 @@ export const config = {\n   port: 3000,\n-  apiKey: process.env.API_KEY ?? '',\n+  apiKey: 'sk_test_HARDCODED_KEY_IN_PR_DIFF_9e2f',\n } as const;\n ",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-798-hardcoded-secrets-safe-100",
+    "language": "c",
+    "category": "hardcoded-secrets",
+    "cwe": "CWE-798",
+    "file_path": "src/config/load_host.c",
+    "diff": "@@ -4,6 +4,7 @@ struct config load_host(void) {\n   struct config c = {0};\n+  const char *key = getenv(\"API_KEY\");\n+  if (key) strncpy(c.api_key, key, sizeof(c.api_key) - 1);\n   c.port = 8080;\n   return c;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-918-ssrf-vuln-000",
+    "language": "python",
+    "category": "ssrf",
+    "cwe": "CWE-918",
+    "file_path": "app/preview/fetch_request.py",
+    "diff": "@@ -19,7 +19,6 @@ def fetch_request(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-918-ssrf-vuln-000",
+    "language": "rust",
+    "category": "ssrf",
+    "cwe": "CWE-918",
+    "file_path": "src/preview/preview_request.rs",
+    "diff": "@@ -27,7 +27,7 @@ pub async fn preview_request(url: &str) -> Result<String> {\n-    if !is_allowed_host(url) { bail!(\"blocked\"); }\n+    let body = reqwest::get(url).await?.text().await?;\n     Ok(body)\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-918-ssrf-vuln-000",
+    "language": "javascript",
+    "category": "ssrf",
+    "cwe": "CWE-918",
+    "file_path": "src/preview/preview_request.js",
+    "diff": "@@ -11,7 +11,6 @@ export async function preview_request(url) {\n-  if (!isAllowedHost(url)) throw new Error('blocked');\n   const res = await fetch(url);\n   return res.text();\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-918-ssrf-vuln-000",
+    "language": "typescript",
+    "category": "ssrf",
+    "cwe": "CWE-918",
+    "file_path": "src/preview/proxy_request.ts",
+    "diff": "@@ -20,7 +20,6 @@ export async function proxy_request(target: string): Promise<string> {\n-  assertAllowedUrl(target);\n   const res = await fetch(target);\n   return res.text();\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-918-ssrf-safe-100",
+    "language": "python",
+    "category": "ssrf",
+    "cwe": "CWE-918",
+    "file_path": "app/preview/fetch_request.py",
+    "diff": "@@ -19,7 +19,8 @@ def fetch_request(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    if not is_allowed(url):\n+        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-1321-prototype-pollution-vuln-000",
+    "language": "javascript",
+    "category": "prototype-pollution",
+    "cwe": "CWE-1321",
+    "file_path": "src/merge/merge_data.js",
+    "diff": "@@ -9,7 +9,7 @@ export function merge_data(target, source) {\n   for (const key of Object.keys(source)) {\n-    if (key === '__proto__') continue;\n+    target[key] = source[key];\n   }\n   return target;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-1321-prototype-pollution-vuln-000",
+    "language": "typescript",
+    "category": "prototype-pollution",
+    "cwe": "CWE-1321",
+    "file_path": "src/utils/deepMerge_data.ts",
+    "diff": "@@ -7,7 +7,7 @@ export function deepMerge_data<T extends object>(target: T, patch: Record<string, unknown>): T {\n   for (const [k, v] of Object.entries(patch)) {\n-    if (k in target) (target as any)[k] = v;\n+    (target as any)[k] = v;\n   }\n   return target;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-1321-prototype-pollution-vuln-001",
+    "language": "javascript",
+    "category": "prototype-pollution",
+    "cwe": "CWE-1321",
+    "file_path": "src/merge/merge_host.js",
+    "diff": "@@ -9,7 +9,7 @@ export function merge_host(target, source) {\n   for (const key of Object.keys(source)) {\n-    if (key === '__proto__') continue;\n+    target[key] = source[key];\n   }\n   return target;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-1321-prototype-pollution-vuln-001",
+    "language": "typescript",
+    "category": "prototype-pollution",
+    "cwe": "CWE-1321",
+    "file_path": "src/utils/deepMerge_host.ts",
+    "diff": "@@ -7,7 +7,7 @@ export function deepMerge_host<T extends object>(target: T, patch: Record<string, unknown>): T {\n   for (const [k, v] of Object.entries(patch)) {\n-    if (k in target) (target as any)[k] = v;\n+    (target as any)[k] = v;\n   }\n   return target;\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-1321-prototype-pollution-safe-100",
+    "language": "javascript",
+    "category": "prototype-pollution",
+    "cwe": "CWE-1321",
+    "file_path": "src/merge/merge_data.js",
+    "diff": "@@ -9,7 +9,8 @@ export function merge_data(target, source) {\n   for (const key of Object.keys(source)) {\n-    if (key === '__proto__') continue;\n+    if (key === '__proto__' || key === 'constructor') continue;\n+    target[key] = source[key];\n   }\n   return target;\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-434-path-traversal-as-cwe-434-vuln-000",
+    "language": "python",
+    "category": "path-traversal-as-cwe-434",
+    "cwe": "CWE-434",
+    "file_path": "app/files/open_resource.py",
+    "diff": "@@ -23,7 +23,7 @@ def open_resource(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-434-path-traversal-as-cwe-434-vuln-000",
+    "language": "typescript",
+    "category": "path-traversal-as-cwe-434",
+    "cwe": "CWE-434",
+    "file_path": "src/files/read_resource.ts",
+    "diff": "@@ -25,7 +25,7 @@ export async function read_resource(file: string): Promise<Buffer> {\n-  const safe = path.join('/data', path.basename(file));\n+  const safe = path.join('/data', file);\n   return fs.readFile(safe);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-434-path-traversal-as-cwe-434-vuln-001",
+    "language": "python",
+    "category": "path-traversal-as-cwe-434",
+    "cwe": "CWE-434",
+    "file_path": "app/files/open_payload.py",
+    "diff": "@@ -23,7 +23,7 @@ def open_payload(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-434-path-traversal-as-cwe-434-vuln-001",
+    "language": "typescript",
+    "category": "path-traversal-as-cwe-434",
+    "cwe": "CWE-434",
+    "file_path": "src/files/read_payload.ts",
+    "diff": "@@ -25,7 +25,7 @@ export async function read_payload(file: string): Promise<Buffer> {\n-  const safe = path.join('/data', path.basename(file));\n+  const safe = path.join('/data', file);\n   return fs.readFile(safe);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-434-path-traversal-as-cwe-434-safe-100",
+    "language": "python",
+    "category": "path-traversal-as-cwe-434",
+    "cwe": "CWE-434",
+    "file_path": "app/files/open_resource.py",
+    "diff": "@@ -23,7 +23,9 @@ def open_resource(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    base = os.path.basename(name)\n+    if \"..\" in name:\n+        raise ValueError(\"traversal\")\n+    safe = os.path.join(\"/data\", base)\n     return open(safe, \"rb\").read()\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "cpp-cwe-862-missing-authz-vuln-000",
+    "language": "cpp",
+    "category": "missing-authz",
+    "cwe": "CWE-862",
+    "file_path": "src/api/delete_config.cpp",
+    "diff": "@@ -40,6 +40,9 @@ void delete_config(HttpRequest &req) {\n+void delete_config_handler(HttpRequest &req) {\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_config(HttpRequest &req) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-862-missing-authz-vuln-001",
+    "language": "cpp",
+    "category": "missing-authz",
+    "cwe": "CWE-862",
+    "file_path": "src/api/delete_order.cpp",
+    "diff": "@@ -40,6 +40,9 @@ void delete_order(HttpRequest &req) {\n+void delete_order_handler(HttpRequest &req) {\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_order(HttpRequest &req) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-862-missing-authz-vuln-002",
+    "language": "cpp",
+    "category": "missing-authz",
+    "cwe": "CWE-862",
+    "file_path": "src/api/delete_record.cpp",
+    "diff": "@@ -40,6 +40,9 @@ void delete_record(HttpRequest &req) {\n+void delete_record_handler(HttpRequest &req) {\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_record(HttpRequest &req) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-862-missing-authz-vuln-003",
+    "language": "cpp",
+    "category": "missing-authz",
+    "cwe": "CWE-862",
+    "file_path": "src/api/delete_input.cpp",
+    "diff": "@@ -40,6 +40,9 @@ void delete_input(HttpRequest &req) {\n+void delete_input_handler(HttpRequest &req) {\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_input(HttpRequest &req) {",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-862-missing-authz-safe-100",
+    "language": "cpp",
+    "category": "missing-authz",
+    "cwe": "CWE-862",
+    "file_path": "src/api/delete_config.cpp",
+    "diff": "@@ -40,6 +40,9 @@ void delete_config(HttpRequest &req) {\n+void delete_config_handler(HttpRequest &req) {\n+  if (!req.user().is_admin()) return req.send(403, \"{}\");\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_config(HttpRequest &req) {",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-863-incorrect-authz-vuln-000",
+    "language": "typescript",
+    "category": "incorrect-authz",
+    "cwe": "CWE-863",
+    "file_path": "src/routes/admin_path.ts",
+    "diff": "@@ -19,7 +19,7 @@ export function admin_path(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user) return allow();\n   return allow();\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-863-incorrect-authz-vuln-001",
+    "language": "typescript",
+    "category": "incorrect-authz",
+    "cwe": "CWE-863",
+    "file_path": "src/routes/admin_config.ts",
+    "diff": "@@ -19,7 +19,7 @@ export function admin_config(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user) return allow();\n   return allow();\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-863-incorrect-authz-vuln-002",
+    "language": "typescript",
+    "category": "incorrect-authz",
+    "cwe": "CWE-863",
+    "file_path": "src/routes/admin_order.ts",
+    "diff": "@@ -19,7 +19,7 @@ export function admin_order(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user) return allow();\n   return allow();\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-863-incorrect-authz-vuln-003",
+    "language": "typescript",
+    "category": "incorrect-authz",
+    "cwe": "CWE-863",
+    "file_path": "src/routes/admin_record.ts",
+    "diff": "@@ -19,7 +19,7 @@ export function admin_record(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user) return allow();\n   return allow();\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-863-incorrect-authz-safe-100",
+    "language": "typescript",
+    "category": "incorrect-authz",
+    "cwe": "CWE-863",
+    "file_path": "src/routes/admin_path.ts",
+    "diff": "@@ -19,7 +19,7 @@ export function admin_path(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user?.role !== 'admin') return deny();\n   return allow();\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-639-idor-vuln-000",
+    "language": "javascript",
+    "category": "idor",
+    "cwe": "CWE-639",
+    "file_path": "src/api/get_request.js",
+    "diff": "@@ -33,7 +33,7 @@ router.get('/request/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-639-idor-vuln-001",
+    "language": "javascript",
+    "category": "idor",
+    "cwe": "CWE-639",
+    "file_path": "src/api/get_session.js",
+    "diff": "@@ -33,7 +33,7 @@ router.get('/session/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-639-idor-vuln-002",
+    "language": "javascript",
+    "category": "idor",
+    "cwe": "CWE-639",
+    "file_path": "src/api/get_user.js",
+    "diff": "@@ -33,7 +33,7 @@ router.get('/user/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-639-idor-vuln-003",
+    "language": "javascript",
+    "category": "idor",
+    "cwe": "CWE-639",
+    "file_path": "src/api/get_url.js",
+    "diff": "@@ -33,7 +33,7 @@ router.get('/url/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-639-idor-safe-100",
+    "language": "javascript",
+    "category": "idor",
+    "cwe": "CWE-639",
+    "file_path": "src/api/get_request.js",
+    "diff": "@@ -33,7 +33,7 @@ router.get('/request/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.getForUser(req.params.id, req.user.id);\n   res.json(row);\n });\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-347-jwt-misuse-vuln-000",
+    "language": "javascript",
+    "category": "jwt-misuse",
+    "cwe": "CWE-347",
+    "file_path": "src/auth/verify_client.js",
+    "diff": "@@ -28,7 +28,7 @@ export function verify_client(token) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.decode(token);\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-347-jwt-misuse-vuln-000",
+    "language": "typescript",
+    "category": "jwt-misuse",
+    "cwe": "CWE-347",
+    "file_path": "src/auth/parse_client.ts",
+    "diff": "@@ -31,7 +31,7 @@ export function parse_client(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.decode(token) as JwtPayload;\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-347-jwt-misuse-vuln-001",
+    "language": "javascript",
+    "category": "jwt-misuse",
+    "cwe": "CWE-347",
+    "file_path": "src/auth/verify_token.js",
+    "diff": "@@ -28,7 +28,7 @@ export function verify_token(token) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.decode(token);\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-347-jwt-misuse-vuln-001",
+    "language": "typescript",
+    "category": "jwt-misuse",
+    "cwe": "CWE-347",
+    "file_path": "src/auth/parse_token.ts",
+    "diff": "@@ -31,7 +31,7 @@ export function parse_token(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.decode(token) as JwtPayload;\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-347-jwt-misuse-safe-100",
+    "language": "javascript",
+    "category": "jwt-misuse",
+    "cwe": "CWE-347",
+    "file_path": "src/auth/verify_client.js",
+    "diff": "@@ -28,7 +28,7 @@ export function verify_client(token) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-326-weak-crypto-vuln-000",
+    "language": "python",
+    "category": "weak-crypto",
+    "cwe": "CWE-326",
+    "file_path": "src/crypto/seal_order.py",
+    "diff": "@@ -8,7 +8,7 @@ def seal_order(data: bytes) -> bytes:\n-    return Fernet(key).encrypt(data)\n+    return DES.new(key[:8], DES.MODE_ECB).encrypt(data)\n ",
+    "expected": [
+      {
+        "category": "crypto"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-326-weak-crypto-vuln-001",
+    "language": "python",
+    "category": "weak-crypto",
+    "cwe": "CWE-326",
+    "file_path": "src/crypto/seal_record.py",
+    "diff": "@@ -8,7 +8,7 @@ def seal_record(data: bytes) -> bytes:\n-    return Fernet(key).encrypt(data)\n+    return DES.new(key[:8], DES.MODE_ECB).encrypt(data)\n ",
+    "expected": [
+      {
+        "category": "crypto"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-326-weak-crypto-vuln-002",
+    "language": "python",
+    "category": "weak-crypto",
+    "cwe": "CWE-326",
+    "file_path": "src/crypto/seal_input.py",
+    "diff": "@@ -8,7 +8,7 @@ def seal_input(data: bytes) -> bytes:\n-    return Fernet(key).encrypt(data)\n+    return DES.new(key[:8], DES.MODE_ECB).encrypt(data)\n ",
+    "expected": [
+      {
+        "category": "crypto"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-326-weak-crypto-safe-100",
+    "language": "python",
+    "category": "weak-crypto",
+    "cwe": "CWE-326",
+    "file_path": "src/crypto/seal_order.py",
+    "diff": "@@ -8,7 +8,7 @@ def seal_order(data: bytes) -> bytes:\n-    return Fernet(key).encrypt(data)\n+    return Fernet(key).encrypt(data)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-327-broken-crypto-vuln-000",
+    "language": "typescript",
+    "category": "broken-crypto",
+    "cwe": "CWE-327",
+    "file_path": "src/crypto/hash_config.ts",
+    "diff": "@@ -12,7 +12,7 @@ export function hash_config(input: string): string {\n-  return createHash('sha256').update(input).digest('hex');\n+  return createHash('md5').update(input).digest('hex');\n }\n ",
+    "expected": [
+      {
+        "category": "crypto"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-327-broken-crypto-vuln-001",
+    "language": "typescript",
+    "category": "broken-crypto",
+    "cwe": "CWE-327",
+    "file_path": "src/crypto/hash_order.ts",
+    "diff": "@@ -12,7 +12,7 @@ export function hash_order(input: string): string {\n-  return createHash('sha256').update(input).digest('hex');\n+  return createHash('md5').update(input).digest('hex');\n }\n ",
+    "expected": [
+      {
+        "category": "crypto"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-327-broken-crypto-vuln-002",
+    "language": "typescript",
+    "category": "broken-crypto",
+    "cwe": "CWE-327",
+    "file_path": "src/crypto/hash_record.ts",
+    "diff": "@@ -12,7 +12,7 @@ export function hash_record(input: string): string {\n-  return createHash('sha256').update(input).digest('hex');\n+  return createHash('md5').update(input).digest('hex');\n }\n ",
+    "expected": [
+      {
+        "category": "crypto"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-327-broken-crypto-safe-100",
+    "language": "typescript",
+    "category": "broken-crypto",
+    "cwe": "CWE-327",
+    "file_path": "src/crypto/hash_config.ts",
+    "diff": "@@ -12,7 +12,7 @@ export function hash_config(input: string): string {\n-  return createHash('sha256').update(input).digest('hex');\n+  return createHash('sha256').update(input).digest('hex');\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-259-hardcoded-password-vuln-000",
+    "language": "python",
+    "category": "hardcoded-password",
+    "cwe": "CWE-259",
+    "file_path": "src/auth/connect_url.py",
+    "diff": "@@ -5,7 +5,7 @@ def connect_url():\n-    password = os.environ.get(\"DB_PASSWORD\")\n+    password = \"admin123_change_in_pr\"\n     return psycopg.connect(password=password)\n ",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-259-hardcoded-password-vuln-001",
+    "language": "python",
+    "category": "hardcoded-password",
+    "cwe": "CWE-259",
+    "file_path": "src/auth/connect_query.py",
+    "diff": "@@ -5,7 +5,7 @@ def connect_query():\n-    password = os.environ.get(\"DB_PASSWORD\")\n+    password = \"admin123_change_in_pr\"\n     return psycopg.connect(password=password)\n ",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-259-hardcoded-password-vuln-002",
+    "language": "python",
+    "category": "hardcoded-password",
+    "cwe": "CWE-259",
+    "file_path": "src/auth/connect_buffer.py",
+    "diff": "@@ -5,7 +5,7 @@ def connect_buffer():\n-    password = os.environ.get(\"DB_PASSWORD\")\n+    password = \"admin123_change_in_pr\"\n     return psycopg.connect(password=password)\n ",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-259-hardcoded-password-safe-100",
+    "language": "python",
+    "category": "hardcoded-password",
+    "cwe": "CWE-259",
+    "file_path": "src/auth/connect_url.py",
+    "diff": "@@ -5,7 +5,7 @@ def connect_url():\n-    password = os.environ.get(\"DB_PASSWORD\")\n+    password = os.environ.get(\"DB_PASSWORD\")\n     return psycopg.connect(password=password)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-94-ssti-vuln-000",
+    "language": "python",
+    "category": "ssti",
+    "cwe": "CWE-94",
+    "file_path": "app/views/render_request.py",
+    "diff": "@@ -30,7 +30,7 @@ def render_request(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-94-ssti-vuln-001",
+    "language": "python",
+    "category": "ssti",
+    "cwe": "CWE-94",
+    "file_path": "app/views/render_session.py",
+    "diff": "@@ -30,7 +30,7 @@ def render_session(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-94-ssti-vuln-002",
+    "language": "python",
+    "category": "ssti",
+    "cwe": "CWE-94",
+    "file_path": "app/views/render_user.py",
+    "diff": "@@ -30,7 +30,7 @@ def render_user(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-94-ssti-vuln-003",
+    "language": "python",
+    "category": "ssti",
+    "cwe": "CWE-94",
+    "file_path": "app/views/render_url.py",
+    "diff": "@@ -30,7 +30,7 @@ def render_url(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-94-ssti-safe-100",
+    "language": "python",
+    "category": "ssti",
+    "cwe": "CWE-94",
+    "file_path": "app/views/render_request.py",
+    "diff": "@@ -30,7 +30,8 @@ def render_request(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    env = SandboxedEnvironment()\n+    return env.from_string(template_str).render(**ctx)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-95-eval-injection-vuln-000",
+    "language": "javascript",
+    "category": "eval-injection",
+    "cwe": "CWE-95",
+    "file_path": "src/rules/apply_buffer.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_buffer(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-95-eval-injection-vuln-001",
+    "language": "javascript",
+    "category": "eval-injection",
+    "cwe": "CWE-95",
+    "file_path": "src/rules/apply_profile.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_profile(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-95-eval-injection-vuln-002",
+    "language": "javascript",
+    "category": "eval-injection",
+    "cwe": "CWE-95",
+    "file_path": "src/rules/apply_client.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_client(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-95-eval-injection-vuln-003",
+    "language": "javascript",
+    "category": "eval-injection",
+    "cwe": "CWE-95",
+    "file_path": "src/rules/apply_token.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_token(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-95-eval-injection-safe-100",
+    "language": "javascript",
+    "category": "eval-injection",
+    "cwe": "CWE-95",
+    "file_path": "src/rules/apply_buffer.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_buffer(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return safeEval(expr, ctx);\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-943-nosql-injection-vuln-000",
+    "language": "javascript",
+    "category": "nosql-injection",
+    "cwe": "CWE-943",
+    "file_path": "src/db/find_path.js",
+    "diff": "@@ -22,7 +22,7 @@ export async function find_path(db, username) {\n-  return db.collection('users').findOne({ username });\n+  return db.collection('users').findOne(JSON.parse(username));\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-943-nosql-injection-vuln-001",
+    "language": "javascript",
+    "category": "nosql-injection",
+    "cwe": "CWE-943",
+    "file_path": "src/db/find_config.js",
+    "diff": "@@ -22,7 +22,7 @@ export async function find_config(db, username) {\n-  return db.collection('users').findOne({ username });\n+  return db.collection('users').findOne(JSON.parse(username));\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-943-nosql-injection-vuln-002",
+    "language": "javascript",
+    "category": "nosql-injection",
+    "cwe": "CWE-943",
+    "file_path": "src/db/find_order.js",
+    "diff": "@@ -22,7 +22,7 @@ export async function find_order(db, username) {\n-  return db.collection('users').findOne({ username });\n+  return db.collection('users').findOne(JSON.parse(username));\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-943-nosql-injection-vuln-003",
+    "language": "javascript",
+    "category": "nosql-injection",
+    "cwe": "CWE-943",
+    "file_path": "src/db/find_record.js",
+    "diff": "@@ -22,7 +22,7 @@ export async function find_record(db, username) {\n-  return db.collection('users').findOne({ username });\n+  return db.collection('users').findOne(JSON.parse(username));\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-943-nosql-injection-safe-100",
+    "language": "javascript",
+    "category": "nosql-injection",
+    "cwe": "CWE-943",
+    "file_path": "src/db/find_path.js",
+    "diff": "@@ -22,7 +22,8 @@ export async function find_path(db, username) {\n-  return db.collection('users').findOne({ username });\n+  if (typeof username !== 'string') throw new TypeError('username must be string');\n+  return db.collection('users').findOne({ username });\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-134-format-string-vuln-000",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_config.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_config(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-134-format-string-vuln-000",
+    "language": "cpp",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/audit_config.cpp",
+    "diff": "@@ -11,7 +11,7 @@ void audit_config(const std::string &msg) {\n-  std::fprintf(stderr, \"%s\", msg.c_str());\n+  std::printf(msg.c_str());\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-134-format-string-vuln-001",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_order.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_order(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-134-format-string-vuln-001",
+    "language": "cpp",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/audit_order.cpp",
+    "diff": "@@ -11,7 +11,7 @@ void audit_order(const std::string &msg) {\n-  std::fprintf(stderr, \"%s\", msg.c_str());\n+  std::printf(msg.c_str());\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-134-format-string-safe-100",
+    "language": "c",
+    "category": "format-string",
+    "cwe": "CWE-134",
+    "file_path": "src/log/log_config.c",
+    "diff": "@@ -9,7 +9,7 @@ void log_config(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  vfprintf(stderr, \"%s\", fmt);\n   va_end(ap);\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "cpp-cwe-415-double-free-vuln-000",
+    "language": "cpp",
+    "category": "double-free",
+    "cwe": "CWE-415",
+    "file_path": "src/legacy/release_order.cpp",
+    "diff": "@@ -15,8 +15,8 @@ void release_order(Buffer *b) {\n   delete b;\n+  delete b;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-415-double-free-vuln-001",
+    "language": "cpp",
+    "category": "double-free",
+    "cwe": "CWE-415",
+    "file_path": "src/legacy/release_record.cpp",
+    "diff": "@@ -15,8 +15,8 @@ void release_record(Buffer *b) {\n   delete b;\n+  delete b;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-415-double-free-vuln-002",
+    "language": "cpp",
+    "category": "double-free",
+    "cwe": "CWE-415",
+    "file_path": "src/legacy/release_input.cpp",
+    "diff": "@@ -15,8 +15,8 @@ void release_input(Buffer *b) {\n   delete b;\n+  delete b;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-415-double-free-vuln-003",
+    "language": "cpp",
+    "category": "double-free",
+    "cwe": "CWE-415",
+    "file_path": "src/legacy/release_resource.cpp",
+    "diff": "@@ -15,8 +15,8 @@ void release_resource(Buffer *b) {\n   delete b;\n+  delete b;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-415-double-free-safe-100",
+    "language": "cpp",
+    "category": "double-free",
+    "cwe": "CWE-415",
+    "file_path": "src/legacy/release_order.cpp",
+    "diff": "@@ -15,8 +15,9 @@ void release_order(Buffer *b) {\n-  delete b;\n+  delete b;\n+  b = nullptr;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "rust-cwe-754-unwrap-panic-vuln-000",
+    "language": "rust",
+    "category": "unwrap-panic",
+    "cwe": "CWE-754",
+    "file_path": "src/auth/verify_profile.rs",
+    "diff": "@@ -12,7 +12,7 @@ pub fn verify_profile(token: Option<&str>) -> bool {\n-    let t = token?;\n+    let t = token.unwrap();\n     validate_hmac(t)\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-754-unwrap-panic-vuln-001",
+    "language": "rust",
+    "category": "unwrap-panic",
+    "cwe": "CWE-754",
+    "file_path": "src/auth/verify_client.rs",
+    "diff": "@@ -12,7 +12,7 @@ pub fn verify_client(token: Option<&str>) -> bool {\n-    let t = token?;\n+    let t = token.unwrap();\n     validate_hmac(t)\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-754-unwrap-panic-vuln-002",
+    "language": "rust",
+    "category": "unwrap-panic",
+    "cwe": "CWE-754",
+    "file_path": "src/auth/verify_token.rs",
+    "diff": "@@ -12,7 +12,7 @@ pub fn verify_token(token: Option<&str>) -> bool {\n-    let t = token?;\n+    let t = token.unwrap();\n     validate_hmac(t)\n }",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "rust-cwe-754-unwrap-panic-safe-100",
+    "language": "rust",
+    "category": "unwrap-panic",
+    "cwe": "CWE-754",
+    "file_path": "src/auth/verify_profile.rs",
+    "diff": "@@ -12,7 +12,7 @@ pub fn verify_profile(token: Option<&str>) -> bool {\n-    let t = token?;\n+    let Some(t) = token else { return false };\n     validate_hmac(t)\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-119-buffer-overflow-as-cwe-119-vuln-000",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-119",
+    "cwe": "CWE-119",
+    "file_path": "src/net/copy_target.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-119-buffer-overflow-as-cwe-119-vuln-000",
+    "language": "cpp",
+    "category": "buffer-overflow-as-cwe-119",
+    "cwe": "CWE-119",
+    "file_path": "src/parser/parse_target.cpp",
+    "diff": "@@ -22,7 +22,7 @@ void parse_target(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-119-buffer-overflow-as-cwe-119-vuln-001",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-119",
+    "cwe": "CWE-119",
+    "file_path": "src/net/copy_request.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_request(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-119-buffer-overflow-as-cwe-119-safe-100",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-119",
+    "cwe": "CWE-119",
+    "file_path": "src/net/copy_target.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-120-buffer-overflow-as-cwe-120-vuln-000",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-120",
+    "cwe": "CWE-120",
+    "file_path": "src/net/copy_target.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-120-buffer-overflow-as-cwe-120-vuln-000",
+    "language": "cpp",
+    "category": "buffer-overflow-as-cwe-120",
+    "cwe": "CWE-120",
+    "file_path": "src/parser/parse_target.cpp",
+    "diff": "@@ -22,7 +22,7 @@ void parse_target(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-120-buffer-overflow-as-cwe-120-vuln-001",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-120",
+    "cwe": "CWE-120",
+    "file_path": "src/net/copy_request.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_request(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-120-buffer-overflow-as-cwe-120-safe-100",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-120",
+    "cwe": "CWE-120",
+    "file_path": "src/net/copy_target.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-121-buffer-overflow-as-cwe-121-vuln-000",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-121",
+    "cwe": "CWE-121",
+    "file_path": "src/net/copy_target.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-121-buffer-overflow-as-cwe-121-vuln-000",
+    "language": "cpp",
+    "category": "buffer-overflow-as-cwe-121",
+    "cwe": "CWE-121",
+    "file_path": "src/parser/parse_target.cpp",
+    "diff": "@@ -22,7 +22,7 @@ void parse_target(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-121-buffer-overflow-as-cwe-121-vuln-001",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-121",
+    "cwe": "CWE-121",
+    "file_path": "src/net/copy_request.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_request(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-121-buffer-overflow-as-cwe-121-safe-100",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-121",
+    "cwe": "CWE-121",
+    "file_path": "src/net/copy_target.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "c-cwe-122-buffer-overflow-as-cwe-122-vuln-000",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-122",
+    "cwe": "CWE-122",
+    "file_path": "src/net/copy_target.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "cpp-cwe-122-buffer-overflow-as-cwe-122-vuln-000",
+    "language": "cpp",
+    "category": "buffer-overflow-as-cwe-122",
+    "cwe": "CWE-122",
+    "file_path": "src/parser/parse_target.cpp",
+    "diff": "@@ -22,7 +22,7 @@ void parse_target(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-122-buffer-overflow-as-cwe-122-vuln-001",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-122",
+    "cwe": "CWE-122",
+    "file_path": "src/net/copy_request.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_request(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-122-buffer-overflow-as-cwe-122-safe-100",
+    "language": "c",
+    "category": "buffer-overflow-as-cwe-122",
+    "cwe": "CWE-122",
+    "file_path": "src/net/copy_target.c",
+    "diff": "@@ -18,8 +18,8 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-276-default-permissions-vuln-000",
+    "language": "python",
+    "category": "default-permissions",
+    "cwe": "CWE-276",
+    "file_path": "src/fs/write_data.py",
+    "diff": "@@ -7,7 +7,7 @@ def write_data(path: str, data: bytes) -> None:\n-    os.chmod(path, 0o600)\n+    os.chmod(path, 0o777)\n     with open(path, \"wb\") as f:\n         f.write(data)\n ",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-276-path-traversal-as-cwe-276-vuln-000",
+    "language": "typescript",
+    "category": "path-traversal-as-cwe-276",
+    "cwe": "CWE-276",
+    "file_path": "src/files/read_resource.ts",
+    "diff": "@@ -25,7 +25,7 @@ export async function read_resource(file: string): Promise<Buffer> {\n-  const safe = path.join('/data', path.basename(file));\n+  const safe = path.join('/data', file);\n   return fs.readFile(safe);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-276-default-permissions-vuln-001",
+    "language": "python",
+    "category": "default-permissions",
+    "cwe": "CWE-276",
+    "file_path": "src/fs/write_host.py",
+    "diff": "@@ -7,7 +7,7 @@ def write_host(path: str, data: bytes) -> None:\n-    os.chmod(path, 0o600)\n+    os.chmod(path, 0o777)\n     with open(path, \"wb\") as f:\n         f.write(data)\n ",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-276-default-permissions-safe-100",
+    "language": "python",
+    "category": "default-permissions",
+    "cwe": "CWE-276",
+    "file_path": "src/fs/write_data.py",
+    "diff": "@@ -7,7 +7,7 @@ def write_data(path: str, data: bytes) -> None:\n-    os.chmod(path, 0o600)\n+    os.chmod(path, 0o600)\n     with open(path, \"wb\") as f:\n         f.write(data)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-287-improper-auth-vuln-000",
+    "language": "typescript",
+    "category": "improper-auth",
+    "cwe": "CWE-287",
+    "file_path": "src/auth/session_config.ts",
+    "diff": "@@ -14,7 +14,6 @@ export function session_config(req: Request) {\n-  if (!req.headers.get('authorization')) return unauthorized();\n   return { userId: req.headers.get('x-user-id') };\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-287-idor-as-cwe-287-vuln-000",
+    "language": "javascript",
+    "category": "idor-as-cwe-287",
+    "cwe": "CWE-287",
+    "file_path": "src/api/get_path.js",
+    "diff": "@@ -33,7 +33,7 @@ router.get('/path/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-287-improper-auth-vuln-001",
+    "language": "typescript",
+    "category": "improper-auth",
+    "cwe": "CWE-287",
+    "file_path": "src/auth/session_order.ts",
+    "diff": "@@ -14,7 +14,6 @@ export function session_order(req: Request) {\n-  if (!req.headers.get('authorization')) return unauthorized();\n   return { userId: req.headers.get('x-user-id') };\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-287-improper-auth-safe-100",
+    "language": "typescript",
+    "category": "improper-auth",
+    "cwe": "CWE-287",
+    "file_path": "src/auth/session_config.ts",
+    "diff": "@@ -14,7 +14,8 @@ export function session_config(req: Request) {\n-  if (!req.headers.get('authorization')) return unauthorized();\n+  const token = req.headers.get('authorization');\n+  if (!token || !verifyBearer(token)) return unauthorized();\n   return { userId: req.headers.get('x-user-id') };\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-306-missing-auth-vuln-000",
+    "language": "python",
+    "category": "missing-auth",
+    "cwe": "CWE-306",
+    "file_path": "src/api/reset_profile.py",
+    "diff": "@@ -21,6 +21,7 @@ def reset_profile(user_id: str) -> None:\n+@app.post(\"/admin/reset\")\n+def reset_profile_handler(user_id: str) -> None:\n+    store.wipe(user_id)\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-306-missing-auth-vuln-001",
+    "language": "python",
+    "category": "missing-auth",
+    "cwe": "CWE-306",
+    "file_path": "src/api/reset_client.py",
+    "diff": "@@ -21,6 +21,7 @@ def reset_client(user_id: str) -> None:\n+@app.post(\"/admin/reset\")\n+def reset_client_handler(user_id: str) -> None:\n+    store.wipe(user_id)\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-306-missing-auth-vuln-002",
+    "language": "python",
+    "category": "missing-auth",
+    "cwe": "CWE-306",
+    "file_path": "src/api/reset_token.py",
+    "diff": "@@ -21,6 +21,7 @@ def reset_token(user_id: str) -> None:\n+@app.post(\"/admin/reset\")\n+def reset_token_handler(user_id: str) -> None:\n+    store.wipe(user_id)\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-306-missing-auth-safe-100",
+    "language": "python",
+    "category": "missing-auth",
+    "cwe": "CWE-306",
+    "file_path": "src/api/reset_profile.py",
+    "diff": "@@ -21,6 +21,8 @@ def reset_profile(user_id: str) -> None:\n+@app.post(\"/admin/reset\")\n+def reset_profile_handler(user_id: str, principal: Principal) -> None:\n+    require_admin(principal)\n+    store.wipe(user_id)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-611-xxe-vuln-000",
+    "language": "python",
+    "category": "xxe",
+    "cwe": "CWE-611",
+    "file_path": "src/xml/parse_payload.py",
+    "diff": "@@ -6,7 +6,7 @@ def parse_payload(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-611-xxe-vuln-001",
+    "language": "python",
+    "category": "xxe",
+    "cwe": "CWE-611",
+    "file_path": "src/xml/parse_account.py",
+    "diff": "@@ -6,7 +6,7 @@ def parse_account(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-611-xxe-vuln-002",
+    "language": "python",
+    "category": "xxe",
+    "cwe": "CWE-611",
+    "file_path": "src/xml/parse_data.py",
+    "diff": "@@ -6,7 +6,7 @@ def parse_data(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-611-xxe-safe-100",
+    "language": "python",
+    "category": "xxe",
+    "cwe": "CWE-611",
+    "file_path": "src/xml/parse_payload.py",
+    "diff": "@@ -6,7 +6,8 @@ def parse_payload(raw: str):\n-    return ET.fromstring(raw)\n+    parser = ET.XMLParser(resolve_entities=False)\n+    return ET.fromstring(raw, parser=parser)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-776-xxe-as-cwe-776-vuln-000",
+    "language": "python",
+    "category": "xxe-as-cwe-776",
+    "cwe": "CWE-776",
+    "file_path": "src/xml/parse_buffer.py",
+    "diff": "@@ -6,7 +6,7 @@ def parse_buffer(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-776-xxe-as-cwe-776-vuln-001",
+    "language": "python",
+    "category": "xxe-as-cwe-776",
+    "cwe": "CWE-776",
+    "file_path": "src/xml/parse_profile.py",
+    "diff": "@@ -6,7 +6,7 @@ def parse_profile(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-776-xxe-as-cwe-776-vuln-002",
+    "language": "python",
+    "category": "xxe-as-cwe-776",
+    "cwe": "CWE-776",
+    "file_path": "src/xml/parse_client.py",
+    "diff": "@@ -6,7 +6,7 @@ def parse_client(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-776-xxe-as-cwe-776-safe-100",
+    "language": "python",
+    "category": "xxe-as-cwe-776",
+    "cwe": "CWE-776",
+    "file_path": "src/xml/parse_buffer.py",
+    "diff": "@@ -6,7 +6,8 @@ def parse_buffer(raw: str):\n-    return ET.fromstring(raw)\n+    parser = ET.XMLParser(resolve_entities=False)\n+    return ET.fromstring(raw, parser=parser)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-829-eval-injection-as-cwe-829-vuln-000",
+    "language": "javascript",
+    "category": "eval-injection-as-cwe-829",
+    "cwe": "CWE-829",
+    "file_path": "src/rules/apply_resource.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_resource(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-829-eval-injection-as-cwe-829-vuln-001",
+    "language": "javascript",
+    "category": "eval-injection-as-cwe-829",
+    "cwe": "CWE-829",
+    "file_path": "src/rules/apply_payload.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_payload(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-829-eval-injection-as-cwe-829-vuln-002",
+    "language": "javascript",
+    "category": "eval-injection-as-cwe-829",
+    "cwe": "CWE-829",
+    "file_path": "src/rules/apply_account.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_account(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-829-eval-injection-as-cwe-829-safe-100",
+    "language": "javascript",
+    "category": "eval-injection-as-cwe-829",
+    "cwe": "CWE-829",
+    "file_path": "src/rules/apply_resource.js",
+    "diff": "@@ -15,7 +15,7 @@ export function apply_resource(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return safeEval(expr, ctx);\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-1333-redos-vuln-000",
+    "language": "javascript",
+    "category": "redos",
+    "cwe": "CWE-1333",
+    "file_path": "src/validate/match_resource.js",
+    "diff": "@@ -11,7 +11,7 @@ export function match_resource(input) {\n-  return /^[a-z]+$/i.test(input);\n+  return new RegExp('^(a+)+$').test(input);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-1333-redos-vuln-001",
+    "language": "javascript",
+    "category": "redos",
+    "cwe": "CWE-1333",
+    "file_path": "src/validate/match_payload.js",
+    "diff": "@@ -11,7 +11,7 @@ export function match_payload(input) {\n-  return /^[a-z]+$/i.test(input);\n+  return new RegExp('^(a+)+$').test(input);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-1333-redos-vuln-002",
+    "language": "javascript",
+    "category": "redos",
+    "cwe": "CWE-1333",
+    "file_path": "src/validate/match_account.js",
+    "diff": "@@ -11,7 +11,7 @@ export function match_account(input) {\n-  return /^[a-z]+$/i.test(input);\n+  return new RegExp('^(a+)+$').test(input);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-1333-redos-safe-100",
+    "language": "javascript",
+    "category": "redos",
+    "cwe": "CWE-1333",
+    "file_path": "src/validate/match_resource.js",
+    "diff": "@@ -11,7 +11,7 @@ export function match_resource(input) {\n-  return /^[a-z]+$/i.test(input);\n+  return /^[a-z]{1,64}$/i.test(input);\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-1336-ssti-as-cwe-1336-vuln-000",
+    "language": "python",
+    "category": "ssti-as-cwe-1336",
+    "cwe": "CWE-1336",
+    "file_path": "app/views/render_query.py",
+    "diff": "@@ -30,7 +30,7 @@ def render_query(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-1336-ssti-as-cwe-1336-vuln-001",
+    "language": "python",
+    "category": "ssti-as-cwe-1336",
+    "cwe": "CWE-1336",
+    "file_path": "app/views/render_buffer.py",
+    "diff": "@@ -30,7 +30,7 @@ def render_buffer(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-1336-ssti-as-cwe-1336-vuln-002",
+    "language": "python",
+    "category": "ssti-as-cwe-1336",
+    "cwe": "CWE-1336",
+    "file_path": "app/views/render_profile.py",
+    "diff": "@@ -30,7 +30,7 @@ def render_profile(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-1336-ssti-as-cwe-1336-safe-100",
+    "language": "python",
+    "category": "ssti-as-cwe-1336",
+    "cwe": "CWE-1336",
+    "file_path": "app/views/render_query.py",
+    "diff": "@@ -30,7 +30,8 @@ def render_query(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    env = SandboxedEnvironment()\n+    return env.from_string(template_str).render(**ctx)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-117-log-injection-vuln-000",
+    "language": "python",
+    "category": "log-injection",
+    "cwe": "CWE-117",
+    "file_path": "src/log/audit_config.py",
+    "diff": "@@ -9,7 +9,7 @@ def audit_config(user: str, action: str) -> None:\n-    logger.info(\"user=%s action=%s\", user, action)\n+    logger.info(f\"user={user} action={action}\")\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-117-log-injection-vuln-001",
+    "language": "python",
+    "category": "log-injection",
+    "cwe": "CWE-117",
+    "file_path": "src/log/audit_order.py",
+    "diff": "@@ -9,7 +9,7 @@ def audit_order(user: str, action: str) -> None:\n-    logger.info(\"user=%s action=%s\", user, action)\n+    logger.info(f\"user={user} action={action}\")\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-117-log-injection-vuln-002",
+    "language": "python",
+    "category": "log-injection",
+    "cwe": "CWE-117",
+    "file_path": "src/log/audit_record.py",
+    "diff": "@@ -9,7 +9,7 @@ def audit_record(user: str, action: str) -> None:\n-    logger.info(\"user=%s action=%s\", user, action)\n+    logger.info(f\"user={user} action={action}\")\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-117-log-injection-safe-100",
+    "language": "python",
+    "category": "log-injection",
+    "cwe": "CWE-117",
+    "file_path": "src/log/audit_config.py",
+    "diff": "@@ -9,7 +9,7 @@ def audit_config(user: str, action: str) -> None:\n-    logger.info(\"user=%s action=%s\", user, action)\n+    logger.info(\"user=%s action=%s\", user.replace(\"\\n\", \"\"), action)\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-209-type-assertion-bypass-as-cwe-209-vuln-000",
+    "language": "typescript",
+    "category": "type-assertion-bypass-as-cwe-209",
+    "cwe": "CWE-209",
+    "file_path": "src/middleware/admin_profile.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_profile(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-209-type-assertion-bypass-as-cwe-209-vuln-001",
+    "language": "typescript",
+    "category": "type-assertion-bypass-as-cwe-209",
+    "cwe": "CWE-209",
+    "file_path": "src/middleware/admin_client.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_client(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-209-type-assertion-bypass-as-cwe-209-vuln-002",
+    "language": "typescript",
+    "category": "type-assertion-bypass-as-cwe-209",
+    "cwe": "CWE-209",
+    "file_path": "src/middleware/admin_token.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_token(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-209-type-assertion-bypass-as-cwe-209-safe-100",
+    "language": "typescript",
+    "category": "type-assertion-bypass-as-cwe-209",
+    "cwe": "CWE-209",
+    "file_path": "src/middleware/admin_profile.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_profile(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n   return next();\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-532-hardcoded-secrets-as-cwe-532-vuln-000",
+    "language": "python",
+    "category": "hardcoded-secrets-as-cwe-532",
+    "cwe": "CWE-532",
+    "file_path": "app/config/settings_token.py",
+    "diff": "@@ -4,6 +4,7 @@ class Settings:\n     debug: bool = False\n+    stripe_key: str = \"sk_live_HARDCODED_IN_DIFF_ABC123\"\n \n     @classmethod",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-532-hardcoded-secrets-as-cwe-532-vuln-000",
+    "language": "typescript",
+    "category": "hardcoded-secrets-as-cwe-532",
+    "cwe": "CWE-532",
+    "file_path": "src/config/config_token.ts",
+    "diff": "@@ -3,7 +3,7 @@ export const config = {\n   port: 3000,\n-  apiKey: process.env.API_KEY ?? '',\n+  apiKey: 'sk_test_HARDCODED_KEY_IN_PR_DIFF_9e2f',\n } as const;\n ",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-532-hardcoded-secrets-as-cwe-532-vuln-001",
+    "language": "python",
+    "category": "hardcoded-secrets-as-cwe-532",
+    "cwe": "CWE-532",
+    "file_path": "app/config/settings_target.py",
+    "diff": "@@ -4,6 +4,7 @@ class Settings:\n     debug: bool = False\n+    stripe_key: str = \"sk_live_HARDCODED_IN_DIFF_ABC123\"\n \n     @classmethod",
+    "expected": [
+      {
+        "category": "secrets"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-532-hardcoded-secrets-as-cwe-532-safe-100",
+    "language": "python",
+    "category": "hardcoded-secrets-as-cwe-532",
+    "cwe": "CWE-532",
+    "file_path": "app/config/settings_token.py",
+    "diff": "@@ -4,6 +4,7 @@ class Settings:\n     debug: bool = False\n+    stripe_key: str = os.environ[\"STRIPE_KEY\"]\n \n     @classmethod",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "javascript-cwe-601-open-redirect-vuln-000",
+    "language": "javascript",
+    "category": "open-redirect",
+    "cwe": "CWE-601",
+    "file_path": "src/auth/login_config.js",
+    "diff": "@@ -22,7 +22,7 @@ export function login_config(req, res) {\n-  const next = req.query.next || '/home';\n+  const next = req.query.next;\n   res.redirect(next);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-601-open-redirect-vuln-001",
+    "language": "javascript",
+    "category": "open-redirect",
+    "cwe": "CWE-601",
+    "file_path": "src/auth/login_order.js",
+    "diff": "@@ -22,7 +22,7 @@ export function login_order(req, res) {\n-  const next = req.query.next || '/home';\n+  const next = req.query.next;\n   res.redirect(next);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-601-open-redirect-vuln-002",
+    "language": "javascript",
+    "category": "open-redirect",
+    "cwe": "CWE-601",
+    "file_path": "src/auth/login_record.js",
+    "diff": "@@ -22,7 +22,7 @@ export function login_record(req, res) {\n-  const next = req.query.next || '/home';\n+  const next = req.query.next;\n   res.redirect(next);\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-601-open-redirect-safe-100",
+    "language": "javascript",
+    "category": "open-redirect",
+    "cwe": "CWE-601",
+    "file_path": "src/auth/login_config.js",
+    "diff": "@@ -22,7 +22,8 @@ export function login_config(req, res) {\n-  const next = req.query.next || '/home';\n+  const next = safeRedirect(req.query.next);\n+  if (!next) return res.status(400).end();\n   res.redirect(next);\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-770-resource-exhaustion-vuln-000",
+    "language": "typescript",
+    "category": "resource-exhaustion",
+    "cwe": "CWE-770",
+    "file_path": "src/jobs/queue_data.ts",
+    "diff": "@@ -18,7 +18,6 @@ export function queue_data(items: unknown[]) {\n-  const MAX = 10_000;\n-  if (items.length > MAX) throw new Error('too many');\n   for (const item of items) workers.push(item);\n }\n ",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-770-resource-exhaustion-vuln-001",
+    "language": "typescript",
+    "category": "resource-exhaustion",
+    "cwe": "CWE-770",
+    "file_path": "src/jobs/queue_host.ts",
+    "diff": "@@ -18,7 +18,6 @@ export function queue_host(items: unknown[]) {\n-  const MAX = 10_000;\n-  if (items.length > MAX) throw new Error('too many');\n   for (const item of items) workers.push(item);\n }\n ",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-770-resource-exhaustion-vuln-002",
+    "language": "typescript",
+    "category": "resource-exhaustion",
+    "cwe": "CWE-770",
+    "file_path": "src/jobs/queue_path.ts",
+    "diff": "@@ -18,7 +18,6 @@ export function queue_path(items: unknown[]) {\n-  const MAX = 10_000;\n-  if (items.length > MAX) throw new Error('too many');\n   for (const item of items) workers.push(item);\n }\n ",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-770-resource-exhaustion-safe-100",
+    "language": "typescript",
+    "category": "resource-exhaustion",
+    "cwe": "CWE-770",
+    "file_path": "src/jobs/queue_data.ts",
+    "diff": "@@ -18,7 +18,8 @@ export function queue_data(items: unknown[]) {\n-  const MAX = 10_000;\n-  if (items.length > MAX) throw new Error('too many');\n+  const MAX = 10_000;\n+  if (items.length > MAX) throw new Error('too many');\n   for (const item of items) workers.push(item);\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-400-ssrf-as-cwe-400-vuln-000",
+    "language": "python",
+    "category": "ssrf-as-cwe-400",
+    "cwe": "CWE-400",
+    "file_path": "app/preview/fetch_path.py",
+    "diff": "@@ -19,7 +19,6 @@ def fetch_path(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-400-ssrf-as-cwe-400-vuln-000",
+    "language": "typescript",
+    "category": "ssrf-as-cwe-400",
+    "cwe": "CWE-400",
+    "file_path": "src/preview/proxy_path.ts",
+    "diff": "@@ -20,7 +20,6 @@ export async function proxy_path(target: string): Promise<string> {\n-  assertAllowedUrl(target);\n   const res = await fetch(target);\n   return res.text();\n }\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-400-ssrf-as-cwe-400-vuln-001",
+    "language": "python",
+    "category": "ssrf-as-cwe-400",
+    "cwe": "CWE-400",
+    "file_path": "app/preview/fetch_config.py",
+    "diff": "@@ -19,7 +19,6 @@ def fetch_config(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-400-ssrf-as-cwe-400-safe-100",
+    "language": "python",
+    "category": "ssrf-as-cwe-400",
+    "cwe": "CWE-400",
+    "file_path": "app/preview/fetch_path.py",
+    "diff": "@@ -19,7 +19,8 @@ def fetch_path(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    if not is_allowed(url):\n+        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "python-cwe-732-path-traversal-as-cwe-732-vuln-000",
+    "language": "python",
+    "category": "path-traversal-as-cwe-732",
+    "cwe": "CWE-732",
+    "file_path": "app/files/open_resource.py",
+    "diff": "@@ -23,7 +23,7 @@ def open_resource(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-cwe-732-path-traversal-as-cwe-732-vuln-000",
+    "language": "c",
+    "category": "path-traversal-as-cwe-732",
+    "cwe": "CWE-732",
+    "file_path": "src/fs/open_resource.c",
+    "diff": "@@ -30,7 +30,7 @@ FILE *open_resource(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-732-path-traversal-as-cwe-732-vuln-001",
+    "language": "python",
+    "category": "path-traversal-as-cwe-732",
+    "cwe": "CWE-732",
+    "file_path": "app/files/open_payload.py",
+    "diff": "@@ -23,7 +23,7 @@ def open_payload(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "python-cwe-732-path-traversal-as-cwe-732-safe-100",
+    "language": "python",
+    "category": "path-traversal-as-cwe-732",
+    "cwe": "CWE-732",
+    "file_path": "app/files/open_resource.py",
+    "diff": "@@ -23,7 +23,9 @@ def open_resource(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    base = os.path.basename(name)\n+    if \"..\" in name:\n+        raise ValueError(\"traversal\")\n+    safe = os.path.join(\"/data\", base)\n     return open(safe, \"rb\").read()\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-693-jwt-misuse-as-cwe-693-vuln-000",
+    "language": "typescript",
+    "category": "jwt-misuse-as-cwe-693",
+    "cwe": "CWE-693",
+    "file_path": "src/auth/parse_account.ts",
+    "diff": "@@ -31,7 +31,7 @@ export function parse_account(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.decode(token) as JwtPayload;\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "javascript-cwe-693-jwt-misuse-as-cwe-693-vuln-000",
+    "language": "javascript",
+    "category": "jwt-misuse-as-cwe-693",
+    "cwe": "CWE-693",
+    "file_path": "src/auth/verify_account.js",
+    "diff": "@@ -28,7 +28,7 @@ export function verify_account(token) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.decode(token);\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-693-jwt-misuse-as-cwe-693-vuln-001",
+    "language": "typescript",
+    "category": "jwt-misuse-as-cwe-693",
+    "cwe": "CWE-693",
+    "file_path": "src/auth/parse_data.ts",
+    "diff": "@@ -31,7 +31,7 @@ export function parse_data(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.decode(token) as JwtPayload;\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-693-jwt-misuse-as-cwe-693-safe-100",
+    "language": "typescript",
+    "category": "jwt-misuse-as-cwe-693",
+    "cwe": "CWE-693",
+    "file_path": "src/auth/parse_account.ts",
+    "diff": "@@ -31,7 +31,7 @@ export function parse_account(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n }\n ",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "typescript-cwe-704-type-assertion-bypass-as-cwe-704-vuln-000",
+    "language": "typescript",
+    "category": "type-assertion-bypass-as-cwe-704",
+    "cwe": "CWE-704",
+    "file_path": "src/middleware/admin_profile.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_profile(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-704-type-assertion-bypass-as-cwe-704-vuln-001",
+    "language": "typescript",
+    "category": "type-assertion-bypass-as-cwe-704",
+    "cwe": "CWE-704",
+    "file_path": "src/middleware/admin_client.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_client(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-704-type-assertion-bypass-as-cwe-704-vuln-002",
+    "language": "typescript",
+    "category": "type-assertion-bypass-as-cwe-704",
+    "cwe": "CWE-704",
+    "file_path": "src/middleware/admin_token.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_token(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+    "expected": [
+      {
+        "category": "authz"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "typescript-cwe-704-type-assertion-bypass-as-cwe-704-safe-100",
+    "language": "typescript",
+    "category": "type-assertion-bypass-as-cwe-704",
+    "cwe": "CWE-704",
+    "file_path": "src/middleware/admin_profile.ts",
+    "diff": "@@ -14,7 +14,7 @@ export function admin_profile(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n   return next();\n }\n ",
+    "expected": [],
+    "negative": true
+  }
+]

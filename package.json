@@ -11,7 +11,10 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "eval:models": "tsx scripts/eval-models.ts",
     "benchmark:generate": "tsx scripts/benchmarks/generate-multilang-corpus.ts",
-    "benchmark:cwe-inventory": "tsx scripts/benchmarks/cwe-inventory.ts"
+    "benchmark:cwe-inventory": "tsx scripts/benchmarks/cwe-inventory.ts",
+    "benchmark:cwe-enrich": "tsx scripts/benchmarks/cwe-enrich-mitre.ts",
+    "benchmark:cwe-scenarios": "tsx scripts/benchmarks/generate-cwe-scenarios.ts",
+    "benchmark:build-cwe-db": "tsx scripts/benchmarks/cwe-inventory.ts --write-snapshot && tsx scripts/benchmarks/cwe-enrich-mitre.ts && tsx scripts/benchmarks/generate-cwe-scenarios.ts"
   },
   "engines": {
     "node": ">=20"

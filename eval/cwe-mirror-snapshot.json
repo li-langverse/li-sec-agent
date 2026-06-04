@@ -1,0 +1,6834 @@
+{
+  "generated_at": "2026-06-04T04:41:53.056Z",
+  "manifest": {
+    "source_url": "https://cwe.mitre.org/data/xml/cwec_latest.xml.zip",
+    "sha256": "3976f599e5e5200219a3108bb896d06e2a88fbb293369e1883cb423a5e9d7d50",
+    "synced_at": "2026-06-03T07:54:12.951857+00:00",
+    "catalog": {
+      "name": "CWE",
+      "version": "4.20",
+      "date": "2026-04-30"
+    },
+    "weakness_count": 969,
+    "mitre_rest_api": "https://cwe-api.mitre.org/api/v1/"
+  },
+  "weaknesses": [
+    {
+      "id": 5,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 6,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 7,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 8,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 9,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 11,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 12,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 13,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 14,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 15,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 20,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 22,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 23,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 24,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 25,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 26,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 27,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 28,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 29,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 30,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 31,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 32,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 33,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 34,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 35,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 36,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 37,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 38,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 39,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 40,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 41,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 42,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 43,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 44,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 45,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 46,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 47,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 48,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 49,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 50,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 51,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 52,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 53,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 54,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 55,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 56,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 57,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 58,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 59,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 61,
+      "name": "",
+      "abstraction": "Compound",
+      "status": "Incomplete",
+      "structure": "Composite"
+    },
+    {
+      "id": 62,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 64,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 65,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 66,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 67,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 69,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 71,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 72,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 73,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 74,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 75,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 76,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 77,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 78,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 79,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 80,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 81,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 82,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 83,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 84,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 85,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 86,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 87,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 88,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 89,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 90,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 91,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 92,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 93,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 94,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 95,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 96,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 97,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 98,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 99,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 102,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 103,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 104,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 105,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 106,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 107,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 108,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 109,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 110,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 111,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 112,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 113,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 114,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 115,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 116,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 117,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 118,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 119,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 120,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 121,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 122,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 123,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 124,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 125,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 126,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 127,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 128,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 129,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 130,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 131,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 132,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 134,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 135,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 138,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 140,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 141,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 142,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 143,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 144,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 145,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 146,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 147,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 148,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 149,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 150,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 151,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 152,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 153,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 154,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 155,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 156,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 157,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 158,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 159,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 160,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 161,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 162,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 163,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 164,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 165,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 166,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 167,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 168,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 170,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 172,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 173,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 174,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 175,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 176,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 177,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 178,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 179,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 180,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 181,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 182,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 183,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 184,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 185,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 186,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 187,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 188,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 190,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 191,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 192,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 193,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 194,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 195,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 196,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 197,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 198,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 200,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 201,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 202,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 203,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 204,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 205,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 206,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 207,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 208,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 209,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 210,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 211,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 212,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 213,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 214,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 215,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 216,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 217,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 218,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 219,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 220,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 221,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 222,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 223,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 224,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 225,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 226,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 228,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 229,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 230,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 231,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 232,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 233,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 234,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 235,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 236,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 237,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 238,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 239,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 240,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 241,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 242,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 243,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 244,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 245,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 246,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 247,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 248,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 249,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 250,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 252,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 253,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 256,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 257,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 258,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 259,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 260,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 261,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 262,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 263,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 266,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 267,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 268,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 269,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 270,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 271,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 272,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 273,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 274,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 276,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 277,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 278,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 279,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 280,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 281,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 282,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 283,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 284,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 285,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 286,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 287,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 288,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 289,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 290,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 291,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 292,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 293,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 294,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 295,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 296,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 297,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 298,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 299,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 300,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 301,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 302,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 303,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 304,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 305,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 306,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 307,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 308,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 309,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 311,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 312,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 313,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 314,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 315,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 316,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 317,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 318,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 319,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 321,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 322,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 323,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 324,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 325,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 326,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 327,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 328,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 329,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 330,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 331,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 332,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 333,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 334,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 335,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 336,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 337,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 338,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 339,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 340,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 341,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 342,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 343,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 344,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 345,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 346,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 347,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 348,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 349,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 350,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 351,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 352,
+      "name": "",
+      "abstraction": "Compound",
+      "status": "Stable",
+      "structure": "Composite"
+    },
+    {
+      "id": 353,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 354,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 356,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 357,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 358,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 359,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 360,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 362,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 363,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 364,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 365,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 366,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 367,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 368,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 369,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 370,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 372,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 373,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 374,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 375,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 377,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 378,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 379,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 382,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 383,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 384,
+      "name": "",
+      "abstraction": "Compound",
+      "status": "Incomplete",
+      "structure": "Composite"
+    },
+    {
+      "id": 385,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 386,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 390,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 391,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 392,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 393,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 394,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 395,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 396,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 397,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 400,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 401,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 402,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 403,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 404,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 405,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 406,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 407,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 408,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 409,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 410,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 412,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 413,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 414,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 415,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 416,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 419,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 420,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 421,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 422,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 423,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 424,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 425,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 426,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 427,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 428,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 430,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 431,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 432,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 433,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 434,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 435,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 436,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 437,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 439,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 440,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 441,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 443,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 444,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 446,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 447,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 448,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 449,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 450,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 451,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 453,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 454,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 455,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 456,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 457,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 458,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 459,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 460,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 462,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 463,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 464,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 466,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 467,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 468,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 469,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 470,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 471,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 472,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 473,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 474,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 475,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 476,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 477,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 478,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 479,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 480,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 481,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 482,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 483,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 484,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 486,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 487,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 488,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 489,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 491,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 492,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 493,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 494,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 495,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 496,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 497,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 498,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 499,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 500,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 501,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 502,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 506,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 507,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 508,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 509,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 510,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 511,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 512,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 514,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 515,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 516,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 520,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 521,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 522,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 523,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 524,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 525,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 526,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 527,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 528,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 529,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 530,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 531,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 532,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 533,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 534,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 535,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 536,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 537,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 538,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 539,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 540,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 541,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 542,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 543,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 544,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 545,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 546,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 547,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 548,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 549,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 550,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 551,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 552,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 553,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 554,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 555,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 556,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 558,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 560,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 561,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 562,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 563,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 564,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 565,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 566,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 567,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 568,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 570,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 571,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 572,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 573,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 574,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 575,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 576,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 577,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 578,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 579,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 580,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 581,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 582,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 583,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 584,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 585,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 586,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 587,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 588,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 589,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 590,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 591,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 592,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 593,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 594,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 595,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 596,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 597,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 598,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 599,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 600,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 601,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 602,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 603,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 605,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 606,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 607,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 608,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 609,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 610,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 611,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 612,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 613,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 614,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 615,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 616,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 617,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 618,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 619,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 620,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 621,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 622,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 623,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 624,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 625,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 626,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 627,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 628,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 636,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 637,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 638,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 639,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 640,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 641,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 642,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 643,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 644,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 645,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 646,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 647,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 648,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 649,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 650,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 651,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 652,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 653,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 654,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 655,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 656,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 657,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 662,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 663,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 664,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 665,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 666,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 667,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 668,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 669,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 670,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 671,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 672,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 673,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 674,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 675,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 676,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 680,
+      "name": "",
+      "abstraction": "Compound",
+      "status": "Draft",
+      "structure": "Chain"
+    },
+    {
+      "id": 681,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 682,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 683,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 684,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 685,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 686,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 687,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 688,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 689,
+      "name": "",
+      "abstraction": "Compound",
+      "status": "Draft",
+      "structure": "Composite"
+    },
+    {
+      "id": 690,
+      "name": "",
+      "abstraction": "Compound",
+      "status": "Draft",
+      "structure": "Chain"
+    },
+    {
+      "id": 691,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 692,
+      "name": "",
+      "abstraction": "Compound",
+      "status": "Draft",
+      "structure": "Chain"
+    },
+    {
+      "id": 693,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 694,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 695,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 696,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 697,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 698,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 703,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 704,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 705,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 706,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 707,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 708,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 710,
+      "name": "",
+      "abstraction": "Pillar",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 732,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 733,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 749,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 754,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 755,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 756,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 757,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 758,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 759,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 760,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 761,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 762,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 763,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 764,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 765,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 766,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 767,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 768,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 769,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 770,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 771,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 772,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 773,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 774,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 775,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 776,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 777,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 778,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 779,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 780,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 781,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 782,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 783,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 784,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 785,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 786,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 787,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 788,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 789,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 790,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 791,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 792,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 793,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 794,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 795,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 796,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 797,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 798,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 799,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 804,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 805,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 806,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 807,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 820,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 821,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 822,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 823,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 824,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 825,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 826,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 827,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 828,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 829,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 830,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 831,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 832,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 833,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 834,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 835,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 836,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 837,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 838,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 839,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 841,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 842,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 843,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 862,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 863,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 908,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 909,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 910,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 911,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 912,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 913,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 914,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 915,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 916,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 917,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 918,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 920,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 921,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 922,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 923,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 924,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 925,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 926,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 927,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 939,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 940,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 941,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 942,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 943,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1004,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1007,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1021,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1022,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1023,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1024,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1025,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1037,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1038,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1039,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1041,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1042,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1043,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1044,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1045,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1046,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1047,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1048,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1049,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1050,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1051,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1052,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1053,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1054,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1055,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1056,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1057,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1058,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1059,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1060,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1061,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1062,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1063,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1064,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1065,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1066,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1067,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1068,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1069,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1070,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1071,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1072,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1073,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1074,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1075,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1076,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1077,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1078,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1079,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1080,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1082,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1083,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1084,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1085,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1086,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1087,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1088,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1089,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1090,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1091,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1092,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1093,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1094,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1095,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1096,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1097,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1098,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1099,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1100,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1101,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1102,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1103,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1104,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1105,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1106,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1107,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1108,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1109,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1110,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1111,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1112,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1113,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1114,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1115,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1116,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1117,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1118,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1119,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1120,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1121,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1122,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1123,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1124,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1125,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1126,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1127,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1164,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1173,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1174,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1176,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1177,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1187,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 1188,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1189,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1190,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1191,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1192,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1193,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1204,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1209,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1220,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1221,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1222,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1223,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1224,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1229,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1230,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1231,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1232,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1233,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1234,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1235,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1236,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1239,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1240,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1241,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1242,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1243,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1244,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1245,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1246,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1247,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1248,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1249,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1250,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1251,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1252,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1253,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1254,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1255,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1256,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1257,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1258,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1259,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1260,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1261,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1262,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1263,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1264,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1265,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1266,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1267,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1268,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1269,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1270,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1271,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1272,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1273,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1274,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1275,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1276,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1277,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1278,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1279,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1280,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1281,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1282,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1283,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1284,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1285,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1286,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1287,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1288,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1289,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1290,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1291,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1292,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1293,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1294,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1295,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1296,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1297,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1298,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1299,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1300,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1301,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1302,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1303,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1304,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1310,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1311,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1312,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1313,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1314,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1315,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1316,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1317,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1318,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1319,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1320,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1321,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1322,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1323,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1324,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Deprecated",
+      "structure": "Simple"
+    },
+    {
+      "id": 1325,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1326,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1327,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1328,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1329,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1330,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1331,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1332,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Stable",
+      "structure": "Simple"
+    },
+    {
+      "id": 1333,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1334,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1335,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1336,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1338,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1339,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    },
+    {
+      "id": 1341,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1342,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1351,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1357,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1384,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1385,
+      "name": "",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1386,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1389,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1390,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1391,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1392,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1393,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1394,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1395,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1419,
+      "name": "",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1420,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1421,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1422,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1423,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1426,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1427,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1428,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1429,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1431,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "structure": "Simple"
+    },
+    {
+      "id": 1434,
+      "name": "",
+      "abstraction": "Base",
+      "status": "Draft",
+      "structure": "Simple"
+    }
+  ],
+  "report": {
+    "mirror": "https://cwe.klaut.pro",
+    "catalog": {
+      "name": "CWE",
+      "version": "4.20",
+      "date": "2026-04-30"
+    },
+    "synced_at": "2026-06-03T07:54:12.951857+00:00",
+    "sha256": "3976f599e5e5200219a3108bb896d06e2a88fbb293369e1883cb423a5e9d7d50",
+    "weakness_count_manifest": 969,
+    "weakness_count_fetched": 969,
+    "mitre_rest_api": "https://cwe-api.mitre.org/api/v1/",
+    "abstraction": {
+      "Variant": 299,
+      "Base": 539,
+      "Class": 114,
+      "Compound": 7,
+      "Pillar": 10
+    },
+    "status": {
+      "Draft": 432,
+      "Incomplete": 486,
+      "Stable": 26,
+      "Deprecated": 25
+    },
+    "structure": {
+      "Simple": 962,
+      "Composite": 4,
+      "Chain": 3
+    },
+    "index_names_populated": 0,
+    "index_names_empty": 969,
+    "note": "Mirror is CWE taxonomy only (no CVE/exploit records). Names in weaknesses.json may be empty — enrich via MITRE REST."
+  }
+}

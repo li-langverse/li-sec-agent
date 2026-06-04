@@ -78,6 +78,22 @@ async function main(): Promise<void> {
   };
 
   console.log(JSON.stringify(report, null, 2));
+
+  if (process.env.WRITE_SNAPSHOT === "1" || process.argv.includes("--write-snapshot")) {
+    const { writeFileSync } = await import("node:fs");
+    const { join, dirname } = await import("node:path");
+    const { fileURLToPath } = await import("node:url");
+    const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+    const snapshot = {
+      generated_at: new Date().toISOString(),
+      manifest,
+      weaknesses,
+      report,
+    };
+    const out = join(root, "eval", "cwe-mirror-snapshot.json");
+    writeFileSync(out, JSON.stringify(snapshot, null, 2) + "\n", "utf8");
+    console.log(`Wrote snapshot -> ${out}`);
+  }
 }
 
 main().catch((err) => {

@@ -441,7 +441,7 @@ async function main(): Promise<void> {
     console.log(`Benchmark mode: combined (${legacy.length} legacy + ${multi.length} multilang -> ${cases.length})`);
   } else if (process.env.BENCHMARK_PATH) {
     cases = JSON.parse(readFileSync(multilangPath, "utf8")) as BenchmarkCase[];
-    console.log(`Benchmark file: ${multilangPath}`);
+    console.log(`Benchmark file: ${multilangPath} (${cases.length} cases)`);
   } else {
     cases = JSON.parse(readFileSync(legacyPath, "utf8")) as BenchmarkCase[];
     console.log(`Benchmark file: ${legacyPath}`);

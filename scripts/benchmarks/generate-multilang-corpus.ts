@@ -69,9 +69,9 @@ function slug(s: string): string {
   return s.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase();
 }
 
-type TemplateCtx = { seed: number; lang: Language; variant: number; name: string };
+export type TemplateCtx = { seed: number; lang: Language; variant: number; name: string };
 
-type CaseTemplate = {
+export type CaseTemplate = {
   category: string;
   cwe?: string;
   harness: HarnessCategory;
@@ -90,7 +90,7 @@ function makeId(lang: Language, category: string, variant: number, negative: boo
   return `${lang}-${slug(category)}-${prefix}-${String(variant).padStart(3, "0")}`;
 }
 
-function buildCase(
+export function buildCase(
   lang: Language,
   tpl: CaseTemplate,
   variant: number,
@@ -1318,7 +1318,7 @@ const TS_TEMPLATES: CaseTemplate[] = [
   },
 ];
 
-const TEMPLATE_BY_LANG: Record<Language, CaseTemplate[]> = {
+export const TEMPLATE_BY_LANG: Record<Language, CaseTemplate[]> = {
   c: C_TEMPLATES,
   cpp: CPP_TEMPLATES,
   rust: RUST_TEMPLATES,

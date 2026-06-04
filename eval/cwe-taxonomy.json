@@ -1,0 +1,1429 @@
+{
+  "version": 1,
+  "generated_at": "2026-06-04T04:41:30.603Z",
+  "source": "https://cwe-api.mitre.org/api/v1/cwe/weakness/{id}",
+  "entry_count": 50,
+  "entries": [
+    {
+      "id": 787,
+      "cwe_id": "CWE-787",
+      "name": "Out-of-bounds Write",
+      "description": "The product writes data past the end, or before the beginning, of the intended buffer.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 79,
+      "cwe_id": "CWE-79",
+      "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "abstraction": "Base",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-74"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-74"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-494"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-352"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 89,
+      "cwe_id": "CWE-89",
+      "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+      "description": "The product constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component. Without sufficient removal or quoting of SQL syntax in user-controllable inputs, the generated SQL query can cause those inputs to be interpreted as SQL instead of ordinary user data.",
+      "abstraction": "Base",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-943"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-74"
+        }
+      ],
+      "applicable_languages": [
+        "sql"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 416,
+      "cwe_id": "CWE-416",
+      "name": "Use After Free",
+      "description": "The product reuses or references memory after it has been freed. At some point afterward, the memory may be allocated again and saved in another pointer, while the original pointer references a location somewhere within the new allocation. Any operations using the original pointer are no longer valid because the memory \"belongs\" to the code that operates on the new pointer.",
+      "abstraction": "Variant",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-825"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-672"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-672"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-672"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-120"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-123"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 78,
+      "cwe_id": "CWE-78",
+      "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+      "description": "The product constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
+      "abstraction": "Base",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-77"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-74"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-77"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-77"
+        },
+        {
+          "nature": "CanAlsoBe",
+          "cwe_id": "CWE-88"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 20,
+      "cwe_id": "CWE-20",
+      "name": "Improper Input Validation",
+      "description": "The product receives input or data, but it does\n        not validate or incorrectly validates that the input has the\n        properties that are required to process the data safely and\n        correctly.",
+      "abstraction": "Class",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-707"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-345"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-22"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-41"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-74"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-119"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-770"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection",
+        "other"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 125,
+      "cwe_id": "CWE-125",
+      "name": "Out-of-bounds Read",
+      "description": "The product reads data past the end, or before the beginning, of the intended buffer.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 22,
+      "cwe_id": "CWE-22",
+      "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "description": "The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "abstraction": "Base",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-706"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-706"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-668"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "other"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 352,
+      "cwe_id": "CWE-352",
+      "name": "Cross-Site Request Forgery (CSRF)",
+      "description": "The web application does not, or cannot, sufficiently verify whether a request was intentionally provided by the user who sent the request, which could have originated from an unauthorized actor. ",
+      "abstraction": "Compound",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-345"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-345"
+        },
+        {
+          "nature": "Requires",
+          "cwe_id": "CWE-346"
+        },
+        {
+          "nature": "Requires",
+          "cwe_id": "CWE-441"
+        },
+        {
+          "nature": "Requires",
+          "cwe_id": "CWE-642"
+        },
+        {
+          "nature": "Requires",
+          "cwe_id": "CWE-613"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "authz"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 502,
+      "cwe_id": "CWE-502",
+      "name": "Deserialization of Untrusted Data",
+      "description": "The product deserializes untrusted data without sufficiently ensuring that the resulting data will be valid.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-913"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-913"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-915"
+        }
+      ],
+      "applicable_languages": [
+        "java",
+        "javascript",
+        "php",
+        "python",
+        "ruby"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 476,
+      "cwe_id": "CWE-476",
+      "name": "NULL Pointer Dereference",
+      "description": "The product dereferences a pointer that it expects to be valid but is NULL.",
+      "abstraction": "Base",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-710"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-754"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-754"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c#",
+        "c++",
+        "go",
+        "java"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 190,
+      "cwe_id": "CWE-190",
+      "name": "Integer Overflow or Wraparound",
+      "description": "The product performs a calculation that can\n         produce an integer overflow or wraparound when the logic\n         assumes that the resulting value will always be larger than\n         the original value. This occurs when an integer value is\n         incremented to a value that is too large to store in the\n         associated representation. When this occurs, the value may\n         become a very small or negative number.",
+      "abstraction": "Base",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-682"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-682"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-20"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-119"
+        }
+      ],
+      "applicable_languages": [
+        "c"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 798,
+      "cwe_id": "CWE-798",
+      "name": "Use of Hard-coded Credentials",
+      "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-1391"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-287"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-344"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-671"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-257"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "secrets"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 918,
+      "cwe_id": "CWE-918",
+      "name": "Server-Side Request Forgery (SSRF)",
+      "description": "The web server receives a URL or similar request from an upstream component and retrieves the contents of this URL, but it does not sufficiently ensure that the request is being sent to the expected destination.",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-441"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-610"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 1321,
+      "cwe_id": "CWE-1321",
+      "name": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')",
+      "description": "The product receives input from an upstream component that specifies attributes that are to be initialized or updated in an object, but it does not properly control modifications of attributes of the object prototype.",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-915"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-913"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-471"
+        }
+      ],
+      "applicable_languages": [
+        "javascript"
+      ],
+      "mapped_categories": [
+        "other"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": 434,
+      "cwe_id": "CWE-434",
+      "name": "Unrestricted Upload of File with Dangerous Type",
+      "description": "The product allows the upload or transfer of dangerous file types that are automatically processed within its environment.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-669"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-669"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-351"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-436"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-430"
+        }
+      ],
+      "applicable_languages": [
+        "asp.net",
+        "php"
+      ],
+      "mapped_categories": [
+        "other"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 862,
+      "cwe_id": "CWE-862",
+      "name": "Missing Authorization",
+      "description": "The product does not perform an authorization check when an actor attempts to access a resource or perform an action.",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-285"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-284"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "authz"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 863,
+      "cwe_id": "CWE-863",
+      "name": "Incorrect Authorization",
+      "description": "The product performs an authorization check when an actor attempts to access a resource or perform an action, but it does not correctly perform the check.",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-285"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-284"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "authz"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 639,
+      "cwe_id": "CWE-639",
+      "name": "Authorization Bypass Through User-Controlled Key",
+      "description": "The system's authorization functionality does not prevent one user from gaining access to another user's data or record by modifying the key value identifying the data.",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-863"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-863"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-284"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "authz"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 347,
+      "cwe_id": "CWE-347",
+      "name": "Improper Verification of Cryptographic Signature",
+      "description": "The product does not verify, or incorrectly verifies, the cryptographic signature for data.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-345"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-345"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "crypto"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 326,
+      "cwe_id": "CWE-326",
+      "name": "Inadequate Encryption Strength",
+      "description": "The product stores or transmits sensitive data using an encryption scheme that is theoretically sound, but is not strong enough for the level of protection required.",
+      "abstraction": "Class",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-693"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "crypto"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 327,
+      "cwe_id": "CWE-327",
+      "name": "Use of a Broken or Risky Cryptographic Algorithm",
+      "description": "The product uses a broken or risky cryptographic algorithm or protocol.",
+      "abstraction": "Class",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-693"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-311"
+        }
+      ],
+      "applicable_languages": [
+        "verilog",
+        "vhdl"
+      ],
+      "mapped_categories": [
+        "crypto"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 259,
+      "cwe_id": "CWE-259",
+      "name": "Use of Hard-coded Password",
+      "description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-798"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-798"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-798"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-321"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-257"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "secrets"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 94,
+      "cwe_id": "CWE-94",
+      "name": "Improper Control of Generation of Code ('Code Injection')",
+      "description": "The product constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-74"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-74"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-913"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 95,
+      "cwe_id": "CWE-95",
+      "name": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
+      "description": "The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes code syntax before using the input in a dynamic evaluation call (e.g. \"eval\").",
+      "abstraction": "Variant",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-94"
+        }
+      ],
+      "applicable_languages": [
+        "java",
+        "javascript",
+        "perl",
+        "php",
+        "python",
+        "ruby"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 943,
+      "cwe_id": "CWE-943",
+      "name": "Improper Neutralization of Special Elements in Data Query Logic",
+      "description": "The product generates a query intended to access or manipulate data in a data store such as a database, but it does not neutralize or incorrectly neutralizes special elements that can modify the intended logic of the query.",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-74"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 134,
+      "cwe_id": "CWE-134",
+      "name": "Use of Externally-Controlled Format String",
+      "description": "The product uses a function that accepts a format string as an argument, but the format string originates from an external source.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-668"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-668"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-123"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-20"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "perl"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 415,
+      "cwe_id": "CWE-415",
+      "name": "Double Free",
+      "description": "The product calls free() twice on the same memory address.",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-825"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-1341"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-672"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-672"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-672"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-666"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-416"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-123"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 754,
+      "cwe_id": "CWE-754",
+      "name": "Improper Check for Unusual or Exceptional Conditions",
+      "description": "The product does not check or incorrectly checks for unusual or exceptional conditions that are not expected to occur frequently during day to day operation of the product.",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-703"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-416"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "other"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 119,
+      "cwe_id": "CWE-119",
+      "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "description": "The product performs operations on a memory buffer, but it reads from or writes to a memory location outside the buffer's intended boundary. This may result in read or write operations on unexpected memory locations that could be linked to other variables, data structures, or internal program data.",
+      "abstraction": "Class",
+      "status": "Stable",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-118"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-20"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 120,
+      "cwe_id": "CWE-120",
+      "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')",
+      "description": "The product copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer.",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-787"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-119"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-787"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-787"
+        },
+        {
+          "nature": "CanPrecede",
+          "cwe_id": "CWE-123"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-20"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 121,
+      "cwe_id": "CWE-121",
+      "name": "Stack-based Buffer Overflow",
+      "description": "A stack-based buffer overflow condition is a condition where the buffer being overwritten is allocated on the stack (i.e., is a local variable or, rarely, a parameter to a function).",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-788"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-787"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 122,
+      "cwe_id": "CWE-122",
+      "name": "Heap-based Buffer Overflow",
+      "description": "A heap overflow condition is a buffer overflow, where the buffer that can be overwritten is allocated in the heap portion of memory, generally meaning that the buffer was allocated using a routine such as malloc().",
+      "abstraction": "Variant",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-788"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-787"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 276,
+      "cwe_id": "CWE-276",
+      "name": "Incorrect Default Permissions",
+      "description": "During installation, installed file permissions are set to allow anyone to modify those files.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-732"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-732"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "config"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 287,
+      "cwe_id": "CWE-287",
+      "name": "Improper Authentication",
+      "description": "When an actor claims to have a given identity, the product does not prove or insufficiently proves that the claim is correct.",
+      "abstraction": "Class",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-284"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-284"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "authz"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 306,
+      "cwe_id": "CWE-306",
+      "name": "Missing Authentication for Critical Function",
+      "description": "The product does not perform any authentication for functionality that requires a provable user identity or consumes a significant amount of resources.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-287"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-287"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "authz"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 611,
+      "cwe_id": "CWE-611",
+      "name": "Improper Restriction of XML External Entity Reference",
+      "description": "The product processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-610"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-610"
+        },
+        {
+          "nature": "PeerOf",
+          "cwe_id": "CWE-441"
+        }
+      ],
+      "applicable_languages": [
+        "xml"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 776,
+      "cwe_id": "CWE-776",
+      "name": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
+      "description": "The product uses XML documents and allows their structure to be defined with a Document Type Definition (DTD), but it does not properly control the number of recursive definitions of entities.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-674"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-674"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-405"
+        }
+      ],
+      "applicable_languages": [
+        "xml"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": 829,
+      "cwe_id": "CWE-829",
+      "name": "Inclusion of Functionality from Untrusted Control Sphere",
+      "description": "The product imports, requires, or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-669"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-669"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "dependency"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 1333,
+      "cwe_id": "CWE-1333",
+      "name": "Inefficient Regular Expression Complexity",
+      "description": "The product uses a regular expression with a worst-case computational complexity that is inefficient and possibly exponential.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-407"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-407"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 1336,
+      "cwe_id": "CWE-1336",
+      "name": "Improper Neutralization of Special Elements Used in a Template Engine",
+      "description": "The product uses a template engine to insert or process externally-influenced input, but it does not neutralize or incorrectly neutralizes special elements or syntax that can be interpreted as template expressions or other code directives when processed by the engine.",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-94"
+        }
+      ],
+      "applicable_languages": [
+        "java",
+        "javascript",
+        "php",
+        "python"
+      ],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 117,
+      "cwe_id": "CWE-117",
+      "name": "Improper Output Neutralization for Logs",
+      "description": "The product constructs a log message from external input, but it does not neutralize or incorrectly neutralizes special elements when the message is written to a log file.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-116"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-20"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 209,
+      "cwe_id": "CWE-209",
+      "name": "Generation of Error Message Containing Sensitive Information",
+      "description": "The product generates an error message that includes sensitive information about its environment, users, or associated data.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-200"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-200"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-755"
+        }
+      ],
+      "applicable_languages": [
+        "java",
+        "php"
+      ],
+      "mapped_categories": [
+        "config"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 532,
+      "cwe_id": "CWE-532",
+      "name": "Insertion of Sensitive Information into Log File",
+      "description": "The product writes sensitive information to a log file.",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-538"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-200"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "secrets"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 601,
+      "cwe_id": "CWE-601",
+      "name": "URL Redirection to Untrusted Site ('Open Redirect')",
+      "description": "The web application accepts a user-controlled input that specifies a link to an external site, and uses that link in a redirect.",
+      "abstraction": "Base",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-610"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-610"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "injection"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 770,
+      "cwe_id": "CWE-770",
+      "name": "Allocation of Resources Without Limits or Throttling",
+      "description": "The product allocates a reusable resource or group of resources on behalf of an actor without imposing any intended restrictions on the size or number of resources that can be allocated.",
+      "abstraction": "Base",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-400"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-665"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-400"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "config"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 400,
+      "cwe_id": "CWE-400",
+      "name": "Uncontrolled Resource Consumption",
+      "description": "The product does not properly control the allocation and maintenance of a limited resource.",
+      "abstraction": "Class",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-664"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "config"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 732,
+      "cwe_id": "CWE-732",
+      "name": "Incorrect Permission Assignment for Critical Resource",
+      "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+      "abstraction": "Class",
+      "status": "Draft",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-285"
+        },
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-668"
+        }
+      ],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "config"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 693,
+      "cwe_id": "CWE-693",
+      "name": "Protection Mechanism Failure",
+      "description": "The product does not use or incorrectly uses a protection mechanism that provides sufficient defense against directed attacks against the product.",
+      "abstraction": "Pillar",
+      "status": "Draft",
+      "related_weaknesses": [],
+      "applicable_languages": [],
+      "mapped_categories": [
+        "config"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": 704,
+      "cwe_id": "CWE-704",
+      "name": "Incorrect Type Conversion or Cast",
+      "description": "The product does not correctly convert an object, resource, or structure from one type to a different type.",
+      "abstraction": "Class",
+      "status": "Incomplete",
+      "related_weaknesses": [
+        {
+          "nature": "ChildOf",
+          "cwe_id": "CWE-664"
+        }
+      ],
+      "applicable_languages": [
+        "c",
+        "c++",
+        "cpp"
+      ],
+      "mapped_categories": [
+        "config"
+      ],
+      "priority": "P2"
+    }
+  ]
+}

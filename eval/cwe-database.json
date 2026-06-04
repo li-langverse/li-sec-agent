@@ -1,0 +1,3903 @@
+{
+  "version": 1,
+  "generated_at": "2026-06-04T04:41:48.895Z",
+  "cwe_entries": [
+    {
+      "cwe_id": "CWE-787",
+      "name": "Out-of-bounds Write",
+      "priority": "P0",
+      "languages": [
+        "c",
+        "cpp",
+        "rust"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-787-buffer-overflow-vuln-000",
+          "title": "buffer-overflow",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_path(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-787",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-787-buffer-overflow-vuln-000",
+          "title": "buffer-overflow",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ void parse_path(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-787",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-787-unsafe-misuse-vuln-000",
+          "title": "unsafe-misuse",
+          "language": "rust",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ pub fn copy_config(src: &[u8], dst: &mut [u8]) {\n     unsafe {\n-        let n = src.len().min(dst.len());\n-        std::ptr::copy_nonoverlapping(src.as_ptr(), dst.as_mut_ptr(), n);\n+        std::ptr::copy(src.as_ptr(), dst.as_mut_ptr(), src.len());\n     }\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-787",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-787-buffer-overflow-vuln-001",
+          "title": "buffer-overflow",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_config(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-787",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-787-buffer-overflow-vuln-001",
+          "title": "buffer-overflow",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ void parse_config(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-787",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-787-buffer-overflow-safe-100",
+          "title": "buffer-overflow",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,8 @@ int copy_path(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-787",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-79",
+      "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "priority": "P0",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-79-xss-vuln-000",
+          "title": "xss",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -18,7 +18,7 @@ export function show_payload(el, value) {\n-  el.textContent = value;\n+  el.innerHTML = value;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-79",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-79-xss-vuln-000",
+          "title": "xss",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -12,7 +12,7 @@ export function Bio_payload({ html }: { html: string }) {\n-  return <p>{html}</p>;\n+  return <div dangerouslySetInnerHTML={{ __html: html }} />;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-79",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-79-xss-vuln-001",
+          "title": "xss",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -18,7 +18,7 @@ export function show_account(el, value) {\n-  el.textContent = value;\n+  el.innerHTML = value;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-79",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-79-xss-vuln-001",
+          "title": "xss",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -12,7 +12,7 @@ export function Bio_account({ html }: { html: string }) {\n-  return <p>{html}</p>;\n+  return <div dangerouslySetInnerHTML={{ __html: html }} />;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-79",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-79-xss-vuln-002",
+          "title": "xss",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -18,7 +18,7 @@ export function show_data(el, value) {\n-  el.textContent = value;\n+  el.innerHTML = value;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-79",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-79-xss-safe-100",
+          "title": "xss",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -18,7 +18,7 @@ export function show_payload(el, value) {\n-  el.textContent = value;\n+  el.textContent = escapeHtml(value);\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-79",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-89",
+      "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+      "priority": "P0",
+      "languages": [
+        "python",
+        "rust",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-89-sql-injection-vuln-000",
+          "title": "sql-injection",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ def get_config(conn, user_id: str):\n     cur = conn.cursor()\n-    cur.execute(\"SELECT * FROM accounts WHERE id = %s\", (user_id,))\n+    cur.execute(f\"SELECT * FROM accounts WHERE id = '{user_id}'\")\n     return cur.fetchone()\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-89",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-89-sql-injection-vuln-000",
+          "title": "sql-injection",
+          "language": "rust",
+          "category": "injection",
+          "diff": "@@ -21,7 +21,7 @@ pub async fn find_config(pool: &PgPool, id: &str) -> Result<User> {\n-    sqlx::query_as!(User, \"SELECT * FROM users WHERE id = $1\", id)\n+    sqlx::query_as!(User, &format!(\"SELECT * FROM users WHERE id = '{}'\", id))\n         .fetch_one(pool)\n         .await\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-89",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-89-sql-injection-vuln-000",
+          "title": "sql-injection",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -16,7 +16,7 @@ export async function find_config(name: string) {\n-  return db.query<User>('SELECT * FROM users WHERE name = $1', [name]);\n+  return db.query<User>(`SELECT * FROM users WHERE name = '${name}'`);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-89",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-89-sql-injection-vuln-001",
+          "title": "sql-injection",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ def get_order(conn, user_id: str):\n     cur = conn.cursor()\n-    cur.execute(\"SELECT * FROM accounts WHERE id = %s\", (user_id,))\n+    cur.execute(f\"SELECT * FROM accounts WHERE id = '{user_id}'\")\n     return cur.fetchone()\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-89",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-89-sql-injection-vuln-001",
+          "title": "sql-injection",
+          "language": "rust",
+          "category": "injection",
+          "diff": "@@ -21,7 +21,7 @@ pub async fn find_order(pool: &PgPool, id: &str) -> Result<User> {\n-    sqlx::query_as!(User, \"SELECT * FROM users WHERE id = $1\", id)\n+    sqlx::query_as!(User, &format!(\"SELECT * FROM users WHERE id = '{}'\", id))\n         .fetch_one(pool)\n         .await\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-89",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-89-sql-injection-safe-100",
+          "title": "sql-injection",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ def get_config(conn, user_id: str):\n     cur = conn.cursor()\n-    cur.execute(\"SELECT * FROM accounts WHERE id = %s\", (user_id,))\n+    cur.execute(\"SELECT * FROM accounts WHERE id = %s\", (user_id,))\n     return cur.fetchone()\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-89",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-416",
+      "name": "Use After Free",
+      "priority": "P0",
+      "languages": [
+        "c",
+        "cpp"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-416-use-after-free-vuln-000",
+          "title": "use-after-free",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -44,9 +44,8 @@ const char *cache_buffer(struct entry *e) {\n   free(e->payload);\n-  e->payload = strdup(\"ok\");\n-  return e->payload;\n+  return e->payload;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-416",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-416-iterator-invalidation-vuln-000",
+          "title": "iterator-invalidation",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -31,8 +31,7 @@ void erase_account(std::vector<Item> &items, size_t idx) {\n   auto it = items.begin() + idx;\n   items.erase(it);\n-  process(*it);\n+  process(items[idx]);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-416",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-416-use-after-free-vuln-001",
+          "title": "use-after-free",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -44,9 +44,8 @@ const char *cache_profile(struct entry *e) {\n   free(e->payload);\n-  e->payload = strdup(\"ok\");\n-  return e->payload;\n+  return e->payload;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-416",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-416-iterator-invalidation-vuln-001",
+          "title": "iterator-invalidation",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -31,8 +31,7 @@ void erase_data(std::vector<Item> &items, size_t idx) {\n   auto it = items.begin() + idx;\n   items.erase(it);\n-  process(*it);\n+  process(items[idx]);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-416",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-416-use-after-free-vuln-002",
+          "title": "use-after-free",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -44,9 +44,8 @@ const char *cache_client(struct entry *e) {\n   free(e->payload);\n-  e->payload = strdup(\"ok\");\n-  return e->payload;\n+  return e->payload;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-416",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-416-use-after-free-safe-100",
+          "title": "use-after-free",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -44,9 +44,9 @@ const char *cache_buffer(struct entry *e) {\n   free(e->payload);\n-  e->payload = strdup(\"ok\");\n-  return e->payload;\n+  e->payload = strdup(\"ok\");\n+  if (!e->payload) return NULL;\n+  return e->payload;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-416",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-78",
+      "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+      "priority": "P0",
+      "languages": [
+        "c",
+        "cpp",
+        "rust",
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-78-command-injection-vuln-000",
+          "title": "command-injection",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ int run_host(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  sprintf(cmd, \"convert %s out.png\", filename);\n   return system(cmd);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-78",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-78-command-injection-vuln-000",
+          "title": "command-injection",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -19,7 +19,7 @@ int compress_host(const std::string &file) {\n-  return std::system((\"gzip \" + shell_escape(file)).c_str());\n+  return std::system((\"gzip \" + file).c_str());\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-78",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-78-command-injection-vuln-000",
+          "title": "command-injection",
+          "language": "rust",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ pub fn render_host(path: &str) -> std::io::Result<()> {\n-    Command::new(\"convert\").arg(path).arg(\"out.png\").status()?;\n+    Command::new(\"sh\").arg(\"-c\").arg(format!(\"convert {} out.png\", path)).status()?;\n     Ok(())\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-78",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-78-command-injection-vuln-000",
+          "title": "command-injection",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -8,7 +8,7 @@ def ping_host(host: str) -> str:\n-    return subprocess.check_output([\"ping\", \"-c\", \"1\", host], text=True)\n+    return subprocess.check_output(f\"ping -c 1 {host}\", shell=True, text=True)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-78",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-78-command-injection-vuln-000",
+          "title": "command-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ export function convert_host(file) {\n-  execFile('convert', [file, 'out.png']);\n+  exec(`convert ${file} out.png`);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-78",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-78-command-injection-safe-100",
+          "title": "command-injection",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,9 @@ int run_host(const char *filename) {\n   char cmd[512];\n-  snprintf(cmd, sizeof(cmd), \"convert %s out.png\", filename);\n+  const char *args[] = { \"convert\", filename, \"out.png\", NULL };\n+  return execv(\"/usr/bin/convert\", (char *const *)args);\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-78",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-20",
+      "name": "Improper Input Validation",
+      "priority": "P0",
+      "languages": [
+        "typescript",
+        "python",
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-20-type-assertion-bypass-vuln-000",
+          "title": "type-assertion-bypass",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_account(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-20",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-20-type-assertion-bypass-vuln-001",
+          "title": "type-assertion-bypass",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_data(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-20",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-20-type-assertion-bypass-vuln-002",
+          "title": "type-assertion-bypass",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_host(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-20",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-20-type-assertion-bypass-vuln-003",
+          "title": "type-assertion-bypass",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_path(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-20",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-20-type-assertion-bypass-vuln-004",
+          "title": "type-assertion-bypass",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_config(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-20",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-20-type-assertion-bypass-safe-100",
+          "title": "type-assertion-bypass",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_account(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n   return next();\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-20",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-125",
+      "name": "Out-of-bounds Read",
+      "priority": "P0",
+      "languages": [
+        "c",
+        "cpp",
+        "rust"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-125-oob-read-vuln-000",
+          "title": "oob-read",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -14,8 +14,7 @@ int read_token(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-125",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-125-oob-read-vuln-001",
+          "title": "oob-read",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -14,8 +14,7 @@ int read_target(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-125",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-125-oob-read-vuln-002",
+          "title": "oob-read",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -14,8 +14,7 @@ int read_request(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-125",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-125-oob-read-vuln-003",
+          "title": "oob-read",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -14,8 +14,7 @@ int read_session(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-125",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-125-oob-read-vuln-004",
+          "title": "oob-read",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -14,8 +14,7 @@ int read_user(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  return buf[idx];\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-125",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-125-oob-read-safe-100",
+          "title": "oob-read",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -14,8 +14,9 @@ int read_token(const uint8_t *buf, size_t len, size_t idx) {\n-  if (idx >= len) return -1;\n-  return buf[idx];\n+  if (idx >= len) return -1;\n+  return (int)buf[idx];\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-125",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-22",
+      "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "priority": "P0",
+      "languages": [
+        "c",
+        "cpp",
+        "rust",
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-22-path-traversal-vuln-000",
+          "title": "path-traversal",
+          "language": "c",
+          "category": "other",
+          "diff": "@@ -30,7 +30,7 @@ FILE *open_buffer(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-22",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-22-path-traversal-vuln-000",
+          "title": "path-traversal",
+          "language": "cpp",
+          "category": "other",
+          "diff": "@@ -26,7 +26,7 @@ std::string read_buffer(const std::string &userPath) {\n-  auto safe = fs::path(\"/vault\").append(fs::path(userPath).filename());\n+  auto safe = fs::path(\"/vault\") / userPath;\n   return read_all(safe);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-22",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-22-path-traversal-vuln-000",
+          "title": "path-traversal",
+          "language": "rust",
+          "category": "other",
+          "diff": "@@ -14,7 +14,7 @@ pub fn load_buffer(name: &str) -> std::io::Result<Vec<u8>> {\n-    let path = Path::new(\"/data\").join(Path::new(name).file_name().unwrap());\n+    let path = Path::new(\"/data\").join(name);\n     std::fs::read(path)\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-22",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-22-path-traversal-vuln-000",
+          "title": "path-traversal",
+          "language": "python",
+          "category": "other",
+          "diff": "@@ -23,7 +23,7 @@ def open_buffer(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-22",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-22-path-traversal-vuln-000",
+          "title": "path-traversal",
+          "language": "typescript",
+          "category": "other",
+          "diff": "@@ -25,7 +25,7 @@ export async function read_buffer(file: string): Promise<Buffer> {\n-  const safe = path.join('/data', path.basename(file));\n+  const safe = path.join('/data', file);\n   return fs.readFile(safe);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-22",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-22-path-traversal-safe-100",
+          "title": "path-traversal",
+          "language": "c",
+          "category": "other",
+          "diff": "@@ -30,7 +30,9 @@ FILE *open_buffer(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  const char *base = basename(name);\n+  if (strstr(base, \"..\") != NULL) return NULL;\n+  snprintf(path, sizeof(path), \"/data/%s\", base);\n   return fopen(path, \"rb\");\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-22",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-352",
+      "name": "Cross-Site Request Forgery (CSRF)",
+      "priority": "P0",
+      "languages": [
+        "javascript",
+        "typescript",
+        "python"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-352-csrf-vuln-000",
+          "title": "csrf",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -41,6 +41,7 @@ export async function transfer_request(req: Request) {\n+export async function postTransfer_request(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_request(req: Request) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-352",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-352-csrf-vuln-001",
+          "title": "csrf",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -41,6 +41,7 @@ export async function transfer_session(req: Request) {\n+export async function postTransfer_session(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_session(req: Request) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-352",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-352-csrf-vuln-002",
+          "title": "csrf",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -41,6 +41,7 @@ export async function transfer_user(req: Request) {\n+export async function postTransfer_user(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_user(req: Request) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-352",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-352-csrf-vuln-003",
+          "title": "csrf",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -41,6 +41,7 @@ export async function transfer_url(req: Request) {\n+export async function postTransfer_url(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_url(req: Request) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-352",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-352-csrf-vuln-004",
+          "title": "csrf",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -41,6 +41,7 @@ export async function transfer_query(req: Request) {\n+export async function postTransfer_query(req: Request) {\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_query(req: Request) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-352",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-352-csrf-safe-100",
+          "title": "csrf",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -41,6 +41,8 @@ export async function transfer_request(req: Request) {\n+export async function postTransfer_request(req: Request) {\n+  assertSameOrigin(req);\n+  await ledger.move(req.body);\n+  return Response.json({ ok: true });\n+}\n export async function transfer_request(req: Request) {",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-352",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-502",
+      "name": "Deserialization of Untrusted Data",
+      "priority": "P0",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-502-pickle-deserialization-vuln-000",
+          "title": "pickle-deserialization",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ def load_session(blob: bytes):\n-    return json.loads(blob)\n+    return pickle.loads(blob)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-502",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-502-yaml-unsafe-load-vuln-001",
+          "title": "yaml-unsafe-load",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,7 @@ def parse_buffer(raw: str) -> dict:\n-    return yaml.safe_load(raw)\n+    return yaml.load(raw, Loader=yaml.Loader)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-502",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-502-pickle-deserialization-vuln-001",
+          "title": "pickle-deserialization",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ def load_user(blob: bytes):\n-    return json.loads(blob)\n+    return pickle.loads(blob)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-502",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-502-yaml-unsafe-load-vuln-002",
+          "title": "yaml-unsafe-load",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,7 @@ def parse_profile(raw: str) -> dict:\n-    return yaml.safe_load(raw)\n+    return yaml.load(raw, Loader=yaml.Loader)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-502",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-502-pickle-deserialization-vuln-002",
+          "title": "pickle-deserialization",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ def load_url(blob: bytes):\n-    return json.loads(blob)\n+    return pickle.loads(blob)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-502",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-502-pickle-deserialization-safe-100",
+          "title": "pickle-deserialization",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ def load_session(blob: bytes):\n-    return json.loads(blob)\n+    return json.loads(blob)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-502",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-476",
+      "name": "NULL Pointer Dereference",
+      "priority": "P0",
+      "languages": [
+        "c",
+        "cpp"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-476-null-deref-vuln-000",
+          "title": "null-deref",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -21,7 +21,6 @@ int check_client(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+          "expected": [
+            {
+              "category": "other"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-476",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-476-null-deref-vuln-001",
+          "title": "null-deref",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -21,7 +21,6 @@ int check_token(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+          "expected": [
+            {
+              "category": "other"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-476",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-476-null-deref-vuln-002",
+          "title": "null-deref",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -21,7 +21,6 @@ int check_target(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+          "expected": [
+            {
+              "category": "other"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-476",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-476-null-deref-vuln-003",
+          "title": "null-deref",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -21,7 +21,6 @@ int check_request(struct session *s) {\n-  if (!s || !s->user) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+          "expected": [
+            {
+              "category": "other"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-476",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-476-null-deref-safe-100",
+          "title": "null-deref",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -21,7 +21,8 @@ int check_client(struct session *s) {\n-  if (!s || !s->user) return -1;\n+  if (!s || !s->user || !s->user->role) return -1;\n   return strcmp(s->user->role, \"admin\") == 0;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-476",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-190",
+      "name": "Integer Overflow or Wraparound",
+      "priority": "P0",
+      "languages": [
+        "c",
+        "cpp",
+        "rust"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-190-integer-overflow-vuln-000",
+          "title": "integer-overflow",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -12,8 +12,7 @@ void *alloc_query(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-190",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-190-integer-overflow-vuln-000",
+          "title": "integer-overflow",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -8,7 +8,6 @@ std::vector<uint8_t> reserve_query(size_t n, size_t sz) {\n-  if (n > 0 && sz > std::vector<uint8_t>::max_size() / n)\n-    throw std::length_error(\"overflow\");\n   return std::vector<uint8_t>(n * sz);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-190",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-190-integer-overflow-unsafe-vuln-000",
+          "title": "integer-overflow-unsafe",
+          "language": "rust",
+          "category": "injection",
+          "diff": "@@ -33,8 +33,7 @@ pub fn read_payload(data: &[u8]) -> usize {\n     let len = u32::from_le_bytes(data[0..4].try_into().unwrap()) as usize;\n-    let cap = data.len().saturating_sub(4);\n-    len.min(cap)\n+    len\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-190",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-190-integer-overflow-vuln-001",
+          "title": "integer-overflow",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -12,8 +12,7 @@ void *alloc_buffer(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  return malloc(count * size);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-190",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-190-integer-overflow-safe-100",
+          "title": "integer-overflow",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -12,8 +12,9 @@ void *alloc_query(size_t count, size_t size) {\n-  if (count > 0 && size > SIZE_MAX / count) return NULL;\n-  return malloc(count * size);\n+  if (count == 0 || size == 0) return NULL;\n+  if (count > SIZE_MAX / size) return NULL;\n+  return calloc(count, size);\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-190",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-798",
+      "name": "Use of Hard-coded Credentials",
+      "priority": "P0",
+      "languages": [
+        "c",
+        "python",
+        "rust",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-798-hardcoded-secrets-vuln-000",
+          "title": "hardcoded-secrets",
+          "language": "c",
+          "category": "secrets",
+          "diff": "@@ -4,6 +4,7 @@ struct config load_host(void) {\n   struct config c = {0};\n+  strcpy(c.api_key, \"sk_live_REPLACE_ME_IN_DIFF_7f3a\");\n   c.port = 8080;\n   return c;\n }",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-798",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-798-hardcoded-secrets-vuln-000",
+          "title": "hardcoded-secrets",
+          "language": "python",
+          "category": "secrets",
+          "diff": "@@ -4,6 +4,7 @@ class Settings:\n     debug: bool = False\n+    stripe_key: str = \"sk_live_HARDCODED_IN_DIFF_ABC123\"\n \n     @classmethod",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-798",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-798-hardcoded-secrets-vuln-000",
+          "title": "hardcoded-secrets",
+          "language": "rust",
+          "category": "secrets",
+          "diff": "@@ -3,7 +3,7 @@ use once_cell::sync::Lazy;\n \n-static JWT_SECRET: Lazy<String> = Lazy::new(|| std::env::var(\"JWT_SECRET\").expect(\"JWT_SECRET\"));\n+static JWT_SECRET: Lazy<String> = Lazy::new(|| \"hardcoded-jwt-secret-do-not-ship\".into());\n \n pub fn sign_host(claims: Claims) -> String {",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-798",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-798-hardcoded-secrets-vuln-000",
+          "title": "hardcoded-secrets",
+          "language": "typescript",
+          "category": "secrets",
+          "diff": "@@ -3,7 +3,7 @@ export const config = {\n   port: 3000,\n-  apiKey: process.env.API_KEY ?? '',\n+  apiKey: 'sk_test_HARDCODED_KEY_IN_PR_DIFF_9e2f',\n } as const;\n ",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-798",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-798-hardcoded-secrets-safe-100",
+          "title": "hardcoded-secrets",
+          "language": "c",
+          "category": "secrets",
+          "diff": "@@ -4,6 +4,7 @@ struct config load_host(void) {\n   struct config c = {0};\n+  const char *key = getenv(\"API_KEY\");\n+  if (key) strncpy(c.api_key, key, sizeof(c.api_key) - 1);\n   c.port = 8080;\n   return c;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-798",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-918",
+      "name": "Server-Side Request Forgery (SSRF)",
+      "priority": "P0",
+      "languages": [
+        "python",
+        "rust",
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-918-ssrf-vuln-000",
+          "title": "ssrf",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -19,7 +19,6 @@ def fetch_request(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-918",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-918-ssrf-vuln-000",
+          "title": "ssrf",
+          "language": "rust",
+          "category": "injection",
+          "diff": "@@ -27,7 +27,7 @@ pub async fn preview_request(url: &str) -> Result<String> {\n-    if !is_allowed_host(url) { bail!(\"blocked\"); }\n+    let body = reqwest::get(url).await?.text().await?;\n     Ok(body)\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-918",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-918-ssrf-vuln-000",
+          "title": "ssrf",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,6 @@ export async function preview_request(url) {\n-  if (!isAllowedHost(url)) throw new Error('blocked');\n   const res = await fetch(url);\n   return res.text();\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-918",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-918-ssrf-vuln-000",
+          "title": "ssrf",
+          "language": "typescript",
+          "category": "injection",
+          "diff": "@@ -20,7 +20,6 @@ export async function proxy_request(target: string): Promise<string> {\n-  assertAllowedUrl(target);\n   const res = await fetch(target);\n   return res.text();\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-918",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-918-ssrf-safe-100",
+          "title": "ssrf",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -19,7 +19,8 @@ def fetch_request(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    if not is_allowed(url):\n+        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-918",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-1321",
+      "name": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')",
+      "priority": "P0",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-1321-prototype-pollution-vuln-000",
+          "title": "prototype-pollution",
+          "language": "javascript",
+          "category": "other",
+          "diff": "@@ -9,7 +9,7 @@ export function merge_data(target, source) {\n   for (const key of Object.keys(source)) {\n-    if (key === '__proto__') continue;\n+    target[key] = source[key];\n   }\n   return target;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1321",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-1321-prototype-pollution-vuln-000",
+          "title": "prototype-pollution",
+          "language": "typescript",
+          "category": "other",
+          "diff": "@@ -7,7 +7,7 @@ export function deepMerge_data<T extends object>(target: T, patch: Record<string, unknown>): T {\n   for (const [k, v] of Object.entries(patch)) {\n-    if (k in target) (target as any)[k] = v;\n+    (target as any)[k] = v;\n   }\n   return target;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1321",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-1321-prototype-pollution-vuln-001",
+          "title": "prototype-pollution",
+          "language": "javascript",
+          "category": "other",
+          "diff": "@@ -9,7 +9,7 @@ export function merge_host(target, source) {\n   for (const key of Object.keys(source)) {\n-    if (key === '__proto__') continue;\n+    target[key] = source[key];\n   }\n   return target;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1321",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-1321-prototype-pollution-vuln-001",
+          "title": "prototype-pollution",
+          "language": "typescript",
+          "category": "other",
+          "diff": "@@ -7,7 +7,7 @@ export function deepMerge_host<T extends object>(target: T, patch: Record<string, unknown>): T {\n   for (const [k, v] of Object.entries(patch)) {\n-    if (k in target) (target as any)[k] = v;\n+    (target as any)[k] = v;\n   }\n   return target;\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1321",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-1321-prototype-pollution-safe-100",
+          "title": "prototype-pollution",
+          "language": "javascript",
+          "category": "other",
+          "diff": "@@ -9,7 +9,8 @@ export function merge_data(target, source) {\n   for (const key of Object.keys(source)) {\n-    if (key === '__proto__') continue;\n+    if (key === '__proto__' || key === 'constructor') continue;\n+    target[key] = source[key];\n   }\n   return target;\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-1321",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-434",
+      "name": "Unrestricted Upload of File with Dangerous Type",
+      "priority": "P1",
+      "languages": [
+        "python",
+        "typescript",
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-434-path-traversal-as-cwe-434-vuln-000",
+          "title": "path-traversal-as-cwe-434",
+          "language": "python",
+          "category": "other",
+          "diff": "@@ -23,7 +23,7 @@ def open_resource(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-434",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-434-path-traversal-as-cwe-434-vuln-000",
+          "title": "path-traversal-as-cwe-434",
+          "language": "typescript",
+          "category": "other",
+          "diff": "@@ -25,7 +25,7 @@ export async function read_resource(file: string): Promise<Buffer> {\n-  const safe = path.join('/data', path.basename(file));\n+  const safe = path.join('/data', file);\n   return fs.readFile(safe);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-434",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-434-path-traversal-as-cwe-434-vuln-001",
+          "title": "path-traversal-as-cwe-434",
+          "language": "python",
+          "category": "other",
+          "diff": "@@ -23,7 +23,7 @@ def open_payload(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-434",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-434-path-traversal-as-cwe-434-vuln-001",
+          "title": "path-traversal-as-cwe-434",
+          "language": "typescript",
+          "category": "other",
+          "diff": "@@ -25,7 +25,7 @@ export async function read_payload(file: string): Promise<Buffer> {\n-  const safe = path.join('/data', path.basename(file));\n+  const safe = path.join('/data', file);\n   return fs.readFile(safe);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-434",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-434-path-traversal-as-cwe-434-safe-100",
+          "title": "path-traversal-as-cwe-434",
+          "language": "python",
+          "category": "other",
+          "diff": "@@ -23,7 +23,9 @@ def open_resource(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    base = os.path.basename(name)\n+    if \"..\" in name:\n+        raise ValueError(\"traversal\")\n+    safe = os.path.join(\"/data\", base)\n     return open(safe, \"rb\").read()\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-434",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-862",
+      "name": "Missing Authorization",
+      "priority": "P1",
+      "languages": [
+        "cpp",
+        "typescript",
+        "python"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "cpp-cwe-862-missing-authz-vuln-000",
+          "title": "missing-authz",
+          "language": "cpp",
+          "category": "authz",
+          "diff": "@@ -40,6 +40,9 @@ void delete_config(HttpRequest &req) {\n+void delete_config_handler(HttpRequest &req) {\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_config(HttpRequest &req) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-862",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-862-missing-authz-vuln-001",
+          "title": "missing-authz",
+          "language": "cpp",
+          "category": "authz",
+          "diff": "@@ -40,6 +40,9 @@ void delete_order(HttpRequest &req) {\n+void delete_order_handler(HttpRequest &req) {\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_order(HttpRequest &req) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-862",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-862-missing-authz-vuln-002",
+          "title": "missing-authz",
+          "language": "cpp",
+          "category": "authz",
+          "diff": "@@ -40,6 +40,9 @@ void delete_record(HttpRequest &req) {\n+void delete_record_handler(HttpRequest &req) {\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_record(HttpRequest &req) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-862",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-862-missing-authz-vuln-003",
+          "title": "missing-authz",
+          "language": "cpp",
+          "category": "authz",
+          "diff": "@@ -40,6 +40,9 @@ void delete_input(HttpRequest &req) {\n+void delete_input_handler(HttpRequest &req) {\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_input(HttpRequest &req) {",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-862",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-862-missing-authz-safe-100",
+          "title": "missing-authz",
+          "language": "cpp",
+          "category": "authz",
+          "diff": "@@ -40,6 +40,9 @@ void delete_config(HttpRequest &req) {\n+void delete_config_handler(HttpRequest &req) {\n+  if (!req.user().is_admin()) return req.send(403, \"{}\");\n+  db.remove(req.param(\"id\"));\n+  req.send(200, \"{}\");\n+}\n void delete_config(HttpRequest &req) {",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-862",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-863",
+      "name": "Incorrect Authorization",
+      "priority": "P1",
+      "languages": [
+        "typescript",
+        "python",
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-863-incorrect-authz-vuln-000",
+          "title": "incorrect-authz",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -19,7 +19,7 @@ export function admin_path(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user) return allow();\n   return allow();\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-863",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-863-incorrect-authz-vuln-001",
+          "title": "incorrect-authz",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -19,7 +19,7 @@ export function admin_config(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user) return allow();\n   return allow();\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-863",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-863-incorrect-authz-vuln-002",
+          "title": "incorrect-authz",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -19,7 +19,7 @@ export function admin_order(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user) return allow();\n   return allow();\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-863",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-863-incorrect-authz-vuln-003",
+          "title": "incorrect-authz",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -19,7 +19,7 @@ export function admin_record(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user) return allow();\n   return allow();\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-863",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-863-incorrect-authz-safe-100",
+          "title": "incorrect-authz",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -19,7 +19,7 @@ export function admin_path(req: Request) {\n-  if (req.user.role !== 'admin') return deny();\n+  if (req.user?.role !== 'admin') return deny();\n   return allow();\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-863",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-639",
+      "name": "Authorization Bypass Through User-Controlled Key",
+      "priority": "P1",
+      "languages": [
+        "javascript",
+        "typescript",
+        "python"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-639-idor-vuln-000",
+          "title": "idor",
+          "language": "javascript",
+          "category": "authz",
+          "diff": "@@ -33,7 +33,7 @@ router.get('/request/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-639",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-639-idor-vuln-001",
+          "title": "idor",
+          "language": "javascript",
+          "category": "authz",
+          "diff": "@@ -33,7 +33,7 @@ router.get('/session/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-639",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-639-idor-vuln-002",
+          "title": "idor",
+          "language": "javascript",
+          "category": "authz",
+          "diff": "@@ -33,7 +33,7 @@ router.get('/user/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-639",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-639-idor-vuln-003",
+          "title": "idor",
+          "language": "javascript",
+          "category": "authz",
+          "diff": "@@ -33,7 +33,7 @@ router.get('/url/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-639",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-639-idor-safe-100",
+          "title": "idor",
+          "language": "javascript",
+          "category": "authz",
+          "diff": "@@ -33,7 +33,7 @@ router.get('/request/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.getForUser(req.params.id, req.user.id);\n   res.json(row);\n });\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-639",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-347",
+      "name": "Improper Verification of Cryptographic Signature",
+      "priority": "P1",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-347-jwt-misuse-vuln-000",
+          "title": "jwt-misuse",
+          "language": "javascript",
+          "category": "crypto",
+          "diff": "@@ -28,7 +28,7 @@ export function verify_client(token) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.decode(token);\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-347",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-347-jwt-misuse-vuln-000",
+          "title": "jwt-misuse",
+          "language": "typescript",
+          "category": "crypto",
+          "diff": "@@ -31,7 +31,7 @@ export function parse_client(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.decode(token) as JwtPayload;\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-347",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-347-jwt-misuse-vuln-001",
+          "title": "jwt-misuse",
+          "language": "javascript",
+          "category": "crypto",
+          "diff": "@@ -28,7 +28,7 @@ export function verify_token(token) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.decode(token);\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-347",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-347-jwt-misuse-vuln-001",
+          "title": "jwt-misuse",
+          "language": "typescript",
+          "category": "crypto",
+          "diff": "@@ -31,7 +31,7 @@ export function parse_token(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.decode(token) as JwtPayload;\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-347",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-347-jwt-misuse-safe-100",
+          "title": "jwt-misuse",
+          "language": "javascript",
+          "category": "crypto",
+          "diff": "@@ -28,7 +28,7 @@ export function verify_client(token) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-347",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-326",
+      "name": "Inadequate Encryption Strength",
+      "priority": "P1",
+      "languages": [
+        "python",
+        "typescript",
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-326-weak-crypto-vuln-000",
+          "title": "weak-crypto",
+          "language": "python",
+          "category": "crypto",
+          "diff": "@@ -8,7 +8,7 @@ def seal_order(data: bytes) -> bytes:\n-    return Fernet(key).encrypt(data)\n+    return DES.new(key[:8], DES.MODE_ECB).encrypt(data)\n ",
+          "expected": [
+            {
+              "category": "crypto"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-326",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-326-weak-crypto-vuln-001",
+          "title": "weak-crypto",
+          "language": "python",
+          "category": "crypto",
+          "diff": "@@ -8,7 +8,7 @@ def seal_record(data: bytes) -> bytes:\n-    return Fernet(key).encrypt(data)\n+    return DES.new(key[:8], DES.MODE_ECB).encrypt(data)\n ",
+          "expected": [
+            {
+              "category": "crypto"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-326",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-326-weak-crypto-vuln-002",
+          "title": "weak-crypto",
+          "language": "python",
+          "category": "crypto",
+          "diff": "@@ -8,7 +8,7 @@ def seal_input(data: bytes) -> bytes:\n-    return Fernet(key).encrypt(data)\n+    return DES.new(key[:8], DES.MODE_ECB).encrypt(data)\n ",
+          "expected": [
+            {
+              "category": "crypto"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-326",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-326-weak-crypto-safe-100",
+          "title": "weak-crypto",
+          "language": "python",
+          "category": "crypto",
+          "diff": "@@ -8,7 +8,7 @@ def seal_order(data: bytes) -> bytes:\n-    return Fernet(key).encrypt(data)\n+    return Fernet(key).encrypt(data)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-326",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-327",
+      "name": "Use of a Broken or Risky Cryptographic Algorithm",
+      "priority": "P1",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-327-broken-crypto-vuln-000",
+          "title": "broken-crypto",
+          "language": "typescript",
+          "category": "crypto",
+          "diff": "@@ -12,7 +12,7 @@ export function hash_config(input: string): string {\n-  return createHash('sha256').update(input).digest('hex');\n+  return createHash('md5').update(input).digest('hex');\n }\n ",
+          "expected": [
+            {
+              "category": "crypto"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-327",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-327-broken-crypto-vuln-001",
+          "title": "broken-crypto",
+          "language": "typescript",
+          "category": "crypto",
+          "diff": "@@ -12,7 +12,7 @@ export function hash_order(input: string): string {\n-  return createHash('sha256').update(input).digest('hex');\n+  return createHash('md5').update(input).digest('hex');\n }\n ",
+          "expected": [
+            {
+              "category": "crypto"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-327",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-327-broken-crypto-vuln-002",
+          "title": "broken-crypto",
+          "language": "typescript",
+          "category": "crypto",
+          "diff": "@@ -12,7 +12,7 @@ export function hash_record(input: string): string {\n-  return createHash('sha256').update(input).digest('hex');\n+  return createHash('md5').update(input).digest('hex');\n }\n ",
+          "expected": [
+            {
+              "category": "crypto"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-327",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-327-broken-crypto-safe-100",
+          "title": "broken-crypto",
+          "language": "typescript",
+          "category": "crypto",
+          "diff": "@@ -12,7 +12,7 @@ export function hash_config(input: string): string {\n-  return createHash('sha256').update(input).digest('hex');\n+  return createHash('sha256').update(input).digest('hex');\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-327",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-259",
+      "name": "Use of Hard-coded Password",
+      "priority": "P1",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-259-hardcoded-password-vuln-000",
+          "title": "hardcoded-password",
+          "language": "python",
+          "category": "secrets",
+          "diff": "@@ -5,7 +5,7 @@ def connect_url():\n-    password = os.environ.get(\"DB_PASSWORD\")\n+    password = \"admin123_change_in_pr\"\n     return psycopg.connect(password=password)\n ",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-259",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-259-hardcoded-password-vuln-001",
+          "title": "hardcoded-password",
+          "language": "python",
+          "category": "secrets",
+          "diff": "@@ -5,7 +5,7 @@ def connect_query():\n-    password = os.environ.get(\"DB_PASSWORD\")\n+    password = \"admin123_change_in_pr\"\n     return psycopg.connect(password=password)\n ",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-259",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-259-hardcoded-password-vuln-002",
+          "title": "hardcoded-password",
+          "language": "python",
+          "category": "secrets",
+          "diff": "@@ -5,7 +5,7 @@ def connect_buffer():\n-    password = os.environ.get(\"DB_PASSWORD\")\n+    password = \"admin123_change_in_pr\"\n     return psycopg.connect(password=password)\n ",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-259",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-259-hardcoded-password-safe-100",
+          "title": "hardcoded-password",
+          "language": "python",
+          "category": "secrets",
+          "diff": "@@ -5,7 +5,7 @@ def connect_url():\n-    password = os.environ.get(\"DB_PASSWORD\")\n+    password = os.environ.get(\"DB_PASSWORD\")\n     return psycopg.connect(password=password)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-259",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-94",
+      "name": "Improper Control of Generation of Code ('Code Injection')",
+      "priority": "P1",
+      "languages": [
+        "python"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-94-ssti-vuln-000",
+          "title": "ssti",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,7 @@ def render_request(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-94",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-94-ssti-vuln-001",
+          "title": "ssti",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,7 @@ def render_session(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-94",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-94-ssti-vuln-002",
+          "title": "ssti",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,7 @@ def render_user(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-94",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-94-ssti-vuln-003",
+          "title": "ssti",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,7 @@ def render_url(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-94",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-94-ssti-safe-100",
+          "title": "ssti",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,8 @@ def render_request(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    env = SandboxedEnvironment()\n+    return env.from_string(template_str).render(**ctx)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-94",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-95",
+      "name": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
+      "priority": "P1",
+      "languages": [
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-95-eval-injection-vuln-000",
+          "title": "eval-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_buffer(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-95",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-95-eval-injection-vuln-001",
+          "title": "eval-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_profile(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-95",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-95-eval-injection-vuln-002",
+          "title": "eval-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_client(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-95",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-95-eval-injection-vuln-003",
+          "title": "eval-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_token(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-95",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-95-eval-injection-safe-100",
+          "title": "eval-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_buffer(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return safeEval(expr, ctx);\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-95",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-943",
+      "name": "Improper Neutralization of Special Elements in Data Query Logic",
+      "priority": "P1",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-943-nosql-injection-vuln-000",
+          "title": "nosql-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ export async function find_path(db, username) {\n-  return db.collection('users').findOne({ username });\n+  return db.collection('users').findOne(JSON.parse(username));\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-943",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-943-nosql-injection-vuln-001",
+          "title": "nosql-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ export async function find_config(db, username) {\n-  return db.collection('users').findOne({ username });\n+  return db.collection('users').findOne(JSON.parse(username));\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-943",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-943-nosql-injection-vuln-002",
+          "title": "nosql-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ export async function find_order(db, username) {\n-  return db.collection('users').findOne({ username });\n+  return db.collection('users').findOne(JSON.parse(username));\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-943",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-943-nosql-injection-vuln-003",
+          "title": "nosql-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ export async function find_record(db, username) {\n-  return db.collection('users').findOne({ username });\n+  return db.collection('users').findOne(JSON.parse(username));\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-943",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-943-nosql-injection-safe-100",
+          "title": "nosql-injection",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,8 @@ export async function find_path(db, username) {\n-  return db.collection('users').findOne({ username });\n+  if (typeof username !== 'string') throw new TypeError('username must be string');\n+  return db.collection('users').findOne({ username });\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-943",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-134",
+      "name": "Use of Externally-Controlled Format String",
+      "priority": "P1",
+      "languages": [
+        "c",
+        "cpp"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-134-format-string-vuln-000",
+          "title": "format-string",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ void log_config(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-134",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-134-format-string-vuln-000",
+          "title": "format-string",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ void audit_config(const std::string &msg) {\n-  std::fprintf(stderr, \"%s\", msg.c_str());\n+  std::printf(msg.c_str());\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-134",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-134-format-string-vuln-001",
+          "title": "format-string",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ void log_order(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  fprintf(stderr, fmt, ap);\n   va_end(ap);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-134",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-134-format-string-vuln-001",
+          "title": "format-string",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ void audit_order(const std::string &msg) {\n-  std::fprintf(stderr, \"%s\", msg.c_str());\n+  std::printf(msg.c_str());\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-134",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-134-format-string-safe-100",
+          "title": "format-string",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ void log_config(const char *fmt, ...) {\n   va_list ap;\n   va_start(ap, fmt);\n-  vfprintf(stderr, fmt, ap);\n+  vfprintf(stderr, \"%s\", fmt);\n   va_end(ap);\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-134",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-415",
+      "name": "Double Free",
+      "priority": "P1",
+      "languages": [
+        "cpp",
+        "c"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "cpp-cwe-415-double-free-vuln-000",
+          "title": "double-free",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -15,8 +15,8 @@ void release_order(Buffer *b) {\n   delete b;\n+  delete b;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-415",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-415-double-free-vuln-001",
+          "title": "double-free",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -15,8 +15,8 @@ void release_record(Buffer *b) {\n   delete b;\n+  delete b;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-415",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-415-double-free-vuln-002",
+          "title": "double-free",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -15,8 +15,8 @@ void release_input(Buffer *b) {\n   delete b;\n+  delete b;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-415",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-415-double-free-vuln-003",
+          "title": "double-free",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -15,8 +15,8 @@ void release_resource(Buffer *b) {\n   delete b;\n+  delete b;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-415",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-415-double-free-safe-100",
+          "title": "double-free",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -15,8 +15,9 @@ void release_order(Buffer *b) {\n-  delete b;\n+  delete b;\n+  b = nullptr;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-415",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-754",
+      "name": "Improper Check for Unusual or Exceptional Conditions",
+      "priority": "P1",
+      "languages": [
+        "rust"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "rust-cwe-754-unwrap-panic-vuln-000",
+          "title": "unwrap-panic",
+          "language": "rust",
+          "category": "other",
+          "diff": "@@ -12,7 +12,7 @@ pub fn verify_profile(token: Option<&str>) -> bool {\n-    let t = token?;\n+    let t = token.unwrap();\n     validate_hmac(t)\n }",
+          "expected": [
+            {
+              "category": "other"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-754",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-754-unwrap-panic-vuln-001",
+          "title": "unwrap-panic",
+          "language": "rust",
+          "category": "other",
+          "diff": "@@ -12,7 +12,7 @@ pub fn verify_client(token: Option<&str>) -> bool {\n-    let t = token?;\n+    let t = token.unwrap();\n     validate_hmac(t)\n }",
+          "expected": [
+            {
+              "category": "other"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-754",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-754-unwrap-panic-vuln-002",
+          "title": "unwrap-panic",
+          "language": "rust",
+          "category": "other",
+          "diff": "@@ -12,7 +12,7 @@ pub fn verify_token(token: Option<&str>) -> bool {\n-    let t = token?;\n+    let t = token.unwrap();\n     validate_hmac(t)\n }",
+          "expected": [
+            {
+              "category": "other"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-754",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "rust-cwe-754-unwrap-panic-safe-100",
+          "title": "unwrap-panic",
+          "language": "rust",
+          "category": "other",
+          "diff": "@@ -12,7 +12,7 @@ pub fn verify_profile(token: Option<&str>) -> bool {\n-    let t = token?;\n+    let Some(t) = token else { return false };\n     validate_hmac(t)\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-754",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-119",
+      "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "priority": "P1",
+      "languages": [
+        "c",
+        "cpp"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-119-buffer-overflow-as-cwe-119-vuln-000",
+          "title": "buffer-overflow-as-cwe-119",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-119",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-119-buffer-overflow-as-cwe-119-vuln-000",
+          "title": "buffer-overflow-as-cwe-119",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ void parse_target(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-119",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-119-buffer-overflow-as-cwe-119-vuln-001",
+          "title": "buffer-overflow-as-cwe-119",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_request(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-119",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-119-buffer-overflow-as-cwe-119-safe-100",
+          "title": "buffer-overflow-as-cwe-119",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,8 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-119",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-120",
+      "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')",
+      "priority": "P1",
+      "languages": [
+        "c",
+        "cpp"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-120-buffer-overflow-as-cwe-120-vuln-000",
+          "title": "buffer-overflow-as-cwe-120",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-120",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-120-buffer-overflow-as-cwe-120-vuln-000",
+          "title": "buffer-overflow-as-cwe-120",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ void parse_target(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-120",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-120-buffer-overflow-as-cwe-120-vuln-001",
+          "title": "buffer-overflow-as-cwe-120",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_request(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-120",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-120-buffer-overflow-as-cwe-120-safe-100",
+          "title": "buffer-overflow-as-cwe-120",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,8 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-120",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-121",
+      "name": "Stack-based Buffer Overflow",
+      "priority": "P1",
+      "languages": [
+        "c",
+        "cpp"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-121-buffer-overflow-as-cwe-121-vuln-000",
+          "title": "buffer-overflow-as-cwe-121",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-121",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-121-buffer-overflow-as-cwe-121-vuln-000",
+          "title": "buffer-overflow-as-cwe-121",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ void parse_target(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-121",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-121-buffer-overflow-as-cwe-121-vuln-001",
+          "title": "buffer-overflow-as-cwe-121",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_request(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-121",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-121-buffer-overflow-as-cwe-121-safe-100",
+          "title": "buffer-overflow-as-cwe-121",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,8 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-121",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-122",
+      "name": "Heap-based Buffer Overflow",
+      "priority": "P1",
+      "languages": [
+        "c",
+        "cpp"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "c-cwe-122-buffer-overflow-as-cwe-122-vuln-000",
+          "title": "buffer-overflow-as-cwe-122",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-122",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "cpp-cwe-122-buffer-overflow-as-cwe-122-vuln-000",
+          "title": "buffer-overflow-as-cwe-122",
+          "language": "cpp",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ void parse_target(std::span<char> out, const char *in) {\n-  std::strncpy(out.data(), in, out.size() - 1);\n-  out[out.size() - 1] = '\\0';\n+  std::strcpy(out.data(), in);\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-122",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-122-buffer-overflow-as-cwe-122-vuln-001",
+          "title": "buffer-overflow-as-cwe-122",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,7 @@ int copy_request(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-122",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-122-buffer-overflow-as-cwe-122-safe-100",
+          "title": "buffer-overflow-as-cwe-122",
+          "language": "c",
+          "category": "injection",
+          "diff": "@@ -18,8 +18,8 @@ int copy_target(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  size_t n = strnlen(in, out_len - 1);\n+  memcpy(out, in, n);\n+  out[n] = '\\0';\n   return 0;\n }",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-122",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-276",
+      "name": "Incorrect Default Permissions",
+      "priority": "P1",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-276-default-permissions-vuln-000",
+          "title": "default-permissions",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -7,7 +7,7 @@ def write_data(path: str, data: bytes) -> None:\n-    os.chmod(path, 0o600)\n+    os.chmod(path, 0o777)\n     with open(path, \"wb\") as f:\n         f.write(data)\n ",
+          "expected": [
+            {
+              "category": "config"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-276",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-276-path-traversal-as-cwe-276-vuln-000",
+          "title": "path-traversal-as-cwe-276",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -25,7 +25,7 @@ export async function read_resource(file: string): Promise<Buffer> {\n-  const safe = path.join('/data', path.basename(file));\n+  const safe = path.join('/data', file);\n   return fs.readFile(safe);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-276",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-276-default-permissions-vuln-001",
+          "title": "default-permissions",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -7,7 +7,7 @@ def write_host(path: str, data: bytes) -> None:\n-    os.chmod(path, 0o600)\n+    os.chmod(path, 0o777)\n     with open(path, \"wb\") as f:\n         f.write(data)\n ",
+          "expected": [
+            {
+              "category": "config"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-276",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-276-default-permissions-safe-100",
+          "title": "default-permissions",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -7,7 +7,7 @@ def write_data(path: str, data: bytes) -> None:\n-    os.chmod(path, 0o600)\n+    os.chmod(path, 0o600)\n     with open(path, \"wb\") as f:\n         f.write(data)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-276",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-287",
+      "name": "Improper Authentication",
+      "priority": "P1",
+      "languages": [
+        "typescript",
+        "python",
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-287-improper-auth-vuln-000",
+          "title": "improper-auth",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -14,7 +14,6 @@ export function session_config(req: Request) {\n-  if (!req.headers.get('authorization')) return unauthorized();\n   return { userId: req.headers.get('x-user-id') };\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-287",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-287-idor-as-cwe-287-vuln-000",
+          "title": "idor-as-cwe-287",
+          "language": "javascript",
+          "category": "authz",
+          "diff": "@@ -33,7 +33,7 @@ router.get('/path/:id', async (req, res) => {\n-  const row = await db.getForUser(req.params.id, req.user.id);\n+  const row = await db.get(req.params.id);\n   res.json(row);\n });\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-287",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-287-improper-auth-vuln-001",
+          "title": "improper-auth",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -14,7 +14,6 @@ export function session_order(req: Request) {\n-  if (!req.headers.get('authorization')) return unauthorized();\n   return { userId: req.headers.get('x-user-id') };\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-287",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-287-improper-auth-safe-100",
+          "title": "improper-auth",
+          "language": "typescript",
+          "category": "authz",
+          "diff": "@@ -14,7 +14,8 @@ export function session_config(req: Request) {\n-  if (!req.headers.get('authorization')) return unauthorized();\n+  const token = req.headers.get('authorization');\n+  if (!token || !verifyBearer(token)) return unauthorized();\n   return { userId: req.headers.get('x-user-id') };\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-287",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-306",
+      "name": "Missing Authentication for Critical Function",
+      "priority": "P1",
+      "languages": [
+        "typescript",
+        "python"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-306-missing-auth-vuln-000",
+          "title": "missing-auth",
+          "language": "python",
+          "category": "authz",
+          "diff": "@@ -21,6 +21,7 @@ def reset_profile(user_id: str) -> None:\n+@app.post(\"/admin/reset\")\n+def reset_profile_handler(user_id: str) -> None:\n+    store.wipe(user_id)\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-306",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-306-missing-auth-vuln-001",
+          "title": "missing-auth",
+          "language": "python",
+          "category": "authz",
+          "diff": "@@ -21,6 +21,7 @@ def reset_client(user_id: str) -> None:\n+@app.post(\"/admin/reset\")\n+def reset_client_handler(user_id: str) -> None:\n+    store.wipe(user_id)\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-306",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-306-missing-auth-vuln-002",
+          "title": "missing-auth",
+          "language": "python",
+          "category": "authz",
+          "diff": "@@ -21,6 +21,7 @@ def reset_token(user_id: str) -> None:\n+@app.post(\"/admin/reset\")\n+def reset_token_handler(user_id: str) -> None:\n+    store.wipe(user_id)\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-306",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-306-missing-auth-safe-100",
+          "title": "missing-auth",
+          "language": "python",
+          "category": "authz",
+          "diff": "@@ -21,6 +21,8 @@ def reset_profile(user_id: str) -> None:\n+@app.post(\"/admin/reset\")\n+def reset_profile_handler(user_id: str, principal: Principal) -> None:\n+    require_admin(principal)\n+    store.wipe(user_id)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-306",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-611",
+      "name": "Improper Restriction of XML External Entity Reference",
+      "priority": "P1",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-611-xxe-vuln-000",
+          "title": "xxe",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,7 @@ def parse_payload(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-611",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-611-xxe-vuln-001",
+          "title": "xxe",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,7 @@ def parse_account(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-611",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-611-xxe-vuln-002",
+          "title": "xxe",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,7 @@ def parse_data(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-611",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-611-xxe-safe-100",
+          "title": "xxe",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,8 @@ def parse_payload(raw: str):\n-    return ET.fromstring(raw)\n+    parser = ET.XMLParser(resolve_entities=False)\n+    return ET.fromstring(raw, parser=parser)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-611",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-776",
+      "name": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
+      "priority": "P1",
+      "languages": [
+        "python"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-776-xxe-as-cwe-776-vuln-000",
+          "title": "xxe-as-cwe-776",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,7 @@ def parse_buffer(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-776",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-776-xxe-as-cwe-776-vuln-001",
+          "title": "xxe-as-cwe-776",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,7 @@ def parse_profile(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-776",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-776-xxe-as-cwe-776-vuln-002",
+          "title": "xxe-as-cwe-776",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,7 @@ def parse_client(raw: str):\n-    return ET.fromstring(raw)\n+    return ET.fromstring(raw, parser=ET.XMLParser(resolve_entities=True))\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-776",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-776-xxe-as-cwe-776-safe-100",
+          "title": "xxe-as-cwe-776",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -6,7 +6,8 @@ def parse_buffer(raw: str):\n-    return ET.fromstring(raw)\n+    parser = ET.XMLParser(resolve_entities=False)\n+    return ET.fromstring(raw, parser=parser)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-776",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-829",
+      "name": "Inclusion of Functionality from Untrusted Control Sphere",
+      "priority": "P2",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-829-eval-injection-as-cwe-829-vuln-000",
+          "title": "eval-injection-as-cwe-829",
+          "language": "javascript",
+          "category": "dependency",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_resource(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-829",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-829-eval-injection-as-cwe-829-vuln-001",
+          "title": "eval-injection-as-cwe-829",
+          "language": "javascript",
+          "category": "dependency",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_payload(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-829",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-829-eval-injection-as-cwe-829-vuln-002",
+          "title": "eval-injection-as-cwe-829",
+          "language": "javascript",
+          "category": "dependency",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_account(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return eval(expr);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-829",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-829-eval-injection-as-cwe-829-safe-100",
+          "title": "eval-injection-as-cwe-829",
+          "language": "javascript",
+          "category": "dependency",
+          "diff": "@@ -15,7 +15,7 @@ export function apply_resource(expr, ctx) {\n-  return safeEval(expr, ctx);\n+  return safeEval(expr, ctx);\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-829",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-1333",
+      "name": "Inefficient Regular Expression Complexity",
+      "priority": "P2",
+      "languages": [
+        "javascript",
+        "typescript",
+        "python"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-1333-redos-vuln-000",
+          "title": "redos",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ export function match_resource(input) {\n-  return /^[a-z]+$/i.test(input);\n+  return new RegExp('^(a+)+$').test(input);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1333",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-1333-redos-vuln-001",
+          "title": "redos",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ export function match_payload(input) {\n-  return /^[a-z]+$/i.test(input);\n+  return new RegExp('^(a+)+$').test(input);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1333",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-1333-redos-vuln-002",
+          "title": "redos",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ export function match_account(input) {\n-  return /^[a-z]+$/i.test(input);\n+  return new RegExp('^(a+)+$').test(input);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1333",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-1333-redos-safe-100",
+          "title": "redos",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -11,7 +11,7 @@ export function match_resource(input) {\n-  return /^[a-z]+$/i.test(input);\n+  return /^[a-z]{1,64}$/i.test(input);\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-1333",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-1336",
+      "name": "Improper Neutralization of Special Elements Used in a Template Engine",
+      "priority": "P2",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-1336-ssti-as-cwe-1336-vuln-000",
+          "title": "ssti-as-cwe-1336",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,7 @@ def render_query(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1336",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-1336-ssti-as-cwe-1336-vuln-001",
+          "title": "ssti-as-cwe-1336",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,7 @@ def render_buffer(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1336",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-1336-ssti-as-cwe-1336-vuln-002",
+          "title": "ssti-as-cwe-1336",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,7 @@ def render_profile(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    return Template(template_str).render(**ctx, **request.args)\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-1336",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-1336-ssti-as-cwe-1336-safe-100",
+          "title": "ssti-as-cwe-1336",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -30,7 +30,8 @@ def render_query(template_str: str, ctx: dict) -> str:\n-    return Template(template_str).render(**ctx)\n+    env = SandboxedEnvironment()\n+    return env.from_string(template_str).render(**ctx)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-1336",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-117",
+      "name": "Improper Output Neutralization for Logs",
+      "priority": "P2",
+      "languages": [
+        "python",
+        "typescript",
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-117-log-injection-vuln-000",
+          "title": "log-injection",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ def audit_config(user: str, action: str) -> None:\n-    logger.info(\"user=%s action=%s\", user, action)\n+    logger.info(f\"user={user} action={action}\")\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-117",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-117-log-injection-vuln-001",
+          "title": "log-injection",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ def audit_order(user: str, action: str) -> None:\n-    logger.info(\"user=%s action=%s\", user, action)\n+    logger.info(f\"user={user} action={action}\")\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-117",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-117-log-injection-vuln-002",
+          "title": "log-injection",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ def audit_record(user: str, action: str) -> None:\n-    logger.info(\"user=%s action=%s\", user, action)\n+    logger.info(f\"user={user} action={action}\")\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-117",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-117-log-injection-safe-100",
+          "title": "log-injection",
+          "language": "python",
+          "category": "injection",
+          "diff": "@@ -9,7 +9,7 @@ def audit_config(user: str, action: str) -> None:\n-    logger.info(\"user=%s action=%s\", user, action)\n+    logger.info(\"user=%s action=%s\", user.replace(\"\\n\", \"\"), action)\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-117",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-209",
+      "name": "Generation of Error Message Containing Sensitive Information",
+      "priority": "P2",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-209-type-assertion-bypass-as-cwe-209-vuln-000",
+          "title": "type-assertion-bypass-as-cwe-209",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_profile(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-209",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-209-type-assertion-bypass-as-cwe-209-vuln-001",
+          "title": "type-assertion-bypass-as-cwe-209",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_client(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-209",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-209-type-assertion-bypass-as-cwe-209-vuln-002",
+          "title": "type-assertion-bypass-as-cwe-209",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_token(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-209",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-209-type-assertion-bypass-as-cwe-209-safe-100",
+          "title": "type-assertion-bypass-as-cwe-209",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_profile(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n   return next();\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-209",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-532",
+      "name": "Insertion of Sensitive Information into Log File",
+      "priority": "P2",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-532-hardcoded-secrets-as-cwe-532-vuln-000",
+          "title": "hardcoded-secrets-as-cwe-532",
+          "language": "python",
+          "category": "secrets",
+          "diff": "@@ -4,6 +4,7 @@ class Settings:\n     debug: bool = False\n+    stripe_key: str = \"sk_live_HARDCODED_IN_DIFF_ABC123\"\n \n     @classmethod",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-532",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-532-hardcoded-secrets-as-cwe-532-vuln-000",
+          "title": "hardcoded-secrets-as-cwe-532",
+          "language": "typescript",
+          "category": "secrets",
+          "diff": "@@ -3,7 +3,7 @@ export const config = {\n   port: 3000,\n-  apiKey: process.env.API_KEY ?? '',\n+  apiKey: 'sk_test_HARDCODED_KEY_IN_PR_DIFF_9e2f',\n } as const;\n ",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-532",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-532-hardcoded-secrets-as-cwe-532-vuln-001",
+          "title": "hardcoded-secrets-as-cwe-532",
+          "language": "python",
+          "category": "secrets",
+          "diff": "@@ -4,6 +4,7 @@ class Settings:\n     debug: bool = False\n+    stripe_key: str = \"sk_live_HARDCODED_IN_DIFF_ABC123\"\n \n     @classmethod",
+          "expected": [
+            {
+              "category": "secrets"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-532",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-532-hardcoded-secrets-as-cwe-532-safe-100",
+          "title": "hardcoded-secrets-as-cwe-532",
+          "language": "python",
+          "category": "secrets",
+          "diff": "@@ -4,6 +4,7 @@ class Settings:\n     debug: bool = False\n+    stripe_key: str = os.environ[\"STRIPE_KEY\"]\n \n     @classmethod",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-532",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-601",
+      "name": "URL Redirection to Untrusted Site ('Open Redirect')",
+      "priority": "P2",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "javascript-cwe-601-open-redirect-vuln-000",
+          "title": "open-redirect",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ export function login_config(req, res) {\n-  const next = req.query.next || '/home';\n+  const next = req.query.next;\n   res.redirect(next);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-601",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-601-open-redirect-vuln-001",
+          "title": "open-redirect",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ export function login_order(req, res) {\n-  const next = req.query.next || '/home';\n+  const next = req.query.next;\n   res.redirect(next);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-601",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-601-open-redirect-vuln-002",
+          "title": "open-redirect",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,7 @@ export function login_record(req, res) {\n-  const next = req.query.next || '/home';\n+  const next = req.query.next;\n   res.redirect(next);\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-601",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-601-open-redirect-safe-100",
+          "title": "open-redirect",
+          "language": "javascript",
+          "category": "injection",
+          "diff": "@@ -22,7 +22,8 @@ export function login_config(req, res) {\n-  const next = req.query.next || '/home';\n+  const next = safeRedirect(req.query.next);\n+  if (!next) return res.status(400).end();\n   res.redirect(next);\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-601",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-770",
+      "name": "Allocation of Resources Without Limits or Throttling",
+      "priority": "P2",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-770-resource-exhaustion-vuln-000",
+          "title": "resource-exhaustion",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -18,7 +18,6 @@ export function queue_data(items: unknown[]) {\n-  const MAX = 10_000;\n-  if (items.length > MAX) throw new Error('too many');\n   for (const item of items) workers.push(item);\n }\n ",
+          "expected": [
+            {
+              "category": "config"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-770",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-770-resource-exhaustion-vuln-001",
+          "title": "resource-exhaustion",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -18,7 +18,6 @@ export function queue_host(items: unknown[]) {\n-  const MAX = 10_000;\n-  if (items.length > MAX) throw new Error('too many');\n   for (const item of items) workers.push(item);\n }\n ",
+          "expected": [
+            {
+              "category": "config"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-770",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-770-resource-exhaustion-vuln-002",
+          "title": "resource-exhaustion",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -18,7 +18,6 @@ export function queue_path(items: unknown[]) {\n-  const MAX = 10_000;\n-  if (items.length > MAX) throw new Error('too many');\n   for (const item of items) workers.push(item);\n }\n ",
+          "expected": [
+            {
+              "category": "config"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-770",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-770-resource-exhaustion-safe-100",
+          "title": "resource-exhaustion",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -18,7 +18,8 @@ export function queue_data(items: unknown[]) {\n-  const MAX = 10_000;\n-  if (items.length > MAX) throw new Error('too many');\n+  const MAX = 10_000;\n+  if (items.length > MAX) throw new Error('too many');\n   for (const item of items) workers.push(item);\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-770",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-400",
+      "name": "Uncontrolled Resource Consumption",
+      "priority": "P2",
+      "languages": [
+        "python",
+        "typescript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-400-ssrf-as-cwe-400-vuln-000",
+          "title": "ssrf-as-cwe-400",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -19,7 +19,6 @@ def fetch_path(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-400",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-400-ssrf-as-cwe-400-vuln-000",
+          "title": "ssrf-as-cwe-400",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -20,7 +20,6 @@ export async function proxy_path(target: string): Promise<string> {\n-  assertAllowedUrl(target);\n   const res = await fetch(target);\n   return res.text();\n }\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-400",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-400-ssrf-as-cwe-400-vuln-001",
+          "title": "ssrf-as-cwe-400",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -19,7 +19,6 @@ def fetch_config(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-400",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-400-ssrf-as-cwe-400-safe-100",
+          "title": "ssrf-as-cwe-400",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -19,7 +19,8 @@ def fetch_path(url: str) -> str:\n-    if not is_allowed(url):\n-        raise ValueError(\"blocked\")\n+    if not is_allowed(url):\n+        raise ValueError(\"blocked\")\n+    return requests.get(url, timeout=5).text\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-400",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-732",
+      "name": "Incorrect Permission Assignment for Critical Resource",
+      "priority": "P2",
+      "languages": [
+        "python",
+        "c"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "python-cwe-732-path-traversal-as-cwe-732-vuln-000",
+          "title": "path-traversal-as-cwe-732",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -23,7 +23,7 @@ def open_resource(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-732",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "c-cwe-732-path-traversal-as-cwe-732-vuln-000",
+          "title": "path-traversal-as-cwe-732",
+          "language": "c",
+          "category": "config",
+          "diff": "@@ -30,7 +30,7 @@ FILE *open_resource(const char *name) {\n   char path[256];\n-  snprintf(path, sizeof(path), \"/data/%s\", basename(name));\n+  snprintf(path, sizeof(path), \"/data/%s\", name);\n   return fopen(path, \"rb\");\n }",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-732",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-732-path-traversal-as-cwe-732-vuln-001",
+          "title": "path-traversal-as-cwe-732",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -23,7 +23,7 @@ def open_payload(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    safe = os.path.join(\"/data\", name)\n     return open(safe, \"rb\").read()\n ",
+          "expected": [
+            {
+              "category": "injection"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-732",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "python-cwe-732-path-traversal-as-cwe-732-safe-100",
+          "title": "path-traversal-as-cwe-732",
+          "language": "python",
+          "category": "config",
+          "diff": "@@ -23,7 +23,9 @@ def open_resource(name: str) -> bytes:\n-    safe = os.path.join(\"/data\", os.path.basename(name))\n+    base = os.path.basename(name)\n+    if \"..\" in name:\n+        raise ValueError(\"traversal\")\n+    safe = os.path.join(\"/data\", base)\n     return open(safe, \"rb\").read()\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-732",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-693",
+      "name": "Protection Mechanism Failure",
+      "priority": "P2",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-693-jwt-misuse-as-cwe-693-vuln-000",
+          "title": "jwt-misuse-as-cwe-693",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -31,7 +31,7 @@ export function parse_account(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.decode(token) as JwtPayload;\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-693",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "javascript-cwe-693-jwt-misuse-as-cwe-693-vuln-000",
+          "title": "jwt-misuse-as-cwe-693",
+          "language": "javascript",
+          "category": "config",
+          "diff": "@@ -28,7 +28,7 @@ export function verify_account(token) {\n-  return jwt.verify(token, SECRET, { algorithms: ['HS256'] });\n+  return jwt.decode(token);\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-693",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-693-jwt-misuse-as-cwe-693-vuln-001",
+          "title": "jwt-misuse-as-cwe-693",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -31,7 +31,7 @@ export function parse_data(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.decode(token) as JwtPayload;\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-693",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-693-jwt-misuse-as-cwe-693-safe-100",
+          "title": "jwt-misuse-as-cwe-693",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -31,7 +31,7 @@ export function parse_account(token: string): JwtPayload {\n-  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n+  return jwt.verify(token, secret, { algorithms: ['HS256'] }) as JwtPayload;\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-693",
+          "source": "synthetic"
+        }
+      ]
+    },
+    {
+      "cwe_id": "CWE-704",
+      "name": "Incorrect Type Conversion or Cast",
+      "priority": "P2",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "typescript-cwe-704-type-assertion-bypass-as-cwe-704-vuln-000",
+          "title": "type-assertion-bypass-as-cwe-704",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_profile(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-704",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-704-type-assertion-bypass-as-cwe-704-vuln-001",
+          "title": "type-assertion-bypass-as-cwe-704",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_client(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-704",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-704-type-assertion-bypass-as-cwe-704-vuln-002",
+          "title": "type-assertion-bypass-as-cwe-704",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_token(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  const u = req.user as AdminUser;\n+  if (u.isAdmin) return next();\n   return next(new ForbiddenError());\n }\n ",
+          "expected": [
+            {
+              "category": "authz"
+            }
+          ],
+          "negative": false,
+          "cwe_id": "CWE-704",
+          "source": "synthetic"
+        },
+        {
+          "scenario_id": "typescript-cwe-704-type-assertion-bypass-as-cwe-704-safe-100",
+          "title": "type-assertion-bypass-as-cwe-704",
+          "language": "typescript",
+          "category": "config",
+          "diff": "@@ -14,7 +14,7 @@ export function admin_profile(req: Request, _res: Response, next: NextFunction) {\n-  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n+  if (req.user?.role !== 'admin') return next(new ForbiddenError());\n   return next();\n }\n ",
+          "expected": [],
+          "negative": true,
+          "cwe_id": "CWE-704",
+          "source": "synthetic"
+        }
+      ]
+    }
+  ]
+}
