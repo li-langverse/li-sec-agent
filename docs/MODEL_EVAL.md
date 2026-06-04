@@ -104,7 +104,7 @@ Harness: `REQUEST_TIMEOUT_MS` defaults to **600000** (10 min); retries via `EVAL
 
 ### Head-to-head (same 10 cases)
 
-Fixed corpus: `eval/benchmark-head2head-10.json` (first 10 entries from `eval/benchmark-multilang.json` � C buffer-overflow vulns `c-buffer-overflow-vuln-000` � `009`). Env for all runs: `CASE_LIMIT=10`, `OLLAMA_NUM_CTX=8192`, `BENCHMARK_PATH=eval/benchmark-head2head-10.json` (27b smoke below used `benchmark-multilang.json` + `CASE_LIMIT=10`; **identical case IDs**).
+Fixed corpus: `eval/benchmark-head2head-10.json` (first 10 entries from `eval/benchmark-multilang.json` � C buffer-overflow vulns `c-buffer-overflow-vuln-000` through `009`). Env for all runs: `CASE_LIMIT=10`, `OLLAMA_NUM_CTX=8192`, `BENCHMARK_PATH=eval/benchmark-head2head-10.json` (27b smoke below used `benchmark-multilang.json` + `CASE_LIMIT=10`; **identical case IDs**).
 
 | Model | Host | F1 | Prec | Recall | p50 ms | VRAM MiB | Cases OK |
 |-------|------|-----|------|--------|--------|----------|----------|
@@ -114,7 +114,7 @@ Fixed corpus: `eval/benchmark-head2head-10.json` (first 10 entries from `eval/be
 
 Runs: cluster 9b **2026-06-04** (`eval/results/qwen3.5_9b-2026-06-04T02-49-59-679Z.json`); local 27b **2026-06-03** (`eval/results/qwen3.5_27b-2026-06-03T23-25-10-792Z.json`); local 9b optional **2026-06-04** (`eval/results/qwen3.5_9b-2026-06-04T02-51-34-782Z.json`).
 
-**Verdict:** On the same 10 multilang cases, **`qwen3.5:9b` on the engine cluster wins F1 (0.70 vs 0.10)**. The prior **0.69** 9b score was on the **legacy 18-case** set, not this subset. **`qwen3.5:27b` is not worth the latency cost** here (~61� slower p50 than cluster 9b, ~2.5� VRAM, worse category alignment on C buffer overflows). Staging should stay on **`qwen3.5:9b`** unless you re-tune prompts / scoring for 27b.
+**Verdict:** On the same 10 multilang cases, **`qwen3.5:9b` on the engine cluster wins F1 (0.70 vs 0.10)**. The prior **0.69** 9b score was on the **legacy 18-case** set, not this subset. **`qwen3.5:27b` is not worth the latency cost** here (~61x slower p50 than cluster 9b, ~2.5x VRAM, worse category alignment on C buffer overflows). Staging should stay on **`qwen3.5:9b`** unless you re-tune prompts / scoring for 27b.
 
 <!-- EVAL_RESULTS_END -->
 
