@@ -1,39 +1,89 @@
-{
-  "schema_version": 1,
-  "description": "Recorded F1 baselines on reference / multilang corpora (eval-models.ts category match).",
-  "runs": [
-    {
-      "model": "qwen3.5:9b",
-      "engine": "http://192.168.10.33:31434/v1",
-      "corpus": "eval/benchmark-multilang.json",
-      "case_count": 5,
-      "case_limit_note": "smoke CASE_LIMIT=5",
-      "evaluated_at": "2026-06-04T04:42:57.578Z",
-      "f1": 0.8,
-      "precision": 0.8,
-      "recall": 0.8,
-      "false_positive_rate": 0,
-      "negative_case_pass_rate": 1,
-      "latency_p50_ms": 8805,
-      "by_language": {
-        "c": { "n": 2, "f1": 1, "precision": 1, "recall": 1 },
-        "cpp": { "n": 2, "f1": 1, "precision": 1, "recall": 1 },
-        "rust": { "n": 1, "f1": 0, "precision": 0, "recall": 0 }
-      }
-    },
-    {
-      "model": "qwen3.5:9b",
-      "engine": "http://192.168.10.33:31434/v1",
-      "corpus": "eval/benchmark-multilang.json",
-      "case_count": 840,
-      "status": "incomplete",
-      "note": "full-840-qwen35-9b-20260604-054054.log stopped at ~75/840 — rerun with CASE_OFFSET resume",
-      "log": "eval/results/full-840-qwen35-9b-20260604-054054.log"
-    }
-  ],
-  "commands": {
-    "smoke_20": "CASE_LIMIT=20 BENCHMARK_PATH=eval/reference-database/corpus-v1.json MODELS=qwen3.5:9b npm run eval:models",
-    "eval_100": "CASE_LIMIT=100 BENCHMARK_PATH=eval/reference-database/corpus-v1.json MODELS=qwen3.5:9b npm run eval:models",
-    "resume_840": "BENCHMARK_PATH=eval/benchmark-multilang.json CASE_OFFSET=75 MODELS=qwen3.5:9b npm run eval:models"
-  }
+﻿{
+    "schema_version":  1,
+    "description":  "Recorded F1 baselines on reference / multilang corpora (eval-models.ts category match).",
+    "runs":  [
+                 {
+                     "model":  "qwen3.5:9b",
+                     "engine":  "http://192.168.10.33:31434/v1",
+                     "corpus":  "eval/benchmark-multilang.json",
+                     "case_count":  5,
+                     "case_limit_note":  "smoke CASE_LIMIT=5",
+                     "evaluated_at":  "2026-06-04T04:42:57.578Z",
+                     "f1":  0.8,
+                     "precision":  0.8,
+                     "recall":  0.8,
+                     "false_positive_rate":  0,
+                     "negative_case_pass_rate":  1,
+                     "latency_p50_ms":  8805,
+                     "by_language":  {
+                                         "c":  {
+                                                   "n":  2,
+                                                   "f1":  1,
+                                                   "precision":  1,
+                                                   "recall":  1
+                                               },
+                                         "cpp":  {
+                                                     "n":  2,
+                                                     "f1":  1,
+                                                     "precision":  1,
+                                                     "recall":  1
+                                                 },
+                                         "rust":  {
+                                                      "n":  1,
+                                                      "f1":  0,
+                                                      "precision":  0,
+                                                      "recall":  0
+                                                  }
+                                     }
+                 },
+                 {
+                     "model":  "qwen3.5:9b",
+                     "engine":  "http://192.168.10.33:31434/v1",
+                     "corpus":  "eval/reference-database/corpus-v1.json",
+                     "case_count":  20,
+                     "case_limit_note":  "smoke CASE_LIMIT=20",
+                     "evaluated_at":  "2026-06-04T06:18:53.345Z",
+                     "f1":  0.48,
+                     "precision":  0.462,
+                     "recall":  0.5,
+                     "false_positive_rate":  0.125,
+                     "negative_case_pass_rate":  0.875,
+                     "latency_p50_ms":  10952,
+                     "wall_time_sec":  249,
+                     "by_language":  {
+                                         "c":  {
+                                                   "recall":  0.625,
+                                                   "f1":  0.588,
+                                                   "precision":  0.556,
+                                                   "n":  14
+                                               },
+                                         "javascript":  {
+                                                            "recall":  0,
+                                                            "f1":  0,
+                                                            "precision":  0,
+                                                            "n":  4
+                                                        },
+                                         "cpp":  {
+                                                     "recall":  1,
+                                                     "f1":  1,
+                                                     "precision":  1,
+                                                     "n":  2
+                                                 }
+                                     }
+                 },
+                 {
+                     "model":  "qwen3.5:9b",
+                     "engine":  "http://192.168.10.33:31434/v1",
+                     "corpus":  "eval/benchmark-multilang.json",
+                     "case_count":  840,
+                     "status":  "in_progress",
+                     "note":  "resume from CASE_OFFSET=75; log full-840-qwen35-9b-resume-20260604-082113.log",
+                     "log":  "eval/results/full-840-qwen35-9b-resume-20260604-082113.log"
+                 }
+             ],
+    "commands":  {
+                     "smoke_20":  "CASE_LIMIT=20 BENCHMARK_PATH=eval/reference-database/corpus-v1.json MODELS=qwen3.5:9b npm run eval:models",
+                     "eval_100":  "CASE_LIMIT=100 BENCHMARK_PATH=eval/reference-database/corpus-v1.json MODELS=qwen3.5:9b npm run eval:models",
+                     "resume_840":  "BENCHMARK_PATH=eval/benchmark-multilang.json CASE_OFFSET=75 MODELS=qwen3.5:9b npm run eval:models"
+                 }
 }
