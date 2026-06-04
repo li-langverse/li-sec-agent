@@ -49,6 +49,8 @@ type CaseResult = {
   falseNegatives: number;
   parseOk: boolean;
   rawResponsePreview: string;
+  language?: string;
+  benchmarkCategory?: string;
 };
 
 type ModelResult = {
@@ -66,6 +68,9 @@ type ModelResult = {
   vramUsedMiB?: number;
   vramTotalMiB?: number;
   evaluatedAt: string;
+  breakdownByLanguage?: BreakdownRow[];
+  breakdownByCategory?: BreakdownRow[];
+  wallTimeSec?: number;
 };
 
 function parseFindingsJson(text: string): RawFinding[] {
@@ -189,9 +194,21 @@ async function runModel(
   let promptTokens = 0;
   let completionTokens = 0;
   const caseResults: CaseResult[] = [];
+  const progressEvery = Number(process.env.PROGRESS_EVERY ?? "25");
+  const caseOffset = Number(process.env.CASE_OFFSET ?? "0");
 
-  for (const testCase of cases) {
-    console.log(`  case ${testCase.id}...`);
+  for (let caseIndex = 0; caseIndex < cases.length; caseIndex++) {
+    const testCase = cases[caseIndex]!;
+    const globalIndex = caseOffset + caseIndex + 1;
+    const isFirst = caseIndex === 0;
+    const isLast = caseIndex === cases.length - 1;
+    const tick =
+      progressEvery > 0 && (caseIndex + 1) % progressEvery === 0;
+    if (isFirst || isLast || tick) {
+      console.log(
+        `  progress ${caseIndex + 1}/${cases.length} (global ~${globalIndex}) id=${testCase.id}`
+      );
+    }
     const started = Date.now();
     try {
       const response = await chatCompletion(baseUrl, apiKey, {
@@ -254,6 +271,8 @@ async function runModel(
       const findings = parseFindingsJson(content);
       const scored = scoreCase(testCase, findings, content.trim().length > 0);
       scored.rawResponsePreview = content.slice(0, 240).replace(/\s+/g, " ");
+      scored.language = testCase.language;
+      scored.benchmarkCategory = testCase.category;
       caseResults.push(scored);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -295,6 +314,8 @@ async function runModel(
     model,
     status: "ok",
     cases: caseResults,
+    breakdownByLanguage: breakdownByField(caseResults, "language"),
+    breakdownByCategory: breakdownByField(caseResults, "benchmarkCategory"),
     latencyMs: {
       p50: percentile(latencies, 50),
       p95: percentile(latencies, 95),
@@ -324,6 +345,58 @@ function round(n: number): number {
   return Math.round(n * 1000) / 1000;
 }
 
+function metricsFromCases(rows: CaseResult[]): {
+  precision: number;
+  recall: number;
+  f1: number;
+  n: number;
+} {
+  const tp = rows.reduce((sum, c) => sum + c.truePositives, 0);
+  const fp = rows.reduce((sum, c) => sum + c.falsePositives, 0);
+  const fn = rows.reduce((sum, c) => sum + c.falseNegatives, 0);
+  const precision = tp + fp > 0 ? tp / (tp + fp) : 1;
+  const recall = tp + fn > 0 ? tp / (tp + fn) : 1;
+  const f1 =
+    precision + recall > 0 ? (2 * precision * recall) / (precision + recall) : 0;
+  return {
+    precision: round(precision),
+    recall: round(recall),
+    f1: round(f1),
+    n: rows.length,
+  };
+}
+
+function breakdownByField(
+  caseResults: CaseResult[],
+  field: "language" | "benchmarkCategory"
+): BreakdownRow[] {
+  const groups = new Map<string, CaseResult[]>();
+  for (const row of caseResults) {
+    const key = (row[field] ?? "unknown").toLowerCase();
+    const list = groups.get(key) ?? [];
+    list.push(row);
+    groups.set(key, list);
+  }
+  return [...groups.entries()]
+    .map(([key, rows]) => ({ key, ...metricsFromCases(rows) }))
+    .sort((a, b) => a.key.localeCompare(b.key));
+}
+
+function formatBreakdownTable(title: string, rows: BreakdownRow[]): string {
+  const lines = [
+    `### ${title}`,
+    "",
+    "| Group | N | F1 | Prec | Recall |",
+    "|-------|---|-----|------|--------|",
+  ];
+  for (const r of rows) {
+    lines.push(
+      `| ${r.key} | ${r.n} | ${r.f1} | ${r.precision} | ${r.recall} |`
+    );
+  }
+  return lines.join("\n");
+}
+
 function printSummary(results: ModelResult[]): void {
   console.log("\n| Model | Status | F1 | Prec | Recall | FP rate | Neg pass | p50 ms | VRAM MiB |");
   console.log("|-------|--------|-----|------|--------|---------|----------|--------|----------|");
@@ -336,6 +409,7 @@ function printSummary(results: ModelResult[]): void {
 }
 
 async function main(): Promise<void> {
+  const wallStart = Date.now();
   const baseUrl =
     process.env.QWEN_BASE_URL ?? "http://192.168.10.33:31434/v1";
   const apiKey = process.env.QWEN_API_KEY ?? "ollama";
@@ -388,6 +462,16 @@ async function main(): Promise<void> {
     cases = cases.filter((c) => caseIds.includes(c.id));
     console.log(`CASE_IDS filter: ${cases.length} cases`);
   }
+
+  const caseOffset = Number(process.env.CASE_OFFSET ?? "0");
+  const totalBeforeOffset = cases.length;
+  if (caseOffset > 0) {
+    cases = cases.slice(caseOffset);
+    console.log(
+      `CASE_OFFSET=${caseOffset} (resume; ${cases.length}/${totalBeforeOffset} cases remaining)`
+    );
+  }
+
   const resultsDir = join(REPO_ROOT, "eval", "results");
   mkdirSync(resultsDir, { recursive: true });
 
@@ -398,6 +482,7 @@ async function main(): Promise<void> {
   for (const model of models) {
     console.log(`\n==> Evaluating ${model}...`);
     const result = await runModel(baseUrl, apiKey, model, cases);
+    result.wallTimeSec = Math.round((Date.now() - wallStart) / 1000);
     results.push(result);
     const stamp = new Date().toISOString().replace(/[:.]/g, "-");
     const outFile = join(resultsDir, `${model.replace(/[:/]/g, "_")}-${stamp}.json`);
@@ -405,10 +490,53 @@ async function main(): Promise<void> {
     console.log(`Wrote ${outFile}`);
   }
 
+  const wallTimeSec = Math.round((Date.now() - wallStart) / 1000);
   const summaryPath = join(resultsDir, `summary-${Date.now()}.json`);
-  writeFileSync(summaryPath, JSON.stringify({ baseUrl, models, results }, null, 2));
+  const summaryPayload = {
+    baseUrl,
+    models,
+    results,
+    caseCount: cases.length,
+    caseOffset: Number(process.env.CASE_OFFSET ?? "0"),
+    wallTimeSec,
+  };
+  writeFileSync(summaryPath, JSON.stringify(summaryPayload, null, 2));
+
+  const summariesDir = join(REPO_ROOT, "eval", "summaries");
+  mkdirSync(summariesDir, { recursive: true });
+  for (const r of results) {
+    if (r.status !== "ok") continue;
+    const slug = r.model.replace(/[:/]/g, "_");
+    const mdPath = join(
+      summariesDir,
+      `${slug}-multilang-${r.cases.length}-${new Date().toISOString().slice(0, 10)}.md`
+    );
+    const byLang =
+      r.breakdownByLanguage ?? breakdownByField(r.cases, "language");
+    const byCat =
+      r.breakdownByCategory ?? breakdownByField(r.cases, "benchmarkCategory");
+    const md = [
+      `# ${r.model} — multilang benchmark (${r.cases.length} cases)`,
+      "",
+      `- API: ${baseUrl}`,
+      `- Evaluated: ${r.evaluatedAt}`,
+      `- Wall time: ${r.wallTimeSec ?? wallTimeSec}s`,
+      `- Overall F1: **${r.f1}** (prec ${r.precision}, recall ${r.recall})`,
+      `- FP rate: ${r.falsePositiveRate} | Neg pass: ${r.negativeCasePassRate}`,
+      `- Latency p50: ${r.latencyMs.p50} ms`,
+      "",
+      formatBreakdownTable("By language", byLang),
+      "",
+      formatBreakdownTable("By benchmark category", byCat),
+      "",
+    ].join("\n");
+    writeFileSync(mdPath, md);
+    console.log(`Wrote ${mdPath}`);
+  }
+
   printSummary(results);
-  console.log(`\nSummary: ${summaryPath}`);
+  console.log(`\nWall time: ${wallTimeSec}s`);
+  console.log(`Summary: ${summaryPath}`);
 }
 
 main().catch((error) => {
