@@ -1,6 +1,6 @@
 # CWE benchmark expansion — master plan
 
-**Status:** Phase 0 complete; **v1 taxonomy + synthetic scenarios complete** (2026-06-04)  
+**Status:** Phase 0 complete; **v1 taxonomy + synthetic scenarios complete**; **reference database v1** (2026-06-04)  
 **Owner:** li-sec-agent / li-langverse  
 **Related:** [MULTILANG_BENCHMARK.md](./MULTILANG_BENCHMARK.md), [OFFICIAL_EVAL_BENCHMARKS.md](./OFFICIAL_EVAL_BENCHMARKS.md), [MODEL_EVAL.md](./MODEL_EVAL.md)
 
@@ -28,8 +28,8 @@ This plan expands benchmarks by:
 | CWE coverage | Unique CWE ids with ≥1 harness case | 22 | **50** (backlog) | 100+ (Stable Base from mirror) |
 | Scenario depth | Positive scenarios per CWE×language | ~1 template | **3–5** variants | 5 + negatives |
 | Languages | c, cpp, rust, python, js, ts | 6 | 6 | +optional Go/Java subset |
-| Corpus size | Total `BenchmarkCase` rows | 840 | **2,500+** | 5,000+ |
-| Real-world slice | OpenSSF-derived diff cases | 0 | **50–100** CVEs | 218+ |
+| Corpus size | Total `BenchmarkCase` rows | 840 | **1,410** (reference v1) | 5,000+ |
+| Real-world slice | OpenSSF-derived diff cases | 0 | **180** (60 CVEs) | 218+ |
 | Eval quality | Category precision/recall on smoke | documented in MODEL_EVAL | ≥ baseline on 10-case smoke | no regression on negatives |
 | Testability | % cases with deterministic oracle | ~100% synthetic | 100% synthetic + labeled OSSF | CI `CASE_LIMIT` smoke green |
 
@@ -117,7 +117,7 @@ Inventory script: `npx tsx scripts/benchmarks/cwe-inventory.ts`
 | **2** | Extraction | OpenSSF 50–100 CVE diffs; optional PrimeVul/JitVul pairs |
 | **3** | Multilang translation | Template library per CWE×language; port patterns from generator |
 | **4** | Scenario generation | 3–5 positive + 1–2 negative variants per family |
-| **5** | Harness integration | Merge corpora; `source`, `cve`, `cwe` metadata on cases |
+| **5** | Harness integration | **Done (ref v1)** — `eval/reference-database/corpus-v1.json`; `source`, provenance, splits |
 | **6** | Validation/testing | `eval-models.ts` sweeps; regression vs 840 baseline |
 | **7** | CI/telemetry | Scheduled inventory; eval artifacts in MODEL_EVAL |
 
@@ -184,7 +184,7 @@ Inventory script: `npx tsx scripts/benchmarks/cwe-inventory.ts`
 | WP-7.1 | Weekly `cwe-inventory` + catalog version bump alert | WP-1.1 | 1d | TBD |
 | WP-7.2 | Telemetry: corpus version in eval events | WP-5.2 | 1d | TBD |
 
-**Next immediate WP:** **WP-2.1** — OpenSSF CVE diff subset (`fetch-ossf-cve-subset.ts`). v1 synthetic DB: see [CWE_DATABASE.md](./CWE_DATABASE.md); regenerate with `npm run benchmark:build-cwe-db`.
+**Next immediate WP:** **WP-2.4** PrimeVul 50 pairs; scale reference corpus to 2.5k (`TARGET_EXTRA`, git-based OSSF diffs). Reference DB: [REFERENCE_DATABASE.md](./REFERENCE_DATABASE.md); build with `npm run benchmark:reference-v1`.
 
 ---
 
@@ -333,6 +333,12 @@ CWE-829, 1333, 1336, 117, 209, 532, 601, 770, 400, 732, 693, 704 + SSRF scenario
 | `eval/benchmark-cwe-expanded.json` | Harness corpus (~235 v1 cases) |
 | `eval/cwe-database.manifest.json` | Corpus statistics |
 | `docs/CWE_DATABASE.md` | Schema and runbooks |
+| `docs/REFERENCE_DATABASE.md` | Canonical reference corpus v1 |
+| `eval/reference-database/` | `corpus-v1.json`, `manifest.json`, `schema.json`, baselines |
+| `scripts/benchmarks/build-reference-db.ts` | Merge + dedupe corpora |
+| `scripts/benchmarks/fetch-ossf-cve-subset.ts` | OpenSSF CVE import |
+| `scripts/benchmarks/expand-reference-corpus.ts` | +synthetic expansion |
+| `scripts/export-finetune-jsonl.ts` | SFT JSONL export |
 | `eval/benchmark-multilang.json` | Baseline 840 cases |
 | `docs/OFFICIAL_EVAL_BENCHMARKS.md` | OpenSSF / PrimeVul integration |
 | `beelink-cleanup/docs/cwe-homelab.md` | Infra source of truth |
@@ -345,3 +351,4 @@ CWE-829, 1333, 1336, 117, 209, 532, 601, 770, 400, 732, 693, 704 + SSRF scenario
 |------|--------|
 | 2026-06-04 | Phase 0 discovery + initial plan, inventory stub, backlog |
 | 2026-06-04 | v1: MITRE enricher, 50-CWE synthetic DB (~235 scenarios), harness path, CWE_DATABASE.md |
+| 2026-06-04 | Reference DB v1: 1410 cases, OSSF 180, manifest/splits, finetune export |

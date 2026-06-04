@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "corpus_version": "v1",
+  "generated_at": "2026-06-04T06:11:43.406Z",
+  "corpus_files": [
+    "corpus-v1.json"
+  ],
+  "sources": [
+    {
+      "id": "multilang-synthetic",
+      "path": "eval/benchmark-multilang.json",
+      "license": "MIT (li-sec-agent)",
+      "count": 726
+    },
+    {
+      "id": "cwe-expanded-synthetic",
+      "path": "eval/benchmark-cwe-expanded.json",
+      "license": "MIT (li-sec-agent)",
+      "count": 104
+    },
+    {
+      "id": "reference-expanded-synthetic",
+      "path": "eval/reference-database/synthetic-expanded.json",
+      "license": "MIT (li-sec-agent)",
+      "count": 400
+    },
+    {
+      "id": "ossf-cve-benchmark",
+      "path": "eval/reference-database/ossf-subset.json",
+      "license": "MIT (OSSF metadata); per-repo OSS for snippets",
+      "count": 180
+    }
+  ],
+  "stats": {
+    "total_cases": 1410,
+    "positive_cases": 952,
+    "negative_cases": 458,
+    "unique_cwes": 54,
+    "unique_content_hashes": 1410,
+    "by_language": {
+      "c": 194,
+      "cpp": 173,
+      "javascript": 325,
+      "python": 303,
+      "typescript": 273,
+      "rust": 142
+    },
+    "by_source": {
+      "cwe-expanded-synthetic": 104,
+      "multilang-synthetic": 726,
+      "ossf-cve-benchmark": 180,
+      "reference-expanded-synthetic": 400
+    },
+    "by_split": {
+      "train": 1071,
+      "holdout": 101,
+      "eval": 238
+    },
+    "by_harness_category": {
+      "injection": 836,
+      "config": 83,
+      "secrets": 93,
+      "authz": 99,
+      "dependency": 17,
+      "crypto": 64,
+      "other": 218
+    }
+  },
+  "splits": {
+    "train_pct": 70,
+    "eval_pct": 20,
+    "holdout_pct": 10,
+    "assignment": "sha256(ref_id)[0] mod 100 → 0-69 train, 70-89 eval, 90-99 holdout"
+  },
+  "licensing": {
+    "multilang-synthetic": "MIT — li-sec-agent generated",
+    "cwe-expanded-synthetic": "MIT — li-sec-agent generated",
+    "reference-expanded-synthetic": "MIT — li-sec-agent generated",
+    "ossf-cve-benchmark": "MIT metadata; upstream repo licenses apply to code excerpts",
+    "ported-ossf": "MIT port templates; attribute CVE + original repo",
+    "mitre_cwe": "MITRE CWE reference data — taxonomy ids only",
+    "owasp_benchmark": "GPL-2.0 — metadata only, no Java copied"
+  },
+  "roadmap": {
+    "target_cases_v2": 2500,
+    "target_cases_v3": 10000
+  },
+  "dedupe": {
+    "strategy": "content_hash = sha256(file_path + diff)[0:16]",
+    "skipped_duplicates": 245
+  },
+  "content_digest": "dae1695ecc06522e"
+}

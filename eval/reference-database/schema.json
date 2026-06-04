@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://li-langverse.dev/schemas/reference-benchmark/v1",
+  "title": "li-sec-agent Reference Security Benchmark",
+  "description": "Canonical schema for PR-diff security benchmark cases and corpus manifests (v1).",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/$defs/referenceCase" },
+    { "$ref": "#/$defs/corpusManifest" }
+  ],
+  "$defs": {
+    "harnessCategory": {
+      "type": "string",
+      "enum": ["injection", "authz", "secrets", "crypto", "config", "dependency", "other"]
+    },
+    "language": {
+      "type": "string",
+      "enum": ["c", "cpp", "rust", "python", "javascript", "typescript"]
+    },
+    "corpusSplit": {
+      "type": "string",
+      "enum": ["train", "eval", "holdout"]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "medium", "hard"]
+    },
+    "provenanceSource": {
+      "type": "string",
+      "enum": [
+        "multilang-synthetic",
+        "cwe-expanded-synthetic",
+        "reference-expanded-synthetic",
+        "ossf-cve-benchmark",
+        "ported-ossf",
+        "juliet-sample",
+        "cyberseceval-adapted"
+      ]
+    },
+    "expectedFinding": {
+      "type": "object",
+      "required": ["category"],
+      "properties": {
+        "category": { "$ref": "#/$defs/harnessCategory" }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source"],
+      "properties": {
+        "source": { "$ref": "#/$defs/provenanceSource" },
+        "upstream_id": { "type": "string" },
+        "cve": { "type": "string", "pattern": "^CVE-[0-9]{4}-[0-9]+$" },
+        "cwe": { "type": "string", "pattern": "^CWE-[0-9]+$" },
+        "repository": { "type": "string", "format": "uri" },
+        "license": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "referenceCase": {
+      "type": "object",
+      "required": [
+        "ref_id",
+        "id",
+        "language",
+        "category",
+        "file_path",
+        "diff",
+        "expected",
+        "negative",
+        "source",
+        "provenance",
+        "split",
+        "difficulty",
+        "content_hash",
+        "harness_category"
+      ],
+      "properties": {
+        "ref_id": {
+          "type": "string",
+          "pattern": "^ref-[a-z0-9-]+-.+$",
+          "description": "Stable canonical id: ref-{source}-{upstream-id}"
+        },
+        "id": { "type": "string", "description": "Legacy harness id (upstream corpus)" },
+        "language": { "$ref": "#/$defs/language" },
+        "category": { "type": "string", "description": "Scenario archetype slug" },
+        "cwe": { "type": "string", "pattern": "^CWE-[0-9]+$" },
+        "file_path": { "type": "string" },
+        "diff": { "type": "string", "minLength": 8, "description": "Unified diff hunk(s)" },
+        "expected": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/expectedFinding" }
+        },
+        "negative": { "type": "boolean" },
+        "source": { "$ref": "#/$defs/provenanceSource" },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "split": { "$ref": "#/$defs/corpusSplit" },
+        "difficulty": { "$ref": "#/$defs/difficulty" },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{16}$",
+          "description": "sha256(file_path+diff) first 16 hex chars"
+        },
+        "harness_category": { "$ref": "#/$defs/harnessCategory" },
+        "cve": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "corpusManifest": {
+      "type": "object",
+      "required": ["schema_version", "corpus_version", "generated_at", "sources", "stats", "splits", "licensing"],
+      "properties": {
+        "schema_version": { "const": 1 },
+        "corpus_version": { "type": "string", "pattern": "^v[0-9]+(\\.[0-9]+)?$" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "corpus_files": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Relative paths when corpus is chunked (>5MB)"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "path", "license", "count"],
+            "properties": {
+              "id": { "type": "string" },
+              "path": { "type": "string" },
+              "license": { "type": "string" },
+              "count": { "type": "integer", "minimum": 0 },
+              "notes": { "type": "string" }
+            }
+          }
+        },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "total_cases": { "type": "integer" },
+            "positive_cases": { "type": "integer" },
+            "negative_cases": { "type": "integer" },
+            "unique_cwes": { "type": "integer" },
+            "unique_content_hashes": { "type": "integer" },
+            "by_language": { "type": "object", "additionalProperties": { "type": "integer" } },
+            "by_source": { "type": "object", "additionalProperties": { "type": "integer" } },
+            "by_split": { "type": "object", "additionalProperties": { "type": "integer" } },
+            "by_harness_category": { "type": "object", "additionalProperties": { "type": "integer" } }
+          }
+        },
+        "splits": {
+          "type": "object",
+          "properties": {
+            "train_pct": { "const": 70 },
+            "eval_pct": { "const": 20 },
+            "holdout_pct": { "const": 10 },
+            "assignment": { "type": "string" }
+          }
+        },
+        "licensing": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "roadmap": {
+          "type": "object",
+          "properties": {
+            "target_cases_v2": { "type": "integer" },
+            "target_cases_v3": { "type": "integer" }
+          }
+        }
+      }
+    }
+  }
+}

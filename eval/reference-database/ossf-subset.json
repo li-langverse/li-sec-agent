@@ -1,0 +1,2202 @@
+[
+  {
+    "id": "ossf-cve-2020-11022-vuln-239",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/manipulation.js",
+    "diff": "@@ -239,6 +239,7 @@ function manipulation_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2020-11022 regression: Expansion of *sanitsed* self-closing HTML tags may introduce new mXSS vulnerabil",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-11022-safe-239",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/manipulation.js",
+    "diff": "@@ -239,6 +239,7 @@ function manipulation_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2020-11022 patch: Expansion of *sanitsed* self-closing HTML tags may introduce new mXSS vulnerabil",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2020-11022-vuln-239-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/manipulation.py",
+    "diff": "@@ -239,6 +239,7 @@ def manipulation_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2020-11022 regression: Expansion of *sanitsed* self-closing HTML tags may introduce new mXSS vulnerabil",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-11022-vuln-239-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/manipulation.ts",
+    "diff": "@@ -239,6 +239,7 @@ def manipulation_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2020-11022 regression: Expansion of *sanitsed* self-closing HTML tags may introduce new mXSS vulnerabil",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-11022-safe-239-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/manipulation.py",
+    "diff": "@@ -239,6 +239,7 @@ def manipulation_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2020-11022 patch: Expansion of *sanitsed* self-closing HTML tags may introduce new mXSS vulnerabil",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2019-10744-vuln-6608",
+    "language": "javascript",
+    "category": "ossf-cwe-94",
+    "cwe": "CWE-94",
+    "file_path": "lodash.js",
+    "diff": "@@ -6608,6 +6608,7 @@ function lodash_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2019-10744 regression: Code injection",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2019-10744-safe-6608",
+    "language": "javascript",
+    "category": "ossf-cwe-94",
+    "cwe": "CWE-94",
+    "file_path": "lodash.js",
+    "diff": "@@ -6608,6 +6608,7 @@ function lodash_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2019-10744 patch: Code injection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2019-10744-vuln-6608-port-python",
+    "language": "python",
+    "category": "ossf-cwe-94-ported",
+    "cwe": "CWE-94",
+    "file_path": "lodash.py",
+    "diff": "@@ -6608,6 +6608,7 @@ def lodash_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2019-10744 regression: Code injection",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2019-10744-vuln-6608-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-94-ported",
+    "cwe": "CWE-94",
+    "file_path": "lodash.ts",
+    "diff": "@@ -6608,6 +6608,7 @@ def lodash_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2019-10744 regression: Code injection",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2019-10744-safe-6608-port-python",
+    "language": "python",
+    "category": "ossf-cwe-94-ported",
+    "cwe": "CWE-94",
+    "file_path": "lodash.py",
+    "diff": "@@ -6608,6 +6608,7 @@ def lodash_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2019-10744 patch: Code injection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2020-8203-vuln-2559",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lodash.js",
+    "diff": "@@ -2559,6 +2559,7 @@ function lodash_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2020-8203 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-8203-safe-2559",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lodash.js",
+    "diff": "@@ -2559,6 +2559,7 @@ function lodash_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2020-8203 patch: Prototype-polluting function",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2020-8203-vuln-2559-port-python",
+    "language": "python",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "lodash.py",
+    "diff": "@@ -2559,6 +2559,7 @@ def lodash_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2020-8203 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-8203-vuln-2559-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "lodash.ts",
+    "diff": "@@ -2559,6 +2559,7 @@ def lodash_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2020-8203 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-8203-safe-2559-port-python",
+    "language": "python",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "lodash.py",
+    "diff": "@@ -2559,6 +2559,7 @@ def lodash_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2020-8203 patch: Prototype-polluting function",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2020-7699-vuln-19",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/processNested.js",
+    "diff": "@@ -19,6 +19,7 @@ function processNested_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2020-7699 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-7699-safe-19",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/processNested.js",
+    "diff": "@@ -19,6 +19,7 @@ function processNested_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2020-7699 patch: Prototype-polluting function",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2020-7699-vuln-19-port-python",
+    "language": "python",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "lib/processNested.py",
+    "diff": "@@ -19,6 +19,7 @@ def processNested_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2020-7699 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-7699-vuln-19-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "lib/processNested.ts",
+    "diff": "@@ -19,6 +19,7 @@ def processNested_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2020-7699 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-7699-safe-19-port-python",
+    "language": "python",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "lib/processNested.py",
+    "diff": "@@ -19,6 +19,7 @@ def processNested_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2020-7699 patch: Prototype-polluting function",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2020-15256-vuln-117",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "index.js",
+    "diff": "@@ -117,6 +117,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2020-15256 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-15256-safe-117",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "index.js",
+    "diff": "@@ -117,6 +117,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2020-15256 patch: Prototype-polluting function",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2020-15256-vuln-117-port-python",
+    "language": "python",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "index.py",
+    "diff": "@@ -117,6 +117,7 @@ def index_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2020-15256 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-15256-vuln-117-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "index.ts",
+    "diff": "@@ -117,6 +117,7 @@ def index_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2020-15256 regression: Prototype-polluting function",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2020-15256-safe-117-port-python",
+    "language": "python",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "index.py",
+    "diff": "@@ -117,6 +117,7 @@ def index_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2020-15256 patch: Prototype-polluting function",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2016-1000229-vuln-68",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/main/javascript/helpers/handlebars.js",
+    "diff": "@@ -68,6 +68,7 @@ function handlebars_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2016-1000229 regression: Client-side cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2016-1000229-safe-68",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/main/javascript/helpers/handlebars.js",
+    "diff": "@@ -68,6 +68,7 @@ function handlebars_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2016-1000229 patch: Client-side cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2016-1000229-vuln-68-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/main/javascript/helpers/handlebars.py",
+    "diff": "@@ -68,6 +68,7 @@ def handlebars_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2016-1000229 regression: Client-side cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2016-1000229-vuln-68-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/main/javascript/helpers/handlebars.ts",
+    "diff": "@@ -68,6 +68,7 @@ def handlebars_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2016-1000229 regression: Client-side cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2016-1000229-safe-68-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/main/javascript/helpers/handlebars.py",
+    "diff": "@@ -68,6 +68,7 @@ def handlebars_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2016-1000229 patch: Client-side cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2016-10735-vuln-120",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "js/src/util.js",
+    "diff": "@@ -120,6 +120,7 @@ function util_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2016-10735 regression: DOM text reinterpreted as HTML",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2016-10735-safe-120",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "js/src/util.js",
+    "diff": "@@ -120,6 +120,7 @@ function util_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2016-10735 patch: DOM text reinterpreted as HTML",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2016-10735-vuln-120-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "js/src/util.py",
+    "diff": "@@ -120,6 +120,7 @@ def util_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2016-10735 regression: DOM text reinterpreted as HTML",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2016-10735-vuln-120-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "js/src/util.ts",
+    "diff": "@@ -120,6 +120,7 @@ def util_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2016-10735 regression: DOM text reinterpreted as HTML",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2016-10735-safe-120-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "js/src/util.py",
+    "diff": "@@ -120,6 +120,7 @@ def util_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2016-10735 patch: DOM text reinterpreted as HTML",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-0931-vuln-43",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/html-janitor.js",
+    "diff": "@@ -43,6 +43,7 @@ function html_janitor_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-0931 regression: Client-side cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-0931-safe-43",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/html-janitor.js",
+    "diff": "@@ -43,6 +43,7 @@ function html_janitor_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-0931 patch: Client-side cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-0931-vuln-43-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/html-janitor.py",
+    "diff": "@@ -43,6 +43,7 @@ def html_janitor_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-0931 regression: Client-side cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-0931-vuln-43-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/html-janitor.ts",
+    "diff": "@@ -43,6 +43,7 @@ def html_janitor_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-0931 regression: Client-side cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-0931-safe-43-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/html-janitor.py",
+    "diff": "@@ -43,6 +43,7 @@ def html_janitor_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-0931 patch: Client-side cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-1000006-vuln-270",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/lib/svg_text_utils.js",
+    "diff": "@@ -270,6 +270,7 @@ function svg_text_utils_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-1000006 regression: Incomplete HTML attribute sanitization",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000006-safe-270",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/lib/svg_text_utils.js",
+    "diff": "@@ -270,6 +270,7 @@ function svg_text_utils_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-1000006 patch: Incomplete HTML attribute sanitization",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-1000006-vuln-270-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/lib/svg_text_utils.py",
+    "diff": "@@ -270,6 +270,7 @@ def svg_text_utils_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-1000006 regression: Incomplete HTML attribute sanitization",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000006-vuln-270-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/lib/svg_text_utils.ts",
+    "diff": "@@ -270,6 +270,7 @@ def svg_text_utils_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-1000006 regression: Incomplete HTML attribute sanitization",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000006-safe-270-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/lib/svg_text_utils.py",
+    "diff": "@@ -270,6 +270,7 @@ def svg_text_utils_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-1000006 patch: Incomplete HTML attribute sanitization",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-1000219-vuln-82",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "index.js",
+    "diff": "@@ -82,6 +82,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-1000219 regression: Unsafe shell command constructed from library input",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000219-safe-82",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "index.js",
+    "diff": "@@ -82,6 +82,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-1000219 patch: Unsafe shell command constructed from library input",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-1000219-vuln-82-port-python",
+    "language": "python",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "index.py",
+    "diff": "@@ -82,6 +82,7 @@ def index_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-1000219 regression: Unsafe shell command constructed from library input",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000219-vuln-82-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "index.ts",
+    "diff": "@@ -82,6 +82,7 @@ def index_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-1000219 regression: Unsafe shell command constructed from library input",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000219-safe-82-port-python",
+    "language": "python",
+    "category": "ossf-cwe-78-ported",
+    "cwe": "CWE-78",
+    "file_path": "index.py",
+    "diff": "@@ -82,6 +82,7 @@ def index_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-1000219 patch: Unsafe shell command constructed from library input",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-1000427-vuln-878",
+    "language": "javascript",
+    "category": "ossf-cwe-20",
+    "cwe": "CWE-20",
+    "file_path": "lib/marked.js",
+    "diff": "@@ -878,6 +878,7 @@ function marked_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-1000427 regression: Incomplete URL scheme check",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000427-safe-878",
+    "language": "javascript",
+    "category": "ossf-cwe-20",
+    "cwe": "CWE-20",
+    "file_path": "lib/marked.js",
+    "diff": "@@ -878,6 +878,7 @@ function marked_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-1000427 patch: Incomplete URL scheme check",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-1000427-vuln-878-port-python",
+    "language": "python",
+    "category": "ossf-cwe-20-ported",
+    "cwe": "CWE-20",
+    "file_path": "lib/marked.py",
+    "diff": "@@ -878,6 +878,7 @@ def marked_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-1000427 regression: Incomplete URL scheme check",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000427-vuln-878-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-20-ported",
+    "cwe": "CWE-20",
+    "file_path": "lib/marked.ts",
+    "diff": "@@ -878,6 +878,7 @@ def marked_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-1000427 regression: Incomplete URL scheme check",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1000427-safe-878-port-python",
+    "language": "python",
+    "category": "ossf-cwe-20-ported",
+    "cwe": "CWE-20",
+    "file_path": "lib/marked.py",
+    "diff": "@@ -878,6 +878,7 @@ def marked_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-1000427 patch: Incomplete URL scheme check",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-1001004-vuln-1118",
+    "language": "javascript",
+    "category": "ossf-cwe-94",
+    "cwe": "CWE-94",
+    "file_path": "typed-function.js",
+    "diff": "@@ -1118,6 +1118,7 @@ function typed_function_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-1001004 regression: Code injection",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1001004-safe-1118",
+    "language": "javascript",
+    "category": "ossf-cwe-94",
+    "cwe": "CWE-94",
+    "file_path": "typed-function.js",
+    "diff": "@@ -1118,6 +1118,7 @@ function typed_function_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-1001004 patch: Code injection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-1001004-vuln-1118-port-python",
+    "language": "python",
+    "category": "ossf-cwe-94-ported",
+    "cwe": "CWE-94",
+    "file_path": "typed-function.py",
+    "diff": "@@ -1118,6 +1118,7 @@ def typed_function_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-1001004 regression: Code injection",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1001004-vuln-1118-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-94-ported",
+    "cwe": "CWE-94",
+    "file_path": "typed-function.ts",
+    "diff": "@@ -1118,6 +1118,7 @@ def typed_function_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-1001004 regression: Code injection",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-1001004-safe-1118-port-python",
+    "language": "python",
+    "category": "ossf-cwe-94-ported",
+    "cwe": "CWE-94",
+    "file_path": "typed-function.py",
+    "diff": "@@ -1118,6 +1118,7 @@ def typed_function_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-1001004 patch: Code injection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-10910-vuln-267",
+    "language": "javascript",
+    "category": "ossf-cwe-770",
+    "cwe": "CWE-770",
+    "file_path": "lib/client.js",
+    "diff": "@@ -267,6 +267,7 @@ function client_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-10910 regression: Resource exhaustion",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-10910-safe-267",
+    "language": "javascript",
+    "category": "ossf-cwe-770",
+    "cwe": "CWE-770",
+    "file_path": "lib/client.js",
+    "diff": "@@ -267,6 +267,7 @@ function client_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-10910 patch: Resource exhaustion",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-10910-vuln-267-port-python",
+    "language": "python",
+    "category": "ossf-cwe-770-ported",
+    "cwe": "CWE-770",
+    "file_path": "lib/client.py",
+    "diff": "@@ -267,6 +267,7 @@ def client_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-10910 regression: Resource exhaustion",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-10910-vuln-267-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-770-ported",
+    "cwe": "CWE-770",
+    "file_path": "lib/client.ts",
+    "diff": "@@ -267,6 +267,7 @@ def client_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-10910 regression: Resource exhaustion",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-10910-safe-267-port-python",
+    "language": "python",
+    "category": "ossf-cwe-770-ported",
+    "cwe": "CWE-770",
+    "file_path": "lib/client.py",
+    "diff": "@@ -267,6 +267,7 @@ def client_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-10910 patch: Resource exhaustion",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-15010-vuln-61",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/cookie.js",
+    "diff": "@@ -61,6 +61,7 @@ function cookie_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-15010 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-15010-safe-61",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/cookie.js",
+    "diff": "@@ -61,6 +61,7 @@ function cookie_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-15010 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-15010-vuln-61-port-python",
+    "language": "python",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "lib/cookie.py",
+    "diff": "@@ -61,6 +61,7 @@ def cookie_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-15010 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-15010-vuln-61-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "lib/cookie.ts",
+    "diff": "@@ -61,6 +61,7 @@ def cookie_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-15010 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-15010-safe-61-port-python",
+    "language": "python",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "lib/cookie.py",
+    "diff": "@@ -61,6 +61,7 @@ def cookie_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-15010 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16003-vuln-38",
+    "language": "javascript",
+    "category": "ossf-cwe-829",
+    "cwe": "CWE-829",
+    "file_path": "src/download.js",
+    "diff": "@@ -38,6 +38,7 @@ function download_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16003 regression: Download of sensitive file through insecure connection",
+    "expected": [
+      {
+        "category": "dependency"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16003-safe-38",
+    "language": "javascript",
+    "category": "ossf-cwe-829",
+    "cwe": "CWE-829",
+    "file_path": "src/download.js",
+    "diff": "@@ -38,6 +38,7 @@ function download_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16003 patch: Download of sensitive file through insecure connection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16003-vuln-38-port-python",
+    "language": "python",
+    "category": "ossf-cwe-829-ported",
+    "cwe": "CWE-829",
+    "file_path": "src/port/download.py",
+    "diff": "@@ -38,6 +38,7 @@ def download_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16003 regression: Download of sensitive file through insecure connection",
+    "expected": [
+      {
+        "category": "dependency"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16003-vuln-38-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-829-ported",
+    "cwe": "CWE-829",
+    "file_path": "src/port/download.ts",
+    "diff": "@@ -38,6 +38,7 @@ def download_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16003 regression: Download of sensitive file through insecure connection",
+    "expected": [
+      {
+        "category": "dependency"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16003-safe-38-port-python",
+    "language": "python",
+    "category": "ossf-cwe-829-ported",
+    "cwe": "CWE-829",
+    "file_path": "src/port/download.py",
+    "diff": "@@ -38,6 +38,7 @@ def download_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-16003 patch: Download of sensitive file through insecure connection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16006-vuln-151",
+    "language": "javascript",
+    "category": "ossf-cwe-20",
+    "cwe": "CWE-20",
+    "file_path": "lib/parser_inline.js",
+    "diff": "@@ -151,6 +151,7 @@ function parser_inline_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16006 regression: Incomplete URL scheme check",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16006-safe-151",
+    "language": "javascript",
+    "category": "ossf-cwe-20",
+    "cwe": "CWE-20",
+    "file_path": "lib/parser_inline.js",
+    "diff": "@@ -151,6 +151,7 @@ function parser_inline_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16006 patch: Incomplete URL scheme check",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16006-vuln-151-port-python",
+    "language": "python",
+    "category": "ossf-cwe-20-ported",
+    "cwe": "CWE-20",
+    "file_path": "lib/parser_inline.py",
+    "diff": "@@ -151,6 +151,7 @@ def parser_inline_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16006 regression: Incomplete URL scheme check",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16006-vuln-151-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-20-ported",
+    "cwe": "CWE-20",
+    "file_path": "lib/parser_inline.ts",
+    "diff": "@@ -151,6 +151,7 @@ def parser_inline_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16006 regression: Incomplete URL scheme check",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16006-safe-151-port-python",
+    "language": "python",
+    "category": "ossf-cwe-20-ported",
+    "cwe": "CWE-20",
+    "file_path": "lib/parser_inline.py",
+    "diff": "@@ -151,6 +151,7 @@ def parser_inline_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-16006 patch: Incomplete URL scheme check",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16011-vuln-52",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/core.js",
+    "diff": "@@ -52,6 +52,7 @@ function core_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16011 regression: Cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16011-safe-52",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/core.js",
+    "diff": "@@ -52,6 +52,7 @@ function core_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16011 patch: Cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16011-vuln-52-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/core.py",
+    "diff": "@@ -52,6 +52,7 @@ def core_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16011 regression: Cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16011-vuln-52-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/core.ts",
+    "diff": "@@ -52,6 +52,7 @@ def core_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16011 regression: Cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16011-safe-52-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "src/port/core.py",
+    "diff": "@@ -52,6 +52,7 @@ def core_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-16011 patch: Cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16014-vuln-225",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/node-http-proxy.js",
+    "diff": "@@ -225,6 +225,7 @@ function node_http_proxy_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16014 regression: Server crash",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16014-safe-225",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/node-http-proxy.js",
+    "diff": "@@ -225,6 +225,7 @@ function node_http_proxy_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16014 patch: Server crash",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16014-vuln-225-port-python",
+    "language": "python",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "lib/node-http-proxy.py",
+    "diff": "@@ -225,6 +225,7 @@ def node_http_proxy_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16014 regression: Server crash",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16014-vuln-225-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "lib/node-http-proxy.ts",
+    "diff": "@@ -225,6 +225,7 @@ def node_http_proxy_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16014 regression: Server crash",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16014-safe-225-port-python",
+    "language": "python",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "lib/node-http-proxy.py",
+    "diff": "@@ -225,6 +225,7 @@ def node_http_proxy_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-16014 patch: Server crash",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16018-vuln-202",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "lib/server.js",
+    "diff": "@@ -202,6 +202,7 @@ function server_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16018 regression: Reflected cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16018-safe-202",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "lib/server.js",
+    "diff": "@@ -202,6 +202,7 @@ function server_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16018 patch: Reflected cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16018-vuln-202-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "lib/server.py",
+    "diff": "@@ -202,6 +202,7 @@ def server_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16018 regression: Reflected cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16018-vuln-202-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "lib/server.ts",
+    "diff": "@@ -202,6 +202,7 @@ def server_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16018 regression: Reflected cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16018-safe-202-port-python",
+    "language": "python",
+    "category": "ossf-cwe-79-ported",
+    "cwe": "CWE-79",
+    "file_path": "lib/server.py",
+    "diff": "@@ -202,6 +202,7 @@ def server_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-16018 patch: Reflected cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16023-vuln-8",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -8,6 +8,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16023 regression: Regular expression injection",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16023-safe-8",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -8,6 +8,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16023 patch: Regular expression injection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16023-vuln-8-port-python",
+    "language": "python",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "index.py",
+    "diff": "@@ -8,6 +8,7 @@ def index_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16023 regression: Regular expression injection",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16023-vuln-8-port-typescript",
+    "language": "typescript",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "index.ts",
+    "diff": "@@ -8,6 +8,7 @@ def index_js(input) {\n-  return strictSanitize(encodeForHtml(input))\n+  return input\n }\n+// CVE-2017-16023 regression: Regular expression injection",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16023-safe-8-port-python",
+    "language": "python",
+    "category": "ossf-cwe-730-ported",
+    "cwe": "CWE-730",
+    "file_path": "index.py",
+    "diff": "@@ -8,6 +8,7 @@ def index_js(input) {\n-  return sanitize(input)\n+  return strictSanitize(encodeForHtml(input))\n }\n+// CVE-2017-16023 patch: Regular expression injection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16026-vuln-71",
+    "language": "javascript",
+    "category": "ossf-cwe-770",
+    "cwe": "CWE-770",
+    "file_path": "lib/multipart.js",
+    "diff": "@@ -71,6 +71,7 @@ function multipart_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16026 regression: Resource exhaustion",
+    "expected": [
+      {
+        "category": "config"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16026-safe-71",
+    "language": "javascript",
+    "category": "ossf-cwe-770",
+    "cwe": "CWE-770",
+    "file_path": "lib/multipart.js",
+    "diff": "@@ -71,6 +71,7 @@ function multipart_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16026 patch: Resource exhaustion",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16028-vuln-81",
+    "language": "javascript",
+    "category": "ossf-cwe-338",
+    "cwe": "CWE-338",
+    "file_path": "index.js",
+    "diff": "@@ -81,6 +81,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16028 regression: Insecure randomness",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16028-safe-81",
+    "language": "javascript",
+    "category": "ossf-cwe-338",
+    "cwe": "CWE-338",
+    "file_path": "index.js",
+    "diff": "@@ -81,6 +81,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16028 patch: Insecure randomness",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16029-vuln-31",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "lib/routes/statics.js",
+    "diff": "@@ -31,6 +31,7 @@ function statics_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16029 regression: Uncontrolled data used in path expression",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16029-safe-31",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "lib/routes/statics.js",
+    "diff": "@@ -31,6 +31,7 @@ function statics_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16029 patch: Uncontrolled data used in path expression",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16030-vuln-887",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/regexps.js",
+    "diff": "@@ -887,6 +887,7 @@ function regexps_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16030 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16030-safe-887",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/regexps.js",
+    "diff": "@@ -887,6 +887,7 @@ function regexps_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16030 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16031-vuln-755",
+    "language": "javascript",
+    "category": "ossf-cwe-338",
+    "cwe": "CWE-338",
+    "file_path": "lib/manager.js",
+    "diff": "@@ -755,6 +755,7 @@ function manager_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16031 regression: Insecure randomness",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16031-safe-755",
+    "language": "javascript",
+    "category": "ossf-cwe-338",
+    "cwe": "CWE-338",
+    "file_path": "lib/manager.js",
+    "diff": "@@ -755,6 +755,7 @@ function manager_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16031 patch: Insecure randomness",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16034-vuln-103",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/stats.js",
+    "diff": "@@ -103,6 +103,7 @@ function stats_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16034 regression: Unsafe shell command constructed from library input",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16034-safe-103",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/stats.js",
+    "diff": "@@ -103,6 +103,7 @@ function stats_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16034 patch: Unsafe shell command constructed from library input",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16042-vuln-289",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/growl.js",
+    "diff": "@@ -289,6 +289,7 @@ function growl_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16042 regression: Unsafe shell command constructed from library input",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16042-safe-289",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/growl.js",
+    "diff": "@@ -289,6 +289,7 @@ function growl_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16042 patch: Unsafe shell command constructed from library input",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16043-vuln-318",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "client/js/shout.js",
+    "diff": "@@ -318,6 +318,7 @@ function shout_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16043 regression: Client-side cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16043-safe-318",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "client/js/shout.js",
+    "diff": "@@ -318,6 +318,7 @@ function shout_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16043 patch: Client-side cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16082-vuln-72",
+    "language": "javascript",
+    "category": "ossf-cwe-116",
+    "cwe": "CWE-116",
+    "file_path": "lib/result.js",
+    "diff": "@@ -72,6 +72,7 @@ function result_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16082 regression: Incomplete string escaping or encoding",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16082-safe-72",
+    "language": "javascript",
+    "category": "ossf-cwe-116",
+    "cwe": "CWE-116",
+    "file_path": "lib/result.js",
+    "diff": "@@ -72,6 +72,7 @@ function result_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16082 patch: Incomplete string escaping or encoding",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16083-vuln-734",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "lib/router.js",
+    "diff": "@@ -734,6 +734,7 @@ function router_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16083 regression: Uncontrolled data used in path expression",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16083-safe-734",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "lib/router.js",
+    "diff": "@@ -734,6 +734,7 @@ function router_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16083 patch: Uncontrolled data used in path expression",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16084-vuln-88",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "server.js",
+    "diff": "@@ -88,6 +88,7 @@ function server_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16084 regression: Uncontrolled data used in path expression",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16084-safe-88",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "server.js",
+    "diff": "@@ -88,6 +88,7 @@ function server_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16084 patch: Uncontrolled data used in path expression",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16087-vuln-38",
+    "language": "typescript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/index.ts",
+    "diff": "@@ -38,6 +38,7 @@ function index_ts(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16087 regression: Unsafe shell command constructed from library input",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16087-safe-38",
+    "language": "typescript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/index.ts",
+    "diff": "@@ -38,6 +38,7 @@ function index_ts(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16087 patch: Unsafe shell command constructed from library input",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16098-vuln-44",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -44,6 +44,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16098 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16098-safe-44",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -44,6 +44,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16098 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16100-vuln-21",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/dns-sync.js",
+    "diff": "@@ -21,6 +21,7 @@ function dns_sync_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16100 regression: Unsafe shell command constructed from library input",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16100-safe-21",
+    "language": "javascript",
+    "category": "ossf-cwe-78",
+    "cwe": "CWE-78",
+    "file_path": "lib/dns-sync.js",
+    "diff": "@@ -21,6 +21,7 @@ function dns_sync_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16100 patch: Unsafe shell command constructed from library input",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16107-vuln-9",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "server.js",
+    "diff": "@@ -9,6 +9,7 @@ function server_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16107 regression: Uncontrolled data used in path expression",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16107-safe-9",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "server.js",
+    "diff": "@@ -9,6 +9,7 @@ function server_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16107 patch: Uncontrolled data used in path expression",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16114-vuln-459",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/marked.js",
+    "diff": "@@ -459,6 +459,7 @@ function marked_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16114 regression: Inefficient regular expression",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16114-safe-459",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/marked.js",
+    "diff": "@@ -459,6 +459,7 @@ function marked_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16114 patch: Inefficient regular expression",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16117-vuln-64",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "slug.js",
+    "diff": "@@ -64,6 +64,7 @@ function slug_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16117 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16117-safe-64",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "slug.js",
+    "diff": "@@ -64,6 +64,7 @@ function slug_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16117 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16118-vuln-14",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -14,6 +14,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16118 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16118-safe-14",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -14,6 +14,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16118 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16119-vuln-22",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -22,6 +22,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16119 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16119-safe-22",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -22,6 +22,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16119 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16136-vuln-120",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -120,6 +120,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16136 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16136-safe-120",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -120,6 +120,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16136 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16137-vuln-86",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "src/node.js",
+    "diff": "@@ -86,6 +86,7 @@ function node_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16137 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16137-safe-86",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "src/node.js",
+    "diff": "@@ -86,6 +86,7 @@ function node_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16137 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16138-vuln-50",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "Mime.js",
+    "diff": "@@ -50,6 +50,7 @@ function Mime_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16138 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16138-safe-50",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "Mime.js",
+    "diff": "@@ -50,6 +50,7 @@ function Mime_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16138 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16224-vuln-351",
+    "language": "javascript",
+    "category": "ossf-cwe-601",
+    "cwe": "CWE-601",
+    "file_path": "st.js",
+    "diff": "@@ -351,6 +351,7 @@ function st_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16224 regression: Server-side URL redirect",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16224-safe-351",
+    "language": "javascript",
+    "category": "ossf-cwe-601",
+    "cwe": "CWE-601",
+    "file_path": "st.js",
+    "diff": "@@ -351,6 +351,7 @@ function st_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16224 patch: Server-side URL redirect",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16226-vuln-118",
+    "language": "javascript",
+    "category": "ossf-cwe-20",
+    "cwe": "CWE-20",
+    "file_path": "index.js",
+    "diff": "@@ -118,6 +118,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16226 regression: sandbox escape / arbitrary code execution",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16226-safe-118",
+    "language": "javascript",
+    "category": "ossf-cwe-20",
+    "cwe": "CWE-20",
+    "file_path": "index.js",
+    "diff": "@@ -118,6 +118,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16226 patch: sandbox escape / arbitrary code execution",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-16877-vuln-218",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "server/render.js",
+    "diff": "@@ -218,6 +218,7 @@ function render_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-16877 regression: Uncontrolled data used in path expression",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-16877-safe-218",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "server/render.js",
+    "diff": "@@ -218,6 +218,7 @@ function render_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-16877 patch: Uncontrolled data used in path expression",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-17461-vuln-460",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/marked.js",
+    "diff": "@@ -460,6 +460,7 @@ function marked_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-17461 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-17461-safe-460",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "lib/marked.js",
+    "diff": "@@ -460,6 +460,7 @@ function marked_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-17461 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-18077-vuln-109",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -109,6 +109,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-18077 regression: Inefficient regular expression",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-18077-safe-109",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "index.js",
+    "diff": "@@ -109,6 +109,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-18077 patch: Inefficient regular expression",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-18214-vuln-23",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "src/lib/parse/regex.js",
+    "diff": "@@ -23,6 +23,7 @@ function regex_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-18214 regression: Polynomial regular expression used on uncontrolled data",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-18214-safe-23",
+    "language": "javascript",
+    "category": "ossf-cwe-730",
+    "cwe": "CWE-730",
+    "file_path": "src/lib/parse/regex.js",
+    "diff": "@@ -23,6 +23,7 @@ function regex_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-18214 patch: Polynomial regular expression used on uncontrolled data",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-18352-vuln-106",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/main.js",
+    "diff": "@@ -106,6 +106,7 @@ function main_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-18352 regression: Reflected cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-18352-safe-106",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/main.js",
+    "diff": "@@ -106,6 +106,7 @@ function main_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-18352 patch: Reflected cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-18353-vuln-130",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/main.js",
+    "diff": "@@ -130,6 +130,7 @@ function main_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-18353 regression: Reflected cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-18353-safe-130",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/main.js",
+    "diff": "@@ -130,6 +130,7 @@ function main_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-18353 patch: Reflected cross-site scripting",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-18354-vuln-75",
+    "language": "javascript",
+    "category": "ossf-cwe-918",
+    "cwe": "CWE-918",
+    "file_path": "src/renderer.js",
+    "diff": "@@ -75,6 +75,7 @@ function renderer_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-18354 regression: Uncontrolled data used in network request",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-18354-safe-75",
+    "language": "javascript",
+    "category": "ossf-cwe-918",
+    "cwe": "CWE-918",
+    "file_path": "src/renderer.js",
+    "diff": "@@ -75,6 +75,7 @@ function renderer_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-18354 patch: Uncontrolled data used in network request",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-18355-vuln-75",
+    "language": "javascript",
+    "category": "ossf-cwe-200",
+    "cwe": "CWE-200",
+    "file_path": "src/renderer.js",
+    "diff": "@@ -75,6 +75,7 @@ function renderer_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-18355 regression: Exposure of private files",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-18355-safe-75",
+    "language": "javascript",
+    "category": "ossf-cwe-200",
+    "cwe": "CWE-200",
+    "file_path": "src/renderer.js",
+    "diff": "@@ -75,6 +75,7 @@ function renderer_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-18355 patch: Exposure of private files",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-18635-vuln-534",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "app/ui.js",
+    "diff": "@@ -534,6 +534,7 @@ function ui_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-18635 regression: Exception text reinterpreted as HTML",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-18635-safe-534",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "app/ui.js",
+    "diff": "@@ -534,6 +534,7 @@ function ui_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-18635 patch: Exception text reinterpreted as HTML",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2017-5954-vuln-28",
+    "language": "javascript",
+    "category": "ossf-cwe-94",
+    "cwe": "CWE-94",
+    "file_path": "lib/deserialize.js",
+    "diff": "@@ -28,6 +28,7 @@ function deserialize_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2017-5954 regression: Code injection",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2017-5954-safe-28",
+    "language": "javascript",
+    "category": "ossf-cwe-94",
+    "cwe": "CWE-94",
+    "file_path": "lib/deserialize.js",
+    "diff": "@@ -28,6 +28,7 @@ function deserialize_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2017-5954 patch: Code injection",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2018-1000086-vuln-569",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/pym.js",
+    "diff": "@@ -569,6 +569,7 @@ function pym_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2018-1000086 regression: Client-side URL redirect",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2018-1000086-safe-569",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/pym.js",
+    "diff": "@@ -569,6 +569,7 @@ function pym_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2018-1000086 patch: Client-side URL redirect",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2018-1000096-vuln-41",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "_read.js",
+    "diff": "@@ -41,6 +41,7 @@ function _read_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2018-1000096 regression: Disabling certificate validation",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2018-1000096-safe-41",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "_read.js",
+    "diff": "@@ -41,6 +41,7 @@ function _read_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2018-1000096 patch: Disabling certificate validation",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2018-1000620-vuln-32",
+    "language": "javascript",
+    "category": "ossf-cwe-327",
+    "cwe": "CWE-327",
+    "file_path": "lib/index.js",
+    "diff": "@@ -32,6 +32,7 @@ function index_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2018-1000620 regression: Creating biased random numbers from a cryptographically secure source.",
+    "expected": [
+      {
+        "category": "crypto"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2018-1000620-safe-32",
+    "language": "javascript",
+    "category": "ossf-cwe-327",
+    "cwe": "CWE-327",
+    "file_path": "lib/index.js",
+    "diff": "@@ -32,6 +32,7 @@ function index_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2018-1000620 patch: Creating biased random numbers from a cryptographically secure source.",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2018-1002203-vuln-21",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "lib/extract.js",
+    "diff": "@@ -21,6 +21,7 @@ function extract_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2018-1002203 regression: Arbitrary file write during zip extraction ('Zip Slip')",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2018-1002203-safe-21",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "lib/extract.js",
+    "diff": "@@ -21,6 +21,7 @@ function extract_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2018-1002203 patch: Arbitrary file write during zip extraction ('Zip Slip')",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2018-1002204-vuln-109",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "util/utils.js",
+    "diff": "@@ -109,6 +109,7 @@ function utils_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2018-1002204 regression: Arbitrary file write during zip extraction ('Zip Slip')",
+    "expected": [
+      {
+        "category": "other"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2018-1002204-safe-109",
+    "language": "javascript",
+    "category": "ossf-cwe-22",
+    "cwe": "CWE-22",
+    "file_path": "util/utils.js",
+    "diff": "@@ -109,6 +109,7 @@ function utils_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2018-1002204 patch: Arbitrary file write during zip extraction ('Zip Slip')",
+    "expected": [],
+    "negative": true
+  },
+  {
+    "id": "ossf-cve-2018-11093-vuln-209",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/ui/linkactionsview.js",
+    "diff": "@@ -209,6 +209,7 @@ function linkactionsview_js(input) {\n-  return strictSanitize(encodeForHtml(input));\n+  return input;\n }\n+// CVE-2018-11093 regression: Client-side cross-site scripting",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "ossf-cve-2018-11093-safe-209",
+    "language": "javascript",
+    "category": "ossf-cwe-79",
+    "cwe": "CWE-79",
+    "file_path": "src/ui/linkactionsview.js",
+    "diff": "@@ -209,6 +209,7 @@ function linkactionsview_js(input) {\n-  return sanitize(input);\n+  return strictSanitize(encodeForHtml(input));\n }\n+// CVE-2018-11093 patch: Client-side cross-site scripting",
+    "expected": [],
+    "negative": true
+  }
+]
