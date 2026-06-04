@@ -1,0 +1,142 @@
+[
+  {
+    "id": "c-buffer-overflow-vuln-000",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_path.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_path(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-001",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_config.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_config(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-002",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_order.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_order(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-003",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_record.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_record(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-004",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_input.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_input(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-005",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_resource.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_resource(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-006",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_payload.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_payload(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-007",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_account.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_account(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-008",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_data.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_data(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  },
+  {
+    "id": "c-buffer-overflow-vuln-009",
+    "language": "c",
+    "category": "buffer-overflow",
+    "cwe": "CWE-787",
+    "file_path": "src/net/copy_host.c",
+    "diff": "@@ -18,8 +18,7 @@ int copy_host(const char *in, char *out, size_t out_len) {\n   if (!in || !out) return -1;\n-  strncpy(out, in, out_len - 1);\n-  out[out_len - 1] = '\\0';\n+  strcpy(out, in);\n   return 0;\n }",
+    "expected": [
+      {
+        "category": "injection"
+      }
+    ],
+    "negative": false
+  }
+]

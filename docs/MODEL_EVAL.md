@@ -90,7 +90,7 @@ See latest run in `eval/results/summary-*.json`. Re-run after model pulls to ref
 
 Run: 2026-06-03, API `http://192.168.10.33:31434/v1`, Ollama **0.24.0**, engine RTX 3060 12 GB.
 
-### Local RTX 3090 (24 GB) — `qwen3.5:27b` smoke
+### Local RTX 3090 (24 GB) ï¿½ `qwen3.5:27b` smoke
 
 Workstation: **NVIDIA RTX 3090**, Ollama `http://127.0.0.1:11434/v1`, `OLLAMA_NUM_CTX=8192`, `CASE_LIMIT=10`, `BENCHMARK_PATH=eval/benchmark-multilang.json` (first 10 C buffer-overflow cases). Run: **2026-06-03**.
 
@@ -98,9 +98,23 @@ Workstation: **NVIDIA RTX 3090**, Ollama `http://127.0.0.1:11434/v1`, `OLLAMA_NU
 |-------|--------|-----|------|--------|---------|----------|--------|----------|
 | `qwen3.5:27b` | ok | 0.10 | 0.10 | 0.10 | 0.00 | 1.00 | 463749 | 21102 |
 
-**Pass:** smoke completed (10/10 cases). **Does not beat** engine `qwen3.5:9b` on the legacy 18-case benchmark (F1 **0.69**, p50 ~8.9 s, ~8.4 GB VRAM). 27b on this multilang C subset is much slower (~7.7 min p50 per case) and lower F1—likely category mismatch (`other` vs `injection` on buffer overflows) rather than GPU limits.
+**Pass:** smoke completed (10/10 cases). **Does not beat** engine `qwen3.5:9b` on the legacy 18-case benchmark (F1 **0.69**, p50 ~8.9 s, ~8.4 GB VRAM). 27b on this multilang C subset is much slower (~7.7 min p50 per case) and lower F1ï¿½likely category mismatch (`other` vs `injection` on buffer overflows) rather than GPU limits.
 
-Harness: `REQUEST_TIMEOUT_MS` defaults to **600000** (10 min); retries via `EVAL_MAX_ATTEMPTS` (default **8**) with 5s×attempt backoff for transient `fetch failed` against Ollama on Windows.
+Harness: `REQUEST_TIMEOUT_MS` defaults to **600000** (10 min); retries via `EVAL_MAX_ATTEMPTS` (default **8**) with 5sï¿½attempt backoff for transient `fetch failed` against Ollama on Windows.
+
+### Head-to-head (same 10 cases)
+
+Fixed corpus: `eval/benchmark-head2head-10.json` (first 10 entries from `eval/benchmark-multilang.json` ï¿½ C buffer-overflow vulns `c-buffer-overflow-vuln-000` ï¿½ `009`). Env for all runs: `CASE_LIMIT=10`, `OLLAMA_NUM_CTX=8192`, `BENCHMARK_PATH=eval/benchmark-head2head-10.json` (27b smoke below used `benchmark-multilang.json` + `CASE_LIMIT=10`; **identical case IDs**).
+
+| Model | Host | F1 | Prec | Recall | p50 ms | VRAM MiB | Cases OK |
+|-------|------|-----|------|--------|--------|----------|----------|
+| `qwen3.5:9b` | engine cluster (`192.168.10.33:31434`) | **0.70** | 0.70 | 0.70 | 7608 | 8397 | 10/10 |
+| `qwen3.5:27b` | local RTX 3090 (`127.0.0.1:11434`) | 0.10 | 0.10 | 0.10 | 463749 | 21102 | 10/10 |
+| `qwen3.5:9b` | local RTX 3090 (latency only) | 1.00 | 1.00 | 1.00 | 4332 | 9545 | 10/10 |
+
+Runs: cluster 9b **2026-06-04** (`eval/results/qwen3.5_9b-2026-06-04T02-49-59-679Z.json`); local 27b **2026-06-03** (`eval/results/qwen3.5_27b-2026-06-03T23-25-10-792Z.json`); local 9b optional **2026-06-04** (`eval/results/qwen3.5_9b-2026-06-04T02-51-34-782Z.json`).
+
+**Verdict:** On the same 10 multilang cases, **`qwen3.5:9b` on the engine cluster wins F1 (0.70 vs 0.10)**. The prior **0.69** 9b score was on the **legacy 18-case** set, not this subset. **`qwen3.5:27b` is not worth the latency cost** here (~61ï¿½ slower p50 than cluster 9b, ~2.5ï¿½ VRAM, worse category alignment on C buffer overflows). Staging should stay on **`qwen3.5:9b`** unless you re-tune prompts / scoring for 27b.
 
 <!-- EVAL_RESULTS_END -->
 
