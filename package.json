@@ -10,7 +10,8 @@
     "dev": "tsx watch src/index.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "eval:models": "tsx scripts/eval-models.ts",
-    "benchmark:generate": "tsx scripts/benchmarks/generate-multilang-corpus.ts"
+    "benchmark:generate": "tsx scripts/benchmarks/generate-multilang-corpus.ts",
+    "benchmark:cwe-inventory": "tsx scripts/benchmarks/cwe-inventory.ts"
   },
   "engines": {
     "node": ">=20"
