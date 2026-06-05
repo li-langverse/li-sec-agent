@@ -7,19 +7,24 @@ import {
   QwenSecurityScanner,
   StaticScannerStub,
 } from "./orchestrator/scanner.js";
-import { createSqliteStore, hashText } from "./data/store.js";
+import {
+  createSqliteStore,
+  hashText,
+  scanIssuesToRecords,
+} from "./data/store.js";
 import {
   createGitHubWebhookRouter,
   type GitHubPullRequestPayload,
   type GitHubWebhookHandler,
 } from "./webhooks/github.js";
-import type { FindingRecord, PullRequestContext } from "./types.js";
+import type { PullRequestContext } from "./types.js";
 import {
   createOtelBridge,
   loadTelemetryContext,
   TelemetryPipeline,
 } from "./telemetry/pipeline.js";
 import { countDiffLines } from "./telemetry/privacy.js";
+import { buildReviewComments } from "./pr-comment.js";
 
 const port = Number(process.env.PORT ?? 8787);
 const host = process.env.HOST ?? "0.0.0.0";
@@ -33,33 +38,67 @@ const telemetry = new TelemetryPipeline({
 
 const qwen = new QwenClient({
   baseUrl: process.env.QWEN_BASE_URL ?? "http://127.0.0.1:11434/v1",
-  model: process.env.QWEN_MODEL ?? "qwen2.5-coder:3b",
+  model: process.env.QWEN_MODEL ?? "qwen3.5:9b",
   apiKey: process.env.QWEN_API_KEY,
   telemetry,
 });
 
 const scanner = new CompositeScanner([
   new StaticScannerStub(telemetry),
-  new QwenSecurityScanner(qwen, store),
+  new QwenSecurityScanner(qwen, store, telemetry),
 ]);
 
 async function fetchDiffStub(payload: GitHubPullRequestPayload): Promise<string> {
   return `[stub] fetch diff from ${payload.pull_request.diff_url ?? "github api"}`;
 }
 
-async function postReviewCommentStub(
+async function postReviewComments(
   context: PullRequestContext,
   reviewId: string,
-  findingsCount: number
+  items: ReturnType<typeof scanIssuesToRecords>
 ): Promise<void> {
-  telemetry.emit({
-    eventType: "pr_comment_posted",
+  const reviewUrl =
+    process.env.SECAGENT_REVIEW_URL?.replace("{reviewId}", reviewId) ??
+    undefined;
+  const inline = process.env.PR_INLINE_COMMENTS === "true";
+  const comments = buildReviewComments({
     reviewId,
-    repoFullName: context.repoFullName,
-    prNumber: context.prNumber,
-    findingsCount,
-    payload: { stub: true, channel: "github_review_comment" },
+    items,
+    reviewUrl,
+    inline,
   });
+
+  for (const comment of comments) {
+    telemetry.emit({
+      eventType: "pr_comment_posted",
+      reviewId,
+      repoFullName: context.repoFullName,
+      prNumber: context.prNumber,
+      findingsCount: items.length,
+      mitigationCount: items.length,
+      payload: {
+        stub: !process.env.GITHUB_TOKEN,
+        channel: "github_review_comment",
+        inline: Boolean(comment.path),
+        path: comment.path,
+        line: comment.line,
+        position: comment.position,
+        body_length: comment.body.length,
+      },
+    });
+  }
+
+  if (process.env.GITHUB_TOKEN) {
+    // Production: POST to GitHub Pull Request Review API (stub logs telemetry only for now).
+    console.log(
+      JSON.stringify({
+        level: "info",
+        msg: "github_review_comments_ready",
+        review_id: reviewId,
+        comment_count: comments.length,
+      })
+    );
+  }
 }
 
 const webhookHandler: GitHubWebhookHandler = {
@@ -89,27 +128,52 @@ const webhookHandler: GitHubWebhookHandler = {
       });
 
       const review = store.createReview(context);
-      const results = await scanner.scan(context, review.id);
-      const findings: FindingRecord[] = results.map((r) => {
-        const id = randomUUID();
+      const scanResults = await scanner.scan(context, review.id);
+      const records = scanIssuesToRecords(review.id, scanResults);
+
+      for (const { finding, mitigation } of records) {
         telemetry.emit({
           eventType: "finding_created",
           reviewId: review.id,
-          findingId: id,
+          findingId: finding.id,
           repoFullName: context.repoFullName,
           prNumber: context.prNumber,
-          severity: r.finding.severity,
-          category: r.finding.category,
-          source: r.finding.source,
+          severity: finding.severity,
+          category: finding.category,
+          source: finding.source,
         });
-        return { ...r.finding, id, reviewId: review.id };
-      });
-      store.saveFindings(review.id, findings);
+        telemetry.emit({
+          eventType: "mitigation_suggested",
+          reviewId: review.id,
+          findingId: finding.id,
+          repoFullName: context.repoFullName,
+          prNumber: context.prNumber,
+          severity: finding.severity,
+          category: finding.category,
+          mitigationHash: mitigation.contentHash,
+          mitigationCount: 1,
+          payload: {
+            effort: mitigation.effort,
+            has_patch: Boolean(mitigation.suggestedPatch),
+            references_count: mitigation.references.length,
+          },
+        });
+      }
 
-      const tokensIn = findings.reduce((n, f) => n + (f.promptTokens ?? 0), 0);
-      const tokensOut = findings.reduce((n, f) => n + (f.completionTokens ?? 0), 0);
-      const staticCount = findings.filter((f) => f.source === "static").length;
-      const qwenCount = findings.filter((f) => f.source === "qwen").length;
+      store.saveScanResults(review.id, records);
+
+      const tokensIn = records.reduce(
+        (n, r) => n + (r.finding.promptTokens ?? 0),
+        0
+      );
+      const tokensOut = records.reduce(
+        (n, r) => n + (r.finding.completionTokens ?? 0),
+        0
+      );
+      const staticCount = records.filter((r) => r.finding.source === "static")
+        .length;
+      const qwenCount = records.filter((r) => r.finding.source === "qwen")
+        .length;
 
       telemetry.recordUsageMetering({
         reviewId: review.id,
@@ -118,19 +182,20 @@ const webhookHandler: GitHubWebhookHandler = {
         linesScanned: countDiffLines(diffText),
         tokensIn,
         tokensOut,
-        findingsCount: findings.length,
+        findingsCount: records.length,
         staticFindings: staticCount,
         qwenFindings: qwenCount,
       });
 
-      await postReviewCommentStub(context, review.id, findings.length);
+      await postReviewComments(context, review.id, records);
 
       telemetry.emit({
         eventType: "review_completed",
         reviewId: review.id,
         repoFullName: context.repoFullName,
         prNumber: context.prNumber,
-        findingsCount: findings.length,
+        findingsCount: records.length,
+        mitigationCount: records.length,
         linesScanned: countDiffLines(diffText),
         tokensIn,
         tokensOut,
@@ -205,6 +270,7 @@ server.listen(port, host, () => {
       host,
       port,
       qwen: process.env.QWEN_BASE_URL,
+      model: process.env.QWEN_MODEL ?? "qwen3.5:9b",
       otel: process.env.OTEL_EXPORTER_OTLP_ENDPOINT ?? null,
       org_id: process.env.SECAGENT_ORG_ID ?? "homelab",
     })

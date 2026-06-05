@@ -29,13 +29,13 @@ export class TelemetryPipeline {
       INSERT INTO telemetry_events (
         id, event_type, occurred_at, org_id, installation_id, repo_full_name, pr_number,
         review_id, delivery_id, commit_sha, diff_hash, lines_scanned, tokens_in, tokens_out,
-        findings_count, tier, model_id, prompt_hash, response_hash, latency_ms, finding_id,
+        findings_count, mitigation_count, mitigation_hash, tier, model_id, prompt_hash, response_hash, latency_ms, finding_id,
         feedback, severity, category, source, error_code, error_message_redacted,
         trace_id, span_id, payload_json
       ) VALUES (
         @id, @eventType, @occurredAt, @orgId, @installationId, @repoFullName, @prNumber,
         @reviewId, @deliveryId, @commitSha, @diffHash, @linesScanned, @tokensIn, @tokensOut,
-        @findingsCount, @tier, @modelId, @promptHash, @responseHash, @latencyMs, @findingId,
+        @findingsCount, @mitigationCount, @mitigationHash, @tier, @modelId, @promptHash, @responseHash, @latencyMs, @findingId,
         @feedback, @severity, @category, @source, @errorCode, @errorMessageRedacted,
         @traceId, @spanId, @payloadJson
       )
@@ -74,6 +74,8 @@ export class TelemetryPipeline {
       tokensIn: record.tokensIn ?? null,
       tokensOut: record.tokensOut ?? null,
       findingsCount: record.findingsCount ?? null,
+      mitigationCount: record.mitigationCount ?? null,
+      mitigationHash: record.mitigationHash ?? null,
       tier: record.tier,
       modelId: record.modelId ?? null,
       promptHash: record.promptHash ?? null,

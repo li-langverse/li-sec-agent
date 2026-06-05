@@ -49,19 +49,63 @@ sequenceDiagram
   WH->>GH: POST review comment / review thread
 ```
 
-## Review comment format (MVP)
+## Review comment format (mitigation-first)
+
+Each finding includes a **Suggested fix** block with optional diff, effort estimate, and references.
 
 ```markdown
 ## SecAgent security review
 
-| Severity | Category | Location | Issue |
-|----------|----------|----------|-------|
-| high | secrets | `src/auth.ts:42` | Hardcoded API key pattern |
+Found **1** issue with suggested fixes.
 
-<sub>Review id: `8b2e…` · [Open findings](https://secagent.internal/reviews/8b2e…)</sub>
+| Severity | Category | Location | Issue | Fix effort |
+|----------|----------|----------|-------|------------|
+| 🟠 high | secrets | `src/auth.ts:42` | Hardcoded API key pattern | low |
+
+### 🟠 Hardcoded API key pattern
+
+| | |
+|---|---|
+| **Severity** | `high` |
+| **Category** | `secrets` |
+| **Location** | `src/auth.ts:42` |
+| **CWE** | [CWE-798](https://cwe.mitre.org/data/definitions/798.html) |
+| **Confidence** | 95% |
+
+Literal secret in source may leak via VCS.
+
+**Evidence:**
+```
+const API_KEY = "sk-live-abc123";
 ```
 
-Use a single summary comment per synchronize, or inline comments via Pull Request Review API for file-level anchors.
+#### Suggested fix
+
+**Move secret to environment variable** _(effort: low)_
+
+Load the key from process.env and rotate the exposed credential.
+
+```
+const API_KEY = process.env.API_KEY;
+if (!API_KEY) throw new Error('API_KEY required');
+```
+
+**Alternatives:**
+- Use a secret manager (Vault, AWS SM)
+
+**References:**
+- https://cwe.mitre.org/data/definitions/798.html
+- https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html
+
+---
+
+<sub>Review id: `8b2e…` · [Open findings](https://secagent.internal/reviews/8b2e…) · Powered by SecAgent</sub>
+```
+
+- **Summary comment** — always posted (table + per-issue blocks).
+- **Inline comments** — set `PR_INLINE_COMMENTS=true` when file + line are known; uses Pull Request Review API `path` + `line` (or `position` when webhook provides patch offset).
+
+Formatter: `src/pr-comment.ts`. UX rubric: [MITIGATION_REVIEWS.md](./MITIGATION_REVIEWS.md).
 
 ## Environment variables
 

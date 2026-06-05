@@ -8,6 +8,7 @@ export type FindingCategory =
   | "config"
   | "other";
 export type FindingSource = "static" | "qwen" | "human" | "rulepack";
+export type MitigationEffort = "low" | "medium" | "high";
 
 export interface PrReviewRecord {
   id: string;
@@ -30,11 +31,31 @@ export interface FindingRecord {
   title: string;
   detail?: string;
   cwe?: string;
+  evidence?: string;
+  confidence?: number;
   source: FindingSource;
   modelId?: string;
   promptTokens?: number;
   completionTokens?: number;
   latencyMs?: number;
+}
+
+export interface MitigationRecord {
+  id: string;
+  findingId: string;
+  title: string;
+  description: string;
+  suggestedPatch?: string;
+  references: string[];
+  effort: MitigationEffort;
+  alternativeApproaches: string[];
+  contentHash: string;
+}
+
+/** Scanner output: paired finding + mitigation per issue. */
+export interface ScanIssue {
+  finding: Omit<FindingRecord, "id" | "reviewId">;
+  mitigation: Omit<MitigationRecord, "id" | "findingId" | "contentHash">;
 }
 
 export interface PullRequestContext {

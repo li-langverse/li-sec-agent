@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://li-langverse.dev/schemas/secagent/mitigation.json",
+  "title": "SecAgentMitigation",
+  "type": "object",
+  "required": ["title", "description", "references", "effort", "alternative_approaches"],
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "suggested_patch": {
+      "type": "string",
+      "description": "Optional unified diff hunk or fenced code block"
+    },
+    "references": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "minItems": 0
+    },
+    "effort": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "alternative_approaches": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

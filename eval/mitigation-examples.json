@@ -1,0 +1,68 @@
+[
+  {
+    "id": "sqli-parameterized",
+    "finding": {
+      "severity": "high",
+      "category": "injection",
+      "cwe_id": "CWE-89",
+      "title": "SQL injection via string concatenation",
+      "file_path": "src/api/users.ts",
+      "line_range": { "start": 42 }
+    },
+    "mitigation": {
+      "title": "Use parameterized queries",
+      "description": "Bind user input as query parameters instead of interpolating into SQL.",
+      "suggested_patch": "await db.query('SELECT * FROM users WHERE id = $1', [userId])",
+      "effort": "low",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ],
+      "alternative_approaches": ["ORM with parameterized queries"]
+    }
+  },
+  {
+    "id": "xss-encode-csp",
+    "finding": {
+      "severity": "high",
+      "category": "injection",
+      "cwe_id": "CWE-79",
+      "title": "Reflected XSS via innerHTML",
+      "file_path": "src/ui/render.ts",
+      "line_range": { "start": 18 }
+    },
+    "mitigation": {
+      "title": "Encode output and tighten CSP",
+      "description": "Use textContent or sanitize HTML; add Content-Security-Policy.",
+      "suggested_patch": "el.textContent = userInput;",
+      "effort": "medium",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/79.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ],
+      "alternative_approaches": ["DOMPurify.sanitize() for rich HTML"]
+    }
+  },
+  {
+    "id": "hardcoded-secret-env",
+    "finding": {
+      "severity": "critical",
+      "category": "secrets",
+      "cwe_id": "CWE-798",
+      "title": "Hardcoded API key in source",
+      "file_path": "src/config.ts",
+      "line_range": { "start": 3 }
+    },
+    "mitigation": {
+      "title": "Externalize and rotate secret",
+      "description": "Remove literal from VCS; load from env/secret manager; rotate exposed key.",
+      "suggested_patch": "const apiKey = process.env.API_KEY;",
+      "effort": "low",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/798.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html"
+      ],
+      "alternative_approaches": ["HashiCorp Vault", "GitHub Actions secrets"]
+    }
+  }
+]

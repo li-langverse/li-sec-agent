@@ -105,16 +105,18 @@ Record results in `eval/reference-database/baselines.json` and `eval/summaries/`
 
 `scripts/export-finetune-jsonl.ts` emits OpenAI-style **messages** JSONL:
 
-- **system:** security reviewer instructions (same as production scanner)
+- **system:** mitigation-first security reviewer prompt (`src/llm/security-prompt.ts` — same as production)
 - **user:** file path, language, CWE, fenced unified diff
-- **assistant:** JSON array of findings (or `[]` for negatives)
+- **assistant:** JSON array of `{ finding, mitigation }` pairs (or `[]` for negatives)
+
+Mitigation text for positives is seeded from `eval/mitigation-examples.json` (golden SQLi / XSS / secrets patterns) matched by CWE or harness category. Corpus **negatives** (safe refactors like bounded `memcpy`) train the model to return `[]`.
 
 ```bash
 SPLIT=train npm run export:finetune-jsonl
 # → eval/reference-database/finetune-train.jsonl
 ```
 
-Use `metadata.ref_id` / `split` for filtering; do not train on `holdout` rows.
+`metadata.has_mitigation` is `true` for positive cases. Use `metadata.ref_id` / `split` for filtering; do not train on `holdout` rows.
 
 ---
 

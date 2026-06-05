@@ -7,6 +7,7 @@ export type TelemetryEventType =
   | "qwen_inference_completed"
   | "qwen_inference_failed"
   | "finding_created"
+  | "mitigation_suggested"
   | "pr_comment_posted"
   | "user_feedback"
   | "false_positive_labeled"
@@ -41,9 +42,11 @@ export interface TelemetryEventInput {
   tokensIn?: number;
   tokensOut?: number;
   findingsCount?: number;
+  mitigationCount?: number;
   modelId?: string;
   promptHash?: string;
   responseHash?: string;
+  mitigationHash?: string;
   latencyMs?: number;
   findingId?: string;
   feedback?: UserFeedback;

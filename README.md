@@ -1,6 +1,6 @@
 # li-sec-agent
 
-AI **security agent** for pull requests — CodeRabbit-style flow, security-first findings, **on-cluster Qwen** (Ollama OpenAI API), and **telemetry-first data capture** (events, metering, training labels) as core product infrastructure.
+AI **security agent** for pull requests — CodeRabbit-style flow with **actionable mitigations** (suggested patches, CWE/OWASP references), security-first findings, **on-cluster Qwen** (Ollama OpenAI API), and **telemetry-first data capture** (events, metering, training labels) as core product infrastructure.
 
 Homelab staging target: **blackpearl** k3s (`secagent-staging` namespace). Ecosystem: [**li-langverse**](https://github.com/li-langverse); first consumer can be [**majico**](https://github.com/cap-jmk-launchpad/majico) via GitHub App.
 
@@ -9,6 +9,7 @@ Homelab staging target: **blackpearl** k3s (`secagent-staging` namespace). Ecosy
 - **SaaS per-seat / per-org** — tiered by private repos and monthly PR volume.
 - **GitHub Marketplace** — install the App; free tier for public OSS, paid for private + SLA.
 - **Usage-based** — bill on PR lines scanned and model tokens (pass-through + margin).
+- **Mitigation quality (premium)** — inline `suggested_patch` comments, custom org templates, and higher-accuracy models on Team/Business tiers ([MITIGATION_REVIEWS.md](docs/MITIGATION_REVIEWS.md)).
 - **Enterprise on-prem** — Helm chart + air-gapped Qwen; annual license, no code egress.
 - **Findings-as-a-service** — anonymized CVE/category feed for SIEM / SOC platforms (opt-in).
 
@@ -16,7 +17,8 @@ Homelab staging target: **blackpearl** k3s (`secagent-staging` namespace). Ecosy
 
 | Data | Notes |
 |------|--------|
-| Findings | Severity, category, file/line, title, source (`qwen` / `static`) |
+| Findings | Severity, category, file/line, evidence, confidence, CWE, source (`qwen` / `static`) |
+| Mitigations | Title, description, optional patch, effort, references (hashed in telemetry) |
 | `diff_hash` | SHA-256 of normalized patch (not always full diff) |
 | Model traces | `prompt_hash`, `response_hash`, token counts, latency |
 | Webhook metadata | `delivery_id`, repo, PR number, SHAs |
@@ -111,7 +113,7 @@ src/           webhook handler, scanner orchestrator, Qwen client, data store
 src/telemetry/ pipeline, privacy redaction, OTLP stub
 schemas/       finding + telemetry JSON Schema
 migrations/    SQL schema (findings + telemetry_events)
-docs/          DATA_CAPTURE.md, VISION.md, PR_INTEGRATION.md, MODEL_EVAL.md
+docs/          DATA_CAPTURE.md, VISION.md, PR_INTEGRATION.md, MITIGATION_REVIEWS.md, MODEL_EVAL.md
 eval/          benchmark-cases.json, results/ (gitignored)
 scripts/       deploy-staging.ps1 / .sh, eval-models.ts, pull-eval-models.sh
 ```

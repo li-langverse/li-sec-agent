@@ -17,6 +17,7 @@
         "qwen_inference_completed",
         "qwen_inference_failed",
         "finding_created",
+        "mitigation_suggested",
         "pr_comment_posted",
         "user_feedback",
         "false_positive_labeled",
@@ -37,6 +38,11 @@
     "tokens_in": { "type": "integer", "minimum": 0 },
     "tokens_out": { "type": "integer", "minimum": 0 },
     "findings_count": { "type": "integer", "minimum": 0 },
+    "mitigation_count": { "type": "integer", "minimum": 0 },
+    "mitigation_hash": {
+      "type": "string",
+      "description": "SHA-256 of mitigation content (no raw patch in telemetry)"
+    },
     "tier": {
       "type": "string",
       "enum": ["free", "team", "business", "enterprise", "on_prem"]
