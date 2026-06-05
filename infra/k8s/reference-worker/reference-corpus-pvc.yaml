@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: reference-corpus-pvc
+  namespace: secagent-staging
+  labels:
+    app.kubernetes.io/name: li-sec-agent
+    app.kubernetes.io/component: reference-expander
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

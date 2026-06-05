@@ -7,7 +7,7 @@
  *   TARGET_EXTRA=500 MIN_SCENARIOS_PER_CWE=5 npx tsx scripts/benchmarks/expand-reference-corpus.ts
  */
 
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { REPO_ROOT, loadBacklog, type BacklogItem } from "./cwe-shared.js";
 import {
@@ -19,8 +19,9 @@ import {
 } from "./generate-multilang-corpus.js";
 import { EXTRA_TEMPLATES, CWE_TEMPLATE_ALIAS } from "./cwe-extra-templates.js";
 import { parseCweNumber } from "./cwe-shared.js";
+import { referenceDataDir } from "./reference-paths.js";
 
-const OUT = join(REPO_ROOT, "eval", "reference-database", "synthetic-expanded.json");
+const OUT = join(referenceDataDir(), "synthetic-expanded.json");
 
 function slug(s: string): string {
   return s.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase();
@@ -123,6 +124,15 @@ function main(): void {
 
   const all: BenchmarkCase[] = [];
   const seen = new Set<string>();
+
+  if (process.env.EXPAND_APPEND === "1" && existsSync(OUT)) {
+    const existing = JSON.parse(readFileSync(OUT, "utf8")) as BenchmarkCase[];
+    for (const c of existing) {
+      seen.add(`${c.file_path}:${c.diff}`);
+      all.push(c);
+    }
+    console.log(`Append mode: loaded ${existing.length} existing cases from ${OUT}`);
+  }
 
   for (const item of backlog) {
     if (all.filter((c) => !c.negative).length >= targetExtra * 1.2) break;

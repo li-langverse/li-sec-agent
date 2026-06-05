@@ -1,0 +1,31 @@
+# Telemetry stub — progress is written to PVC expansion-progress.jsonl.
+# Uncomment when Prometheus Operator is installed.
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   name: reference-corpus-expander
+#   namespace: secagent-staging
+#   labels:
+#     release: kube-prometheus-stack
+# spec:
+#   jobLabel: reference-expander
+#   selector:
+#     matchLabels:
+#       app.kubernetes.io/component: reference-expander
+#   endpoints: []
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: reference-expander-telemetry
+  namespace: secagent-staging
+  labels:
+    app.kubernetes.io/name: li-sec-agent
+    app.kubernetes.io/component: reference-expander
+    secagent.metrics/scrape: "stub"
+  annotations:
+    secagent.io/progress-path: "/data/corpus/expansion-progress.jsonl"
+    secagent.io/state-path: "/data/corpus/worker-state.json"
+    secagent.io/corpus-path: "/data/corpus/corpus-latest.json"
+data:
+  note: "Inspect progress via kubectl exec or debug pod mounting reference-corpus-pvc"

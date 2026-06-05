@@ -84,13 +84,14 @@ async function main(): Promise<void> {
     const { join, dirname } = await import("node:path");
     const { fileURLToPath } = await import("node:url");
     const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+    const dataDir = process.env.REFERENCE_DATA_DIR ?? join(root, "eval");
     const snapshot = {
       generated_at: new Date().toISOString(),
       manifest,
       weaknesses,
       report,
     };
-    const out = join(root, "eval", "cwe-mirror-snapshot.json");
+    const out = join(dataDir, "cwe-mirror-snapshot.json");
     writeFileSync(out, JSON.stringify(snapshot, null, 2) + "\n", "utf8");
     console.log(`Wrote snapshot -> ${out}`);
   }

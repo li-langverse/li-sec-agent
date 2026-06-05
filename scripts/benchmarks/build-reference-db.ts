@@ -10,6 +10,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { REPO_ROOT } from "./cwe-shared.js";
+import { referenceDataDir } from "./reference-paths.js";
 import type { BenchmarkCase } from "./generate-multilang-corpus.js";
 import {
   contentHash,
@@ -18,7 +19,7 @@ import {
   type ReferenceCase,
 } from "./reference-db-types.js";
 
-const REF_DIR = join(REPO_ROOT, "eval", "reference-database");
+const REF_DIR = referenceDataDir();
 const MULTILANG = join(REPO_ROOT, "eval", "benchmark-multilang.json");
 const CWE_EXPANDED = join(REPO_ROOT, "eval", "benchmark-cwe-expanded.json");
 const OSSF_SUBSET = join(REF_DIR, "ossf-subset.json");

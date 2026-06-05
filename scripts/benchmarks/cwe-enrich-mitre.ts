@@ -6,7 +6,7 @@
  *   MITRE_DELAY_MS=400 npx tsx scripts/benchmarks/cwe-enrich-mitre.ts
  */
 
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import {
   REPO_ROOT,
@@ -20,13 +20,34 @@ import {
 
 async function main(): Promise<void> {
   const backlog = loadBacklog();
-  const ids = backlogCweIds(backlog);
+  const allIds = backlogCweIds(backlog);
+  const offset = Number(process.env.MITRE_OFFSET ?? "0");
+  const limit = Number(process.env.MITRE_LIMIT ?? "0");
+  const ids =
+    limit > 0 ? allIds.slice(offset, offset + limit) : allIds.slice(offset);
   const delayMs = Number(process.env.MITRE_DELAY_MS ?? "350");
-  const entries: CweTaxonomyEntry[] = [];
+  const outPath = join(REPO_ROOT, "eval", "cwe-taxonomy.json");
+  const dataOutPath =
+    process.env.REFERENCE_DATA_DIR != null
+      ? join(process.env.REFERENCE_DATA_DIR, "cwe-taxonomy.json")
+      : outPath;
 
-  console.log(`Enriching ${ids.length} CWEs from backlog (delay ${delayMs}ms)...`);
+  const existingByCwe = new Map<string, CweTaxonomyEntry>();
+  for (const path of [dataOutPath, outPath]) {
+    if (!existsSync(path)) continue;
+    const prev = JSON.parse(readFileSync(path, "utf8")) as { entries?: CweTaxonomyEntry[] };
+    for (const e of prev.entries ?? []) existingByCwe.set(e.cwe_id, e);
+    break;
+  }
 
-  for (const cwe of ids) {
+  const entries: CweTaxonomyEntry[] = [...existingByCwe.values()];
+  const toFetch = ids.filter((cwe) => !existingByCwe.has(cwe));
+
+  console.log(
+    `Enriching ${toFetch.length}/${ids.length} CWEs (offset ${offset}, delay ${delayMs}ms)...`
+  );
+
+  for (const cwe of toFetch) {
     const num = parseCweNumber(cwe);
     process.stdout.write(`  CWE-${num}... `);
     const row = await fetchMitreWeakness(num, delayMs);
@@ -61,9 +82,8 @@ async function main(): Promise<void> {
     entries: enriched,
   };
 
-  const outPath = join(REPO_ROOT, "eval", "cwe-taxonomy.json");
-  writeFileSync(outPath, JSON.stringify(out, null, 2) + "\n", "utf8");
-  console.log(`Wrote ${enriched.length} entries -> ${outPath}`);
+  writeFileSync(dataOutPath, JSON.stringify(out, null, 2) + "\n", "utf8");
+  console.log(`Wrote ${enriched.length} entries -> ${dataOutPath}`);
 }
 
 main().catch((err) => {

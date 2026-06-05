@@ -148,13 +148,65 @@ Use `metadata.ref_id` / `split` for filtering; do not train on `holdout` rows.
 
 ## Roadmap
 
+See **[REFERENCE_DATABASE_ROADMAP.md](./REFERENCE_DATABASE_ROADMAP.md)** for phased targets (v1→v4), work packages, worker responsibilities, and done criteria.
+
 | Version | Target cases | Work |
 |---------|-------------|------|
-| **v1** (current) | **1,500–2,000** | Merge 840+235+500+OSSF; manifest + baselines |
-| v2 | 2,500+ | PrimeVul 50–150 pairs; eval `cwe` breakdown |
-| v3 | 5,000–10,000 | 100+ CWEs × 5 scenarios × langs; Juliet sample; CyberSecEval adapters |
+| **v1** (current) | **1,410** | Multilang + CWE + OSSF subset — **done** |
+| v2 | 3,000 | OSSF git diffs (218 CVEs), PrimeVul 50 pairs |
+| v3 | 5,000 | 100 CWEs × 5 scenarios × 6 langs |
+| v4 | 8,000+ | Juliet sample, CyberSecEval ports, holdout gate |
 
-Next phase for **5k target:** WP-2.4 PrimeVul pairs, expand P2 backlog to 100 CWEs, OSSF full 218 CVE diff ETL with `OSSF_USE_GIT`, holdout eval gate in CI.
+---
+
+## Homelab worker
+
+Background expansion runs on **blackpearl** k3s (`secagent-staging` namespace).
+
+| Item | Value |
+|------|-------|
+| CronJob | `reference-corpus-expander` — every **6 hours** (`0 */6 * * *`) |
+| PVC | `reference-corpus-pvc` (5Gi) → mount `/data/corpus` |
+| Image | `li-sec-agent-reference-worker:staging` |
+| ConfigMap | `reference-expander-env` — `TARGET_CASES=5000`, batch sizes |
+
+### Deploy
+
+```bash
+# From repo root (builds on blackpearl, imports to k3s, applies manifests, runs test job)
+bash scripts/deploy-reference-worker.sh
+```
+
+Or manually:
+
+```bash
+ssh -i ~/Documents/Programming/beelink-cleanup/homelab s4il0r@192.168.10.41
+kubectl apply -k /tmp/li-sec-agent-reference-worker/k8s/
+kubectl -n secagent-staging create job --from=cronjob/reference-corpus-expander reference-corpus-expander-manual
+kubectl -n secagent-staging logs -f job/reference-corpus-expander-manual
+```
+
+### Check progress
+
+```bash
+# Worker state + case count
+kubectl -n secagent-staging exec -it deploy/secagent-worker -- cat /data/corpus/worker-state.json 2>/dev/null \
+  || kubectl -n secagent-staging run inspect --rm -it --restart=Never --image=busybox \
+     --overrides='...'  # mount reference-corpus-pvc
+
+# Progress log (JSONL events)
+cat /data/corpus/expansion-progress.jsonl   # inside PVC via debug pod
+
+# Canonical corpus for eval
+/data/corpus/corpus-latest.json
+/data/corpus/manifest-latest.json
+```
+
+Each cycle logs `cases before → after` and writes `worker-state.json` with `current_cases`, `cycle`, `finished`.
+
+Optional `GH_TOKEN` secret (`reference-expander-secret`) for future git push export — not required for PVC-only MVP.
+
+Manifests: `infra/k8s/reference-worker/`
 
 ---
 

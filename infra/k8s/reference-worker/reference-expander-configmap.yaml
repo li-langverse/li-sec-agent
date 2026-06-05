@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: reference-expander-env
+  namespace: secagent-staging
+  labels:
+    app.kubernetes.io/name: li-sec-agent
+    app.kubernetes.io/component: reference-expander
+data:
+  REFERENCE_DATA_DIR: "/data/corpus"
+  TARGET_CASES: "5000"
+  OSSF_BATCH: "10"
+  EXPAND_BATCH: "50"
+  MITRE_BATCH: "5"
+  MITRE_DELAY_MS: "400"
+  CWE_MIRROR_URL: "https://cwe.klaut.pro"
+  NEGATIVE_RATIO: "0.3"
+  MIN_SCENARIOS_PER_CWE: "5"
+  CHUNK_MB: "8"
+  OTEL_SERVICE_NAME: "li-sec-agent-reference-expander"

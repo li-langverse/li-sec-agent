@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: reference-corpus-expander
+  namespace: secagent-staging
+  labels:
+    app.kubernetes.io/name: li-sec-agent
+    app.kubernetes.io/component: reference-expander
+spec:
+  schedule: "0 */6 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 7200
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: li-sec-agent
+            app.kubernetes.io/component: reference-expander
+        spec:
+          nodeSelector:
+            kubernetes.io/hostname: blackpearl
+          restartPolicy: OnFailure
+          containers:
+            - name: expander
+              image: docker.io/library/li-sec-agent-reference-worker:staging
+              imagePullPolicy: IfNotPresent
+              command:
+                - /app/scripts/worker/run-expansion-cycle.sh
+              envFrom:
+                - configMapRef:
+                    name: reference-expander-env
+              env:
+                - name: GH_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: reference-expander-secret
+                      key: GH_TOKEN
+                      optional: true
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 512Mi
+                limits:
+                  cpu: "1"
+                  memory: 2Gi
+              volumeMounts:
+                - name: corpus
+                  mountPath: /data/corpus
+          volumes:
+            - name: corpus
+              persistentVolumeClaim:
+                claimName: reference-corpus-pvc
