@@ -68,7 +68,21 @@ function makeId(
   return `refexp-${lang}-cwe-${num}-${slug(category)}-${prefix}-${String(variant).padStart(3, "0")}`;
 }
 
-function generateExtra(item: BacklogItem, minPos: number, negRatio: number): BenchmarkCase[] {
+function maxVariantFromExisting(existing: BenchmarkCase[]): number {
+  let max = 0;
+  for (const c of existing) {
+    const m = c.id.match(/-(\d{3,})$/);
+    if (m) max = Math.max(max, Number(m[1]));
+  }
+  return max;
+}
+
+function generateExtra(
+  item: BacklogItem,
+  minPos: number,
+  negRatio: number,
+  variantOffset: number
+): BenchmarkCase[] {
   const langs = item.languages.filter((l) =>
     ["c", "cpp", "rust", "python", "javascript", "typescript"].includes(l)
   ) as Language[];
@@ -86,7 +100,7 @@ function generateExtra(item: BacklogItem, minPos: number, negRatio: number): Ben
   let v = 0;
   while (cases.filter((c) => !c.negative).length < minPos && v < minPos * 30) {
     const slot = slots[v % slots.length]!;
-    const variant = slot.variant + v;
+    const variant = slot.variant + variantOffset + v;
     const base = buildCase(slot.lang, { ...slot.tpl, cwe: item.cwe }, variant, false);
     const uniq = `\n+# ref-exp-${item.cwe}-v${variant}\n`;
     cases.push({
@@ -101,7 +115,7 @@ function generateExtra(item: BacklogItem, minPos: number, negRatio: number): Ben
   let n = 0;
   while (cases.filter((c) => c.negative).length < negTarget && n < slots.length * 4) {
     const slot = slots[n % slots.length]!;
-    const variant = slot.variant + 200 + n;
+    const variant = slot.variant + variantOffset + 200 + n;
     const base = buildCase(slot.lang, { ...slot.tpl, cwe: item.cwe }, variant, true);
     cases.push({
       ...base,
@@ -124,6 +138,7 @@ function main(): void {
 
   const all: BenchmarkCase[] = [];
   const seen = new Set<string>();
+  let variantOffset = Number(process.env.VARIANT_OFFSET ?? "0");
 
   if (process.env.EXPAND_APPEND === "1" && existsSync(OUT)) {
     const existing = JSON.parse(readFileSync(OUT, "utf8")) as BenchmarkCase[];
@@ -131,18 +146,29 @@ function main(): void {
       seen.add(`${c.file_path}:${c.diff}`);
       all.push(c);
     }
-    console.log(`Append mode: loaded ${existing.length} existing cases from ${OUT}`);
+    if (!variantOffset) variantOffset = maxVariantFromExisting(existing) + 1;
+    console.log(
+      `Append mode: loaded ${existing.length} existing cases from ${OUT} (variant_offset=${variantOffset})`
+    );
   }
 
-  for (const item of backlog) {
-    if (all.filter((c) => !c.negative).length >= targetExtra * 1.2) break;
-    const batch = generateExtra(item, minScenarios, negRatio);
-    for (const c of batch) {
-      const key = `${c.file_path}:${c.diff}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      all.push(c);
+  let pass = 0;
+  while (all.filter((c) => !c.negative).length < targetExtra && pass < 24) {
+    let addedThisPass = 0;
+    for (const item of backlog) {
+      if (all.filter((c) => !c.negative).length >= targetExtra) break;
+      const batch = generateExtra(item, minScenarios, negRatio, variantOffset);
+      for (const c of batch) {
+        const key = `${c.file_path}:${c.diff}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        all.push(c);
+        addedThisPass++;
+      }
     }
+    if (!addedThisPass) break;
+    variantOffset = maxVariantFromExisting(all) + 1;
+    pass++;
   }
 
   let trimmed = all;

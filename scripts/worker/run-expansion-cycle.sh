@@ -88,15 +88,23 @@ echo "==> 2/5 MITRE enrich (offset=${MITRE_OFFSET} limit=${MITRE_BATCH})"
 npx tsx scripts/benchmarks/cwe-enrich-mitre.ts \
   2>&1 | tee -a "${DATA_DIR}/logs/cycle-$(date +%Y%m%d-%H%M).log"
 
-echo "==> 3/5 OSSF fetch (limit=${OSSF_LIMIT})"
-OSSF_LIMIT="${OSSF_LIMIT}" OSSF_CACHE_DIR="${DATA_DIR}/ossf-cache" \
+CYCLE_NUM="$(node -e "const s=require('${STATE_FILE}'); console.log(s.cycle||0)")"
+VARIANT_OFFSET="$((CYCLE_NUM * EXPAND_BATCH))"
+
+echo "==> 3/5 OSSF fetch (limit=${OSSF_LIMIT}, append=1)"
+OSSF_LIMIT="${OSSF_LIMIT}" OSSF_APPEND=1 OSSF_CACHE_DIR="${DATA_DIR}/ossf-cache" \
   npx tsx scripts/benchmarks/fetch-ossf-cve-subset.ts \
   2>&1 | tee -a "${DATA_DIR}/logs/cycle-$(date +%Y%m%d-%H%M).log"
 
-echo "==> 4/5 Synthetic expansion (target_extra=${TARGET_EXTRA})"
-TARGET_EXTRA="${TARGET_EXTRA}" EXPAND_APPEND=1 \
+echo "==> 4/5 Synthetic expansion (target_extra=${TARGET_EXTRA}, variant_offset=${VARIANT_OFFSET})"
+TARGET_EXTRA="${TARGET_EXTRA}" EXPAND_APPEND=1 VARIANT_OFFSET="${VARIANT_OFFSET}" \
   npx tsx scripts/benchmarks/expand-reference-corpus.ts \
   2>&1 | tee -a "${DATA_DIR}/logs/cycle-$(date +%Y%m%d-%H%M).log"
+
+echo "==> 4b/5 PrimeVul fetch (limit=50, append=1)"
+PRIMEVUL_LIMIT=50 PRIMEVUL_APPEND=1 \
+  npx tsx scripts/benchmarks/fetch-primevul-subset.ts \
+  2>&1 | tee -a "${DATA_DIR}/logs/cycle-$(date +%Y%m%d-%H%M).log" || true
 
 echo "==> 5/5 Build reference DB + publish"
 npx tsx scripts/benchmarks/build-reference-db.ts \

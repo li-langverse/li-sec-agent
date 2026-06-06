@@ -16,6 +16,7 @@
     "benchmark:cwe-scenarios": "tsx scripts/benchmarks/generate-cwe-scenarios.ts",
     "benchmark:build-cwe-db": "tsx scripts/benchmarks/cwe-inventory.ts --write-snapshot && tsx scripts/benchmarks/cwe-enrich-mitre.ts && tsx scripts/benchmarks/generate-cwe-scenarios.ts",
     "benchmark:fetch-ossf": "tsx scripts/benchmarks/fetch-ossf-cve-subset.ts",
+    "benchmark:fetch-primevul": "tsx scripts/benchmarks/fetch-primevul-subset.ts",
     "benchmark:expand-reference": "tsx scripts/benchmarks/expand-reference-corpus.ts",
     "benchmark:build-reference-db": "tsx scripts/benchmarks/build-reference-db.ts",
     "benchmark:reference-v1": "tsx scripts/benchmarks/fetch-ossf-cve-subset.ts && tsx scripts/benchmarks/expand-reference-corpus.ts && tsx scripts/benchmarks/build-reference-db.ts",

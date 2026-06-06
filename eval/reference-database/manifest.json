@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "corpus_version": "v1",
-  "generated_at": "2026-06-04T06:11:43.406Z",
+  "generated_at": "2026-06-06T06:28:02.410Z",
   "corpus_files": [
     "corpus-v1.json"
   ],
@@ -22,48 +22,55 @@
       "id": "reference-expanded-synthetic",
       "path": "eval/reference-database/synthetic-expanded.json",
       "license": "MIT (li-sec-agent)",
-      "count": 400
+      "count": 3650
     },
     {
       "id": "ossf-cve-benchmark",
       "path": "eval/reference-database/ossf-subset.json",
       "license": "MIT (OSSF metadata); per-repo OSS for snippets",
-      "count": 180
+      "count": 533
+    },
+    {
+      "id": "primevul-paired",
+      "path": "eval/reference-database/primevul-subset.json",
+      "license": "MIT (PrimeVul dataset repo); per-project OSS for snippets",
+      "count": 51
     }
   ],
   "stats": {
-    "total_cases": 1410,
-    "positive_cases": 952,
-    "negative_cases": 458,
-    "unique_cwes": 54,
-    "unique_content_hashes": 1410,
+    "total_cases": 5064,
+    "positive_cases": 3442,
+    "negative_cases": 1622,
+    "unique_cwes": 71,
+    "unique_content_hashes": 5064,
     "by_language": {
-      "c": 194,
-      "cpp": 173,
-      "javascript": 325,
-      "python": 303,
-      "typescript": 273,
-      "rust": 142
+      "c": 720,
+      "cpp": 590,
+      "javascript": 1172,
+      "python": 1164,
+      "typescript": 1095,
+      "rust": 323
     },
     "by_source": {
       "cwe-expanded-synthetic": 104,
       "multilang-synthetic": 726,
-      "ossf-cve-benchmark": 180,
-      "reference-expanded-synthetic": 400
+      "ossf-cve-benchmark": 533,
+      "primevul-paired": 51,
+      "reference-expanded-synthetic": 3650
     },
     "by_split": {
-      "train": 1071,
-      "holdout": 101,
-      "eval": 238
+      "train": 3862,
+      "holdout": 373,
+      "eval": 829
     },
     "by_harness_category": {
-      "injection": 836,
-      "config": 83,
-      "secrets": 93,
-      "authz": 99,
-      "dependency": 17,
-      "crypto": 64,
-      "other": 218
+      "injection": 2812,
+      "config": 511,
+      "secrets": 283,
+      "authz": 481,
+      "dependency": 77,
+      "crypto": 250,
+      "other": 650
     }
   },
   "splits": {
@@ -77,6 +84,7 @@
     "cwe-expanded-synthetic": "MIT — li-sec-agent generated",
     "reference-expanded-synthetic": "MIT — li-sec-agent generated",
     "ossf-cve-benchmark": "MIT metadata; upstream repo licenses apply to code excerpts",
+    "primevul-paired": "MIT dataset repo; upstream project licenses apply to code excerpts",
     "ported-ossf": "MIT port templates; attribute CVE + original repo",
     "mitre_cwe": "MITRE CWE reference data — taxonomy ids only",
     "owasp_benchmark": "GPL-2.0 — metadata only, no Java copied"
@@ -87,7 +95,7 @@
   },
   "dedupe": {
     "strategy": "content_hash = sha256(file_path + diff)[0:16]",
-    "skipped_duplicates": 245
+    "skipped_duplicates": 246
   },
-  "content_digest": "dae1695ecc06522e"
+  "content_digest": "2dfd7f443c18d9e6"
 }

@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ref-corpus-inspect
+  namespace: secagent-staging
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: blackpearl
+  restartPolicy: Never
+  containers:
+    - name: inspect
+      image: busybox:1.36
+      command:
+        - sh
+        - -c
+        - |
+          ls -la /data/corpus
+          wc -c /data/corpus/manifest.json /data/corpus/corpus-v1.json 2>/dev/null || true
+          echo "--- worker-state ---"
+          cat /data/corpus/worker-state.json 2>/dev/null || true
+          echo "--- progress ---"
+          tail -5 /data/corpus/expansion-progress.jsonl 2>/dev/null || true
+      volumeMounts:
+        - name: c
+          mountPath: /data/corpus
+  volumes:
+    - name: c
+      persistentVolumeClaim:
+        claimName: reference-corpus-pvc

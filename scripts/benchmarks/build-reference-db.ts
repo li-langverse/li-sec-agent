@@ -24,6 +24,7 @@ const MULTILANG = join(REPO_ROOT, "eval", "benchmark-multilang.json");
 const CWE_EXPANDED = join(REPO_ROOT, "eval", "benchmark-cwe-expanded.json");
 const OSSF_SUBSET = join(REF_DIR, "ossf-subset.json");
 const SYNTHETIC_EXPANDED = join(REF_DIR, "synthetic-expanded.json");
+const PRIMEVUL_SUBSET = join(REF_DIR, "primevul-subset.json");
 
 type SourceInput = {
   path: string;
@@ -113,6 +114,7 @@ function main(): void {
     { path: CWE_EXPANDED, source: "cwe-expanded-synthetic", license: "MIT (li-sec-agent)" },
     { path: SYNTHETIC_EXPANDED, source: "reference-expanded-synthetic", license: "MIT (li-sec-agent)" },
     { path: OSSF_SUBSET, source: "ossf-cve-benchmark", license: "MIT (OSSF metadata); per-repo OSS for snippets" },
+    { path: PRIMEVUL_SUBSET, source: "primevul-paired", license: "MIT (PrimeVul dataset repo); per-project OSS for snippets" },
   ];
 
   const byHash = new Map<string, ReferenceCase>();
@@ -155,6 +157,7 @@ function main(): void {
       "cwe-expanded-synthetic": "MIT — li-sec-agent generated",
       "reference-expanded-synthetic": "MIT — li-sec-agent generated",
       "ossf-cve-benchmark": "MIT metadata; upstream repo licenses apply to code excerpts",
+      "primevul-paired": "MIT dataset repo; upstream project licenses apply to code excerpts",
       "ported-ossf": "MIT port templates; attribute CVE + original repo",
       mitre_cwe: "MITRE CWE reference data — taxonomy ids only",
       owasp_benchmark: "GPL-2.0 — metadata only, no Java copied",

@@ -14,6 +14,7 @@ export type ProvenanceSource =
   | "reference-expanded-synthetic"
   | "ossf-cve-benchmark"
   | "ported-ossf"
+  | "primevul-paired"
   | "juliet-sample"
   | "cyberseceval-adapted";
 
